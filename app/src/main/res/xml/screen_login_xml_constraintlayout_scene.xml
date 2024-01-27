@@ -54,15 +54,15 @@
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:translationY="@dimen/_260sdp"
+            android:translationY="260dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toBottomOf="@+id/shapeable_image_view_level" />
         <Constraint
             android:id="@+id/shapeable_image_view_level"
-            android:layout_width="@dimen/_122sdp"
-            android:layout_height="@dimen/_140sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:src="@drawable/logo_splash"
+            android:layout_width="122dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/logo"
             android:translationX="-10dp"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
@@ -73,7 +73,7 @@
             android:fontFamily="@font/super_corn"
             android:text="@string/hi_let_s_get_started"
             android:textColor="#ffffff"
-            android:textSize="@dimen/_18ssp"
+            android:textSize="18sp"
             motion:layout_constraintBottom_toBottomOf="@+id/shapeable_image_view_level"
             motion:layout_constraintStart_toEndOf="@+id/shapeable_image_view_level"
             motion:layout_constraintTop_toTopOf="@+id/shapeable_image_view_level" />
@@ -83,7 +83,7 @@
             android:layout_height="0dp"
             android:layout_marginBottom="300dp"
             android:padding="70dp"
-            android:src="@drawable/bg_image_button"
+            android:src="@drawable/img_welcome"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
