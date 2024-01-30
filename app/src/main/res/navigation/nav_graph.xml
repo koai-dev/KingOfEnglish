@@ -21,6 +21,23 @@
         app:launchSingleTop="true"
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true" />
-
+    <fragment
+        android:id="@+id/playScreen"
+        android:name="com.koai.kingofenglish.ui.play.PlayScreen"
+        android:label="PlayScreen"
+        tools:layout="@layout/screen_play" />
+    <action
+        android:id="@+id/action_global_playScreen"
+        app:destination="@+id/playScreen"
+        />
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.koai.kingofenglish.ui.home.HomeScreen"
+        android:label="screen_home"
+        tools:layout="@layout/screen_home" />
+    <action
+        android:id="@+id/action_global_homeScreen"
+        app:destination="@+id/homeScreen"
+        />
 
 </navigation>

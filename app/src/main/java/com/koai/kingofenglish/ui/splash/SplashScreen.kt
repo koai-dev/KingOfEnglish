@@ -15,7 +15,7 @@ class SplashScreen :
 
     override fun initView(savedInstanceState: Bundle?, binding: ScreenSplashBinding) {
         binding.btnWelcome.setClickableWithScale {
-            router?.goToHome()
+            router?.goToLogin()
         }
     }
 
