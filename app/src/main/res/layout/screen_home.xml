@@ -48,7 +48,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ctn_linear_layout"
+                android:id="@+id/ctn_info_user_tutorial"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
@@ -122,11 +122,11 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_rounded"
-                android:layout_width="@dimen/_70dp"
-                android:layout_height="@dimen/_70dp"
+                android:layout_width="@dimen/_60dp"
+                android:layout_height="@dimen/_60dp"
                 android:src="@drawable/ic_round"
-                android:translationY="-10dp"
-                android:translationX="-10dp"
+                android:translationY="-3dp"
+                android:translationX="-3dp"
                 app:layout_constraintStart_toStartOf="@id/img_user_tutorial"
                 app:layout_constraintTop_toTopOf="@id/img_user_tutorial" />
 
@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrow"
-                android:translationX="@dimen/_50dp"
+                android:translationX="63dp"
                 android:translationY="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image_rounded" />
@@ -161,6 +161,91 @@
                 android:translationY="35dp"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
+            <TextView
+                android:id="@+id/btn_play_now_tutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="380dp"
+                android:background="@drawable/bg_button_home"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/super_corn"
+                android:gravity="center"
+                android:alpha="0"
+                android:paddingHorizontal="@dimen/_30dp"
+                android:paddingVertical="@dimen/_15dp"
+                android:text="@string/play_now"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_40sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ctn_info_user_tutorial" />
+
+            <TextView
+                android:id="@+id/btn_leader_board_tutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_70dp"
+                android:background="@drawable/bg_button_home"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/super_corn"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_15dp"
+                android:paddingStart="@dimen/_70dp"
+                android:paddingEnd="@dimen/_30dp"
+                android:alpha="0"
+                android:text="@string/leader_board"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_40sp"
+                app:drawableEndCompat="@drawable/ic_cup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_play_now_tutorial" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctn_down_tutorial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_50dp"
+                    android:alpha="0.5"
+                    android:background="#E5F6FD"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/img_custom_tutorial"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="80dp"
+                    android:src="@drawable/ic_custom"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.9"
+                    android:alpha="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/img_setting_tutorial"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/_80dp"
+                    android:src="@drawable/ic_setting"
+                    android:alpha="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.9"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/logo"
