@@ -26,6 +26,26 @@
         android:name="com.koai.kingofenglish.ui.play.PlayScreen"
         android:label="PlayScreen"
         tools:layout="@layout/screen_play" />
+    <dialog
+        android:id="@+id/dialogProfile"
+        android:name="com.koai.kingofenglish.ui.dialog.DialogProfile"
+        android:label="DialogProfile"
+        tools:layout="@layout/dialog_profile"
+        />
+    <action
+        android:id="@+id/action_global_dialogProfile"
+        app:destination="@+id/dialogProfile"
+        />
+    <dialog
+        android:id="@+id/dialogSetting"
+        android:name="com.koai.kingofenglish.ui.dialog.DialogSetting"
+        android:label="DialogSetting"
+        tools:layout="@layout/dialog_setting"
+        />
+    <action
+        android:id="@+id/action_global_dialogSetting"
+        app:destination="@+id/dialogSetting"
+        />
     <action
         android:id="@+id/action_global_playScreen"
         app:destination="@+id/playScreen"

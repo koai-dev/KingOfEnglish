@@ -15,4 +15,10 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter,HomeRouter {
     override fun goToHome() {
         offNavScreen(R.id.action_global_homeScreen)
     }
+    override fun dialogProfile(){
+        offNavScreen(R.id.action_global_dialogProfile)
+    }
+    override fun dialogSetting(){
+        offNavScreen(R.id.action_global_dialogSetting)
+    }
 }

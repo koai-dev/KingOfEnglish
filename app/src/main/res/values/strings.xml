@@ -11,4 +11,11 @@
     <string name="click_here_to_edit_personal_information">Click here to edit personal information</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="your_profile">YOUR PROFILE</string>
+    <string name="_15">15</string>
+    <string name="watch_video">Watch video</string>
+    <string name="setting">SETTING</string>
+    <string name="term">Term</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="incorrect">INCORRECT</string>
 </resources>
