@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.motion.widget.MotionLayout
-
-        android:id="@+id/motionLayout"
+        android:id="@+id/ctn_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_splash"
@@ -14,7 +13,7 @@
             android:id="@+id/bg_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_round_top_20">
+            android:background="@color/white">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="@dimen/_0dp"
@@ -28,238 +27,25 @@
                 app:shapeAppearanceOverlay="@style/ImageRoundTop20" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/motionLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.7"
-            android:background="@color/black"
-            android:elevation="1dp"
-            android:visibility="gone">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/img_user_tutorial"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8dp"
-                android:layout_marginTop="@dimen/_30dp"
-                android:src="@drawable/ic_user"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ctn_info_user_tutorial"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_marginVertical="@dimen/_5dp"
-                app:layout_constraintBottom_toBottomOf="@+id/img_user_tutorial"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_user_tutorial"
-                app:layout_constraintTop_toTopOf="@+id/img_user_tutorial">
-
-                <TextView
-                    android:id="@+id/txt_user_tutorial"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/super_corn"
-                    android:text="MEE"
-                    android:alpha="0"
-                    android:textColor="@color/white"
-                    android:textSize="38sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txt_diamond_tutorial"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_31dp"
-                    android:fontFamily="@font/super_corn"
-                    android:text="5"
-                    android:alpha="0"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_38sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/txt_user_tutorial"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/ic_diamond_tutorial"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="@dimen/_12dp"
-                    android:src="@drawable/ic_diamond"
-                    android:alpha="0"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHeight_percent="0.9"
-                    app:layout_constraintStart_toEndOf="@id/txt_diamond_tutorial"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.1" />
-
-
-                <TextView
-                    android:id="@+id/txt_crown_tutorial"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_57dp"
-                    android:layout_marginEnd="@dimen/_30dp"
-                    android:drawablePadding="@dimen/_10dp"
-                    android:fontFamily="@font/super_corn"
-                    android:text="15"
-                    android:alpha="0"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_38sp"
-                    app:drawableEndCompat="@drawable/ic_crown"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ic_diamond_tutorial"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/image_rounded"
-                android:layout_width="@dimen/_60dp"
-                android:layout_height="@dimen/_60dp"
-                android:src="@drawable/ic_round"
-                android:translationY="-3dp"
-                android:translationX="-3dp"
-                app:layout_constraintStart_toStartOf="@id/img_user_tutorial"
-                app:layout_constraintTop_toTopOf="@id/img_user_tutorial" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/image_arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow"
-                android:translationX="63dp"
-                android:translationY="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_rounded" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/super_corn"
-                android:text="@string/click_here_to_edit_personal_information"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:translationY="@dimen/_40dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_arrow" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/logo_toturial"
-                android:layout_width="@dimen/_24dp"
-                android:layout_height="@dimen/_24dp"
-                android:src="@drawable/logo_tutorial"
-                android:translationY="35dp"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toTopOf="@+id/textView4" />
-            <TextView
-                android:id="@+id/btn_play_now_tutorial"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="380dp"
-                android:background="@drawable/bg_button_home"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/super_corn"
-                android:gravity="center"
-                android:alpha="0"
-                android:paddingHorizontal="@dimen/_30dp"
-                android:paddingVertical="@dimen/_15dp"
-                android:text="@string/play_now"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_40sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ctn_info_user_tutorial" />
-
-            <TextView
-                android:id="@+id/btn_leader_board_tutorial"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_70dp"
-                android:background="@drawable/bg_button_home"
-                android:fontFamily="@font/super_corn"
-                android:gravity="center"
-                android:layout_marginHorizontal="@dimen/_10dp"
-                android:paddingHorizontal="@dimen/_40dp"
-                android:paddingVertical="@dimen/_15dp"
-                android:alpha="0"
-                android:text="@string/leader_board"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_40sp"
-                app:drawableEndCompat="@drawable/ic_cup"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_play_now_tutorial" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ctn_down_tutorial"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:alpha="0"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_50dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/img_custom_tutorial"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="80dp"
-                    android:src="@drawable/ic_custom"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.9"
-                    android:alpha="0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.2" />
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/img_setting_tutorial"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="@dimen/_80dp"
-                    android:src="@drawable/ic_setting"
-                    android:alpha="0"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.9"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.2" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/logo"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
+            android:layout_width="@dimen/_115dp"
+            android:layout_height="@dimen/_115dp"
             android:layout_marginStart="@dimen/_16dp"
             android:layout_marginTop="@dimen/_32dp"
             android:src="@drawable/logo"
             android:translationY="-10dp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_user"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
             android:layout_marginStart="@dimen/_8dp"
-            android:layout_marginTop="@dimen/_30dp"
+            android:layout_marginTop="@dimen/_24dp"
             android:src="@drawable/ic_user"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -267,25 +53,27 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ctn_info_user"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginEnd="@dimen/_5dp"
             android:background="@drawable/bg_info_home"
             android:orientation="horizontal"
-            android:layout_marginVertical="5dp"
             app:layout_constraintBottom_toBottomOf="@+id/img_user"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_user"
             app:layout_constraintTop_toTopOf="@+id/img_user">
 
             <TextView
                 android:id="@+id/txt_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/_9dp"
+                android:layout_marginEnd="@dimen/_31dp"
                 android:fontFamily="@font/super_corn"
                 android:text="MEE"
                 android:textColor="@color/white"
-                android:textSize="38sp"
+                android:textSize="@dimen/_32sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/txt_diamond"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -293,43 +81,30 @@
                 android:id="@+id/txt_diamond"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_31dp"
+                android:layout_marginEnd="@dimen/_57dp"
+                android:drawablePadding="@dimen/_12dp"
                 android:fontFamily="@font/super_corn"
                 android:text="5"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_38sp"
+                android:textSize="@dimen/_32sp"
+                app:drawableEndCompat="@drawable/ic_diamond"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/txt_user"
+                app:layout_constraintEnd_toStartOf="@id/txt_crown"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/ic_diamond"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="@dimen/_12dp"
-                android:src="@drawable/ic_diamond"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHeight_percent="0.9"
-                app:layout_constraintStart_toEndOf="@id/txt_diamond"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.1" />
-
 
             <TextView
                 android:id="@+id/txt_crown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_57dp"
-                android:layout_marginEnd="@dimen/_30dp"
-                android:drawablePadding="@dimen/_10dp"
+                android:layout_marginEnd="@dimen/_33dp"
+                android:drawablePadding="@dimen/_12dp"
                 android:fontFamily="@font/super_corn"
                 android:text="15"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_38sp"
+                android:textSize="@dimen/_32sp"
                 app:drawableEndCompat="@drawable/ic_crown"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ic_diamond"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -356,13 +131,13 @@
             android:id="@+id/btn_leader_board"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10dp"
             android:layout_marginTop="@dimen/_70dp"
             android:background="@drawable/bg_button_home"
             android:fontFamily="@font/super_corn"
             android:gravity="center"
-            android:paddingVertical="@dimen/_15dp"
-            android:layout_marginHorizontal="@dimen/_10dp"
             android:paddingHorizontal="@dimen/_40dp"
+            android:paddingVertical="@dimen/_15dp"
             android:text="@string/leader_board"
             android:textColor="@color/white"
             android:textSize="@dimen/_40sp"
@@ -412,6 +187,464 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctn_tutorial"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.7"
+            android:paddingTop="@dimen/_10dp"
+            android:background="@color/black"
+            android:visibility="visible">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctn_tutorial_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/img_user_tutorial"
+                    android:layout_width="@dimen/_48dp"
+                    android:layout_height="@dimen/_48dp"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:src="@drawable/ic_user"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/img_rounded"
+                    android:layout_width="@dimen/_55dp"
+                    android:layout_height="@dimen/_55dp"
+                    android:src="@drawable/ic_round"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_user_tutorial"
+                    app:layout_constraintEnd_toEndOf="@+id/img_user_tutorial"
+                    app:layout_constraintStart_toStartOf="@id/img_user_tutorial"
+                    app:layout_constraintTop_toTopOf="@id/img_user_tutorial" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/img_arrow_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20dp"
+                    android:src="@drawable/ic_arrow"
+                    app:layout_constraintStart_toEndOf="@+id/img_rounded"
+                    app:layout_constraintTop_toBottomOf="@id/img_rounded" />
+
+                <TextView
+                    android:id="@+id/txt_tutorial_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:fontFamily="@font/super_corn"
+
+                    android:text="@string/click_here_to_edit_personal_information"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_arrow_1" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/logo_tutorial_1"
+                    android:layout_width="@dimen/_24dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:src="@drawable/logo_tutorial"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_tutorial_1"
+                    app:layout_constraintStart_toEndOf="@+id/txt_tutorial_1"
+                    app:layout_constraintTop_toTopOf="@+id/txt_tutorial_1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/txt_user_tutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_31dp"
+                android:layout_marginEnd="@dimen/_31dp"
+                android:fontFamily="@font/super_corn"
+                android:text="MEE"
+                android:visibility="invisible"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_32sp"
+                app:layout_constraintEnd_toStartOf="@+id/txt_diamond_tutorial"
+                app:layout_constraintBottom_toBottomOf="@id/txt_diamond_tutorial"/>
+
+
+            <TextView
+                android:id="@+id/txt_diamond_tutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_55dp"
+                android:drawablePadding="@dimen/_12dp"
+                android:fontFamily="@font/super_corn"
+                android:text="5"
+                android:visibility="invisible"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_32sp"
+                app:drawableEndCompat="@drawable/ic_diamond"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_crown_tutorial"
+                app:layout_constraintEnd_toStartOf="@+id/img_rounded_3"
+                 />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_rounded_2"
+                android:layout_width="@dimen/_60dp"
+                android:layout_height="@dimen/_60dp"
+                android:src="@drawable/ic_round"
+                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="@id/txt_diamond_tutorial"
+                app:layout_constraintEnd_toEndOf="@id/txt_diamond_tutorial"
+                app:layout_constraintBottom_toBottomOf="@id/txt_diamond_tutorial"
+                app:layout_constraintStart_toStartOf="@id/txt_diamond_tutorial"
+
+                />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_arrow_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:visibility="invisible"
+                android:src="@drawable/ic_arrow_2"
+                app:layout_constraintStart_toStartOf="@+id/img_rounded_2"
+                app:layout_constraintTop_toBottomOf="@id/img_rounded_2" />
+
+            <TextView
+                android:id="@+id/txt_tutorial_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:fontFamily="@font/super_corn"
+                android:visibility="invisible"
+                android:text="Your score"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/img_arrow_2"
+                app:layout_constraintTop_toBottomOf="@id/img_arrow_2" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/logo_tutorial_2"
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                android:layout_marginStart="@dimen/_4dp"
+                android:src="@drawable/logo_tutorial"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_tutorial_2"
+                app:layout_constraintStart_toEndOf="@+id/txt_tutorial_2"
+                app:layout_constraintTop_toTopOf="@+id/txt_tutorial_2" />
+
+            <TextView
+                android:id="@+id/txt_crown_tutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_31dp"
+                android:layout_marginEnd="@dimen/_38dp"
+                android:drawablePadding="@dimen/_12dp"
+                android:fontFamily="@font/super_corn"
+                android:text="15"
+                android:visibility="invisible"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_32sp"
+                app:drawableEndCompat="@drawable/ic_crown"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_rounded_3"
+                android:layout_width="@dimen/_70dp"
+                android:layout_height="@dimen/_70dp"
+                android:src="@drawable/ic_round"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_crown_tutorial"
+                app:layout_constraintEnd_toEndOf="@+id/txt_crown_tutorial"
+                app:layout_constraintStart_toStartOf="@+id/txt_crown_tutorial"
+                app:layout_constraintTop_toTopOf="@+id/txt_crown_tutorial" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_arrow_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_3"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@+id/img_rounded_3"
+                app:layout_constraintTop_toBottomOf="@+id/txt_crown_tutorial" />
+
+            <TextView
+                android:id="@+id/txt_tutorial_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:visibility="invisible"
+                android:layout_marginEnd="@dimen/_20dp"
+                android:fontFamily="@font/super_corn"
+                android:text="YOUR LEVEL"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/img_arrow_3"
+                app:layout_constraintTop_toBottomOf="@id/img_arrow_3" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/logo_tutorial_3"
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                android:layout_marginStart="@dimen/_4dp"
+                android:visibility="invisible"
+                android:src="@drawable/logo_tutorial"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_tutorial_3"
+                app:layout_constraintStart_toEndOf="@+id/txt_tutorial_3"
+                app:layout_constraintTop_toTopOf="@+id/txt_tutorial_3" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_arrow_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_18dp"
+                android:visibility="invisible"
+                android:src="@drawable/ic_arrow_4"
+                app:layout_constraintBottom_toTopOf="@+id/btn_play_now_tutorial"
+                app:layout_constraintEnd_toEndOf="@+id/btn_play_now_tutorial"
+                app:layout_constraintStart_toStartOf="@+id/btn_play_now_tutorial" />
+
+            <TextView
+                android:id="@+id/txt_tutorial_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20dp"
+                android:layout_marginBottom="@dimen/_31dp"
+                android:visibility="invisible"
+                android:fontFamily="@font/super_corn"
+                android:text="Click here to play"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@id/img_arrow_4"
+                app:layout_constraintEnd_toEndOf="@+id/img_arrow_4"
+                app:layout_constraintStart_toStartOf="@id/img_arrow_4" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/logo_tutorial_4"
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                android:layout_marginEnd="@dimen/_4dp"
+                android:visibility="invisible"
+                android:src="@drawable/logo_tutorial_2"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_tutorial_4"
+                app:layout_constraintEnd_toStartOf="@+id/txt_tutorial_4" />
+
+            <TextView
+                android:id="@+id/btn_play_now_tutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="380dp"
+                android:background="@drawable/bg_button_home"
+                android:drawablePadding="10dp"
+
+                android:fontFamily="@font/super_corn"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_30dp"
+                android:paddingVertical="@dimen/_15dp"
+                android:text="@string/play_now"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_40sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_user_tutorial" />
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_arrow_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_18dp"
+                android:src="@drawable/ic_arrow_5"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/btn_leader_board_tutorial"
+                app:layout_constraintEnd_toEndOf="@+id/btn_leader_board_tutorial"
+                app:layout_constraintStart_toStartOf="@+id/btn_leader_board_tutorial" />
+
+            <TextView
+                android:id="@+id/txt_tutorial_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20dp"
+                android:layout_marginBottom="@dimen/_31dp"
+                android:fontFamily="@font/super_corn"
+                android:text="CLICK TO SEE RANKING POSITION"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@id/img_arrow_5"
+                app:layout_constraintEnd_toEndOf="@+id/img_arrow_5"
+                app:layout_constraintStart_toStartOf="@id/img_arrow_5" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/logo_tutorial_5"
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_24dp"
+                android:layout_marginStart="@dimen/_4dp"
+                android:src="@drawable/logo_tutorial_3"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_tutorial_5"
+                app:layout_constraintStart_toEndOf="@+id/txt_tutorial_5" />
+
+            <TextView
+                android:id="@+id/btn_leader_board_tutorial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_70dp"
+                android:background="@drawable/bg_button_home"
+                android:fontFamily="@font/super_corn"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_40dp"
+                android:paddingVertical="@dimen/_15dp"
+                android:text="@string/leader_board"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_40sp"
+                android:visibility="invisible"
+                app:drawableEndCompat="@drawable/ic_cup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_play_now_tutorial" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctn_down_tutorial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctn_tutorial_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img_custom_tutorial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_100dp"
+                        android:src="@drawable/ic_custom"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img_rounded_4"
+                        android:layout_width="@dimen/_60dp"
+                        android:layout_height="@dimen/_60dp"
+                        android:src="@drawable/ic_round"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_custom_tutorial"
+                        app:layout_constraintEnd_toEndOf="@+id/img_custom_tutorial"
+                        app:layout_constraintStart_toStartOf="@id/img_custom_tutorial"
+                        app:layout_constraintTop_toTopOf="@id/img_custom_tutorial" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img_arrow_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_24dp"
+                        android:src="@drawable/ic_arrow_6"
+                        app:layout_constraintBottom_toTopOf="@id/img_rounded_4"
+                        app:layout_constraintEnd_toEndOf="@+id/img_rounded_4"
+                        app:layout_constraintStart_toStartOf="@+id/img_rounded_4" />
+
+                    <TextView
+                        android:id="@+id/txt_tutorial_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20dp"
+                        android:layout_marginBottom="@dimen/_11dp"
+                        android:fontFamily="@font/super_corn"
+                        android:text="@string/custom_theme_according_to_your_personality"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@id/img_arrow_6"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/logo_tutorial_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/logo_tutorial_4"
+                        app:layout_constraintBottom_toTopOf="@+id/txt_tutorial_6"
+                        app:layout_constraintEnd_toEndOf="@+id/txt_tutorial_6"
+                        app:layout_constraintStart_toStartOf="@+id/txt_tutorial_6" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctn_tutorial_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img_setting_tutorial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_100dp"
+                        android:src="@drawable/ic_setting"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img_rounded_5"
+                        android:layout_width="@dimen/_60dp"
+                        android:layout_height="@dimen/_60dp"
+                        android:src="@drawable/ic_round"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_setting_tutorial"
+                        app:layout_constraintEnd_toEndOf="@+id/img_setting_tutorial"
+                        app:layout_constraintStart_toStartOf="@id/img_setting_tutorial"
+                        app:layout_constraintTop_toTopOf="@id/img_setting_tutorial" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/img_arrow_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_24dp"
+                        android:src="@drawable/ic_arrow_7"
+                        app:layout_constraintBottom_toTopOf="@id/img_rounded_5"
+                        app:layout_constraintStart_toStartOf="@+id/img_rounded_5" />
+
+                    <TextView
+                        android:id="@+id/txt_tutorial_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20dp"
+                        android:layout_marginBottom="@dimen/_11dp"
+                        android:fontFamily="@font/super_corn"
+                        android:text="@string/click_here_to_set_the_mode"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@id/img_arrow_7"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/logo_tutorial_7"
+                        android:layout_width="@dimen/_24dp"
+                        android:layout_height="@dimen/_24dp"
+                        android:layout_marginStart="@dimen/_4dp"
+                        android:src="@drawable/logo_tutorial"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_tutorial_7"
+                        app:layout_constraintStart_toEndOf="@+id/txt_tutorial_7"
+                        app:layout_constraintTop_toTopOf="@+id/txt_tutorial_7" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

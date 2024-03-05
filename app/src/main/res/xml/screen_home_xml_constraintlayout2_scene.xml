@@ -9,7 +9,7 @@
         motion:duration="1000">
         <KeyFrameSet >
             <KeyAttribute
-                motion:motionTarget="@+id/motionLayout2"
+                motion:motionTarget="@+id/ctn_tutorial"
                 motion:framePosition="99"
                 android:alpha="0" />
         </KeyFrameSet>
@@ -35,7 +35,7 @@
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="parent" />
         <Constraint
-            android:id="@+id/motionLayout2"
+            android:id="@+id/ctn_tutorial"
             android:elevation="1dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -74,7 +74,7 @@
 
 
         <Constraint
-            android:id="@+id/motionLayout2"
+            android:id="@+id/ctn_tutorial"
             android:elevation="1dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -82,10 +82,10 @@
             android:alpha="0.7" />
         <Constraint
             android:id="@+id/img_user"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
             android:layout_marginStart="@dimen/_8dp"
-            android:layout_marginTop="@dimen/_30dp"
+            android:layout_marginTop="@dimen/_34dp"
             android:src="@drawable/ic_user"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />

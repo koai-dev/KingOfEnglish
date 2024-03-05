@@ -18,4 +18,6 @@
     <string name="term">Term</string>
     <string name="privacy_policy">Privacy policy</string>
     <string name="incorrect">INCORRECT</string>
+    <string name="custom_theme_according_to_your_personality">Custom theme according to your personality</string>
+    <string name="click_here_to_set_the_mode">Click here to set the mode</string>
 </resources>

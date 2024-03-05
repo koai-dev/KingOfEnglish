@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/motionLayout"
+        android:id="@+id/ctn_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_play">
@@ -14,7 +14,7 @@
             android:id="@+id/image_pause"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="@dimen/_22dp"
             android:src="@drawable/ic_pause"
             app:layout_constraintHeight_percent="0.09"
             app:layout_constraintStart_toStartOf="parent"
@@ -194,7 +194,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_64dp"
             android:layout_gravity="bottom"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="@dimen/_100dp"
             android:background="@drawable/bg_word"
             android:clickable="false"
             android:focusable="false"
@@ -242,7 +242,7 @@
             android:background="@drawable/bg_incorrect"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="@dimen/_25dp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
