@@ -1,10 +1,16 @@
 package com.koai.kingofenglish.ui.play
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.GridLayout
@@ -13,10 +19,16 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.screens.BaseScreen
+import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenPlayBinding
+import com.koai.kingofenglish.network.ApiController
+import com.koai.kingofenglish.network.DataApi
 import com.koai.wordsdk.WordSdk
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.Random
 
 
@@ -27,7 +39,61 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
     private lateinit var textAnswer: String
     private lateinit var countDownTimer: CountDownTimer
     override fun initView(savedInstanceState: Bundle?, binding: ScreenPlayBinding) {
-        textAnswer = "HAPPY"
+        getData()
+        setupViews()
+    }
+
+    private fun getData() {
+        val apiController = ApiController()
+        val questionApi = apiController.getService(requireContext())
+        if (questionApi != null) {
+            val call = questionApi.getQuestion(1)
+            call.enqueue(object : Callback<DataApi> {
+                override fun onResponse(call: Call<DataApi>, response: Response<DataApi>) {
+                    if (response.isSuccessful) {
+                        val questionResponse = response.body()
+                        if (questionResponse != null) {
+                            val questionData = questionResponse.data
+                            Toast.makeText(
+                                requireContext(),
+                                "${questionData?.question}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            Log.d("hoang", "onResponse:${questionData?.answerRight} ")
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<DataApi>, t: Throwable) {
+                }
+            })
+        }
+    }
+
+    private fun setupViews() {
+        binding.txtLevel.text = SharePreference.getIntPref(requireContext(), "LEVEL").toString()
+        when (binding.txtLevel.text.toString().toInt()) {
+            1 -> {
+                textAnswer = GameDataProvider.gameDataList[0].question
+            }
+
+            2 -> {
+                textAnswer = GameDataProvider.gameDataList[1].question
+            }
+
+            3 -> {
+                textAnswer = GameDataProvider.gameDataList[2].question
+            }
+
+            4 -> {
+                textAnswer = GameDataProvider.gameDataList[3].question
+            }
+
+            5 -> {
+                textAnswer = GameDataProvider.gameDataList[4].question
+            }
+        }
+
         maxPresCounter = keys.size
         maxPresCounter = textAnswer.length
         keys = textAnswer.toCharArray().map { it.toString() }.toTypedArray()
@@ -57,11 +123,12 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
 
         countDownTimer.start()
     }
+
     private fun minus5sIncorrect() {
-        val currentTimeInMillis = (binding.txtTime.text.toString().toLongOrNull() ?: 0) * 1000 
-        val newTimeInMillis = currentTimeInMillis - 5000 
+        val currentTimeInMillis = (binding.txtTime.text.toString().toLongOrNull() ?: 0) * 1000
+        val newTimeInMillis = currentTimeInMillis - 5000
         if (newTimeInMillis >= 0) {
-            countDownTimer.cancel() 
+            countDownTimer.cancel()
             countDownTimer = object : CountDownTimer(newTimeInMillis, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
                     val secondsRemaining = millisUntilFinished / 1000
@@ -85,7 +152,7 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
     }
 
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "ClickableViewAccessibility")
     private fun addView(
         viewParent: GridLayout,
         text: String,
@@ -110,12 +177,22 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
             ResourcesCompat.getDrawable(resources, R.drawable.bg_empty_text, null)!!,
             ResourcesCompat.getColor(resources, R.color.white, null)
         )
-
+//        textViewQuestion.setOnTouchListener { v, event ->
+//            when (event?.action) {
+//                MotionEvent.ACTION_DOWN -> {
+//                    textViewQuestion.alpha = 0.5f
+//                }
+//                MotionEvent.ACTION_UP -> {
+//                    textViewQuestion.alpha = 1.0f
+//                }
+//            }
+//            true
+//        }
         textViewQuestion.setClickableWithScale {
             if (presCounter < maxPresCounter) {
                 if (presCounter == 0)
                     editText.setText("")
-                editText.setText((editText.text.toString().trim()+ text).trim())
+                editText.setText((editText.text.toString().trim() + text).trim())
                 textViewAnswer.text = text
                 textViewAnswer.background =
                     ResourcesCompat.getDrawable(resources, R.drawable.bg_text_answer, null)
@@ -144,7 +221,8 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
                 editText.setText(newText)
 
                 textViewQuestion.text = textViewAnswer.text
-                textViewQuestion.background = ResourcesCompat.getDrawable(resources, R.drawable.bg_text, null)
+                textViewQuestion.background =
+                    ResourcesCompat.getDrawable(resources, R.drawable.bg_text, null)
                 textViewQuestion.isClickable = true
                 textViewQuestion.isFocusable = true
                 textViewAnswer.text = null
@@ -165,11 +243,30 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
     private fun checkAnswer() {
 
         if (binding.editText.text.toString() == textAnswer) {
+            SharePreference.setIntPref(
+                requireContext(),
+                "LEVEL",
+                binding.txtLevel.text.toString().toInt() + 1
+            )
             Toast.makeText(requireContext(), "Correct", Toast.LENGTH_SHORT).show()
         } else {
             presCounter = 0
             Toast.makeText(requireContext(), "Wrong", Toast.LENGTH_SHORT).show()
             binding.ctnIncorrect.visibility = View.VISIBLE
+            val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator.vibrate(
+                    VibrationEffect.createOneShot(
+                        200,
+                        VibrationEffect.DEFAULT_AMPLITUDE
+                    )
+                )
+            } else {
+                vibrator.vibrate(200)
+            }
+
+            val mediaPlayer = MediaPlayer.create(requireContext(), R.raw.music_fail)
+            mediaPlayer.start()
             val handler = Handler(Looper.getMainLooper())
             handler.postDelayed({
                 binding.ctnIncorrect.visibility = View.GONE
@@ -196,5 +293,6 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
         }
         return ar
     }
+
     override fun getModelNavigator() = ViewModelProvider(activity)[MainNavigator::class.java]
 }

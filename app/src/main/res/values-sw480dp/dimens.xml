@@ -903,306 +903,306 @@
     400.0dp
   </dimen>
   <dimen name="_0sp">
-    0sp
+    0.0sp
   </dimen>
   <dimen name="_1sp">
-    1sp
+    1.3sp
   </dimen>
   <dimen name="_2sp">
-    2sp
+    2.7sp
   </dimen>
   <dimen name="_3sp">
-    3sp
+    4.0sp
   </dimen>
   <dimen name="_4sp">
-    4sp
+    5.3sp
   </dimen>
   <dimen name="_5sp">
-    5sp
+    6.7sp
   </dimen>
   <dimen name="_6sp">
-    6sp
+    8.0sp
   </dimen>
   <dimen name="_7sp">
-    7sp
+    9.3sp
   </dimen>
   <dimen name="_8sp">
-    8sp
+    10.7sp
   </dimen>
   <dimen name="_9sp">
-    9sp
+    12.0sp
   </dimen>
   <dimen name="_10sp">
-    10sp
+    13.3sp
   </dimen>
   <dimen name="_11sp">
-    11sp
+    14.7sp
   </dimen>
   <dimen name="_12sp">
-    12sp
+    16.0sp
   </dimen>
   <dimen name="_13sp">
-    13sp
+    17.3sp
   </dimen>
   <dimen name="_14sp">
-    14sp
+    18.7sp
   </dimen>
   <dimen name="_15sp">
-    15sp
+    20.0sp
   </dimen>
   <dimen name="_16sp">
-    16sp
+    21.3sp
   </dimen>
   <dimen name="_17sp">
-    17sp
+    22.7sp
   </dimen>
   <dimen name="_18sp">
-    18sp
+    24.0sp
   </dimen>
   <dimen name="_19sp">
-    19sp
+    25.3sp
   </dimen>
   <dimen name="_20sp">
-    20sp
+    26.7sp
   </dimen>
   <dimen name="_21sp">
-    21sp
+    28.0sp
   </dimen>
   <dimen name="_22sp">
-    22sp
+    29.3sp
   </dimen>
   <dimen name="_23sp">
-    23sp
+    30.7sp
   </dimen>
   <dimen name="_24sp">
-    24sp
+    32.0sp
   </dimen>
   <dimen name="_25sp">
-    25sp
+    33.3sp
   </dimen>
   <dimen name="_26sp">
-    26sp
+    34.7sp
   </dimen>
   <dimen name="_27sp">
-    27sp
+    36.0sp
   </dimen>
   <dimen name="_28sp">
-    28sp
+    37.3sp
   </dimen>
   <dimen name="_29sp">
-    29sp
+    38.7sp
   </dimen>
   <dimen name="_30sp">
-    30sp
+    40.0sp
   </dimen>
   <dimen name="_31sp">
-    31sp
+    41.3sp
   </dimen>
   <dimen name="_32sp">
-    32sp
+    42.7sp
   </dimen>
   <dimen name="_33sp">
-    33sp
+    44.0sp
   </dimen>
   <dimen name="_34sp">
-    34sp
+    45.3sp
   </dimen>
   <dimen name="_35sp">
-    35sp
+    46.7sp
   </dimen>
   <dimen name="_36sp">
-    36sp
+    48.0sp
   </dimen>
   <dimen name="_37sp">
-    37sp
+    49.3sp
   </dimen>
   <dimen name="_38sp">
-    38sp
+    50.7sp
   </dimen>
   <dimen name="_39sp">
-    39sp
+    52.0sp
   </dimen>
   <dimen name="_40sp">
-    40sp
+    53.3sp
   </dimen>
   <dimen name="_41sp">
-    41sp
+    54.7sp
   </dimen>
   <dimen name="_42sp">
-    42sp
+    56.0sp
   </dimen>
   <dimen name="_43sp">
-    43sp
+    57.3sp
   </dimen>
   <dimen name="_44sp">
-    44sp
+    58.7sp
   </dimen>
   <dimen name="_45sp">
-    45sp
+    60.0sp
   </dimen>
   <dimen name="_46sp">
-    46sp
+    61.3sp
   </dimen>
   <dimen name="_47sp">
-    47sp
+    62.7sp
   </dimen>
   <dimen name="_48sp">
-    48sp
+    64.0sp
   </dimen>
   <dimen name="_49sp">
-    49sp
+    65.3sp
   </dimen>
   <dimen name="_50sp">
-    50sp
+    66.7sp
   </dimen>
   <dimen name="_51sp">
-    51sp
+    68.0sp
   </dimen>
   <dimen name="_52sp">
-    52sp
+    69.3sp
   </dimen>
   <dimen name="_53sp">
-    53sp
+    70.7sp
   </dimen>
   <dimen name="_54sp">
-    54sp
+    72.0sp
   </dimen>
   <dimen name="_55sp">
-    55sp
+    73.3sp
   </dimen>
   <dimen name="_56sp">
-    56sp
+    74.7sp
   </dimen>
   <dimen name="_57sp">
-    57sp
+    76.0sp
   </dimen>
   <dimen name="_58sp">
-    58sp
+    77.3sp
   </dimen>
   <dimen name="_59sp">
-    59sp
+    78.7sp
   </dimen>
   <dimen name="_60sp">
-    60sp
+    80.0sp
   </dimen>
   <dimen name="_61sp">
-    61sp
+    81.3sp
   </dimen>
   <dimen name="_62sp">
-    62sp
+    82.7sp
   </dimen>
   <dimen name="_63sp">
-    63sp
+    84.0sp
   </dimen>
   <dimen name="_64sp">
-    64sp
+    85.3sp
   </dimen>
   <dimen name="_65sp">
-    65sp
+    86.7sp
   </dimen>
   <dimen name="_66sp">
-    66sp
+    88.0sp
   </dimen>
   <dimen name="_67sp">
-    67sp
+    89.3sp
   </dimen>
   <dimen name="_68sp">
-    68sp
+    90.7sp
   </dimen>
   <dimen name="_69sp">
-    69sp
+    92.0sp
   </dimen>
   <dimen name="_70sp">
-    70sp
+    93.3sp
   </dimen>
   <dimen name="_71sp">
-    71sp
+    94.7sp
   </dimen>
   <dimen name="_72sp">
-    72sp
+    96.0sp
   </dimen>
   <dimen name="_73sp">
-    73sp
+    97.3sp
   </dimen>
   <dimen name="_74sp">
-    74sp
+    98.7sp
   </dimen>
   <dimen name="_75sp">
-    75sp
+    100.0sp
   </dimen>
   <dimen name="_76sp">
-    76sp
+    101.3sp
   </dimen>
   <dimen name="_77sp">
-    77sp
+    102.7sp
   </dimen>
   <dimen name="_78sp">
-    78sp
+    104.0sp
   </dimen>
   <dimen name="_79sp">
-    79sp
+    105.3sp
   </dimen>
   <dimen name="_80sp">
-    80sp
+    106.7sp
   </dimen>
   <dimen name="_81sp">
-    81sp
+    108.0sp
   </dimen>
   <dimen name="_82sp">
-    82sp
+    109.3sp
   </dimen>
   <dimen name="_83sp">
-    83sp
+    110.7sp
   </dimen>
   <dimen name="_84sp">
-    84sp
+    112.0sp
   </dimen>
   <dimen name="_85sp">
-    85sp
+    113.3sp
   </dimen>
   <dimen name="_86sp">
-    86sp
+    114.7sp
   </dimen>
   <dimen name="_87sp">
-    87sp
+    116.0sp
   </dimen>
   <dimen name="_88sp">
-    88sp
+    117.3sp
   </dimen>
   <dimen name="_89sp">
-    89sp
+    118.7sp
   </dimen>
   <dimen name="_90sp">
-    90sp
+    120.0sp
   </dimen>
   <dimen name="_91sp">
-    91sp
+    121.3sp
   </dimen>
   <dimen name="_92sp">
-    92sp
+    122.7sp
   </dimen>
   <dimen name="_93sp">
-    93sp
+    124.0sp
   </dimen>
   <dimen name="_94sp">
-    94sp
+    125.3sp
   </dimen>
   <dimen name="_95sp">
-    95sp
+    126.7sp
   </dimen>
   <dimen name="_96sp">
-    96sp
+    128.0sp
   </dimen>
   <dimen name="_97sp">
-    97sp
+    129.3sp
   </dimen>
   <dimen name="_98sp">
-    98sp
+    130.7sp
   </dimen>
   <dimen name="_99sp">
-    99sp
+    132.0sp
   </dimen>
   <dimen name="_100sp">
-    100sp
+    133.3sp
   </dimen>
 </resources>

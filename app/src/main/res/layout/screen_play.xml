@@ -70,7 +70,7 @@
             app:layout_constraintWidth_percent="0.35">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/txt_level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_20dp"
@@ -89,11 +89,11 @@
                 android:layout_height="0dp"
                 android:layout_marginEnd="@dimen/_20dp"
                 android:src="@drawable/ic_crown"
-                app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_level"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView5"
-                app:layout_constraintTop_toTopOf="@+id/textView5" />
+                app:layout_constraintStart_toEndOf="@+id/txt_level"
+                app:layout_constraintTop_toTopOf="@+id/txt_level" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.imageview.ShapeableImageView

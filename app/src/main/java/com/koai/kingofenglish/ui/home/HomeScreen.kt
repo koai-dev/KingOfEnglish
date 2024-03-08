@@ -1,11 +1,12 @@
 package com.koai.kingofenglish.ui.home
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.ViewModelProvider
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
+import com.koai.base.main.extension.gone
+import com.koai.base.main.extension.invisible
+import com.koai.base.main.extension.visible
 import com.koai.base.main.screens.BaseScreen
 import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.MainNavigator
@@ -17,10 +18,12 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
     private var firstLogin = false
 
     override fun initView(savedInstanceState: Bundle?, binding: ScreenHomeBinding) {
-        val isFirstLogin = SharePreference.getBooleanPref(requireContext(),"FirstLogin",)
-        if (isFirstLogin == false){
+        SharePreference.setIntPref(requireContext(),"LEVEL",binding.txtCrown.text.toString().toInt())
+        binding.txtCrown.text = SharePreference.getIntPref(requireContext(),"LEVEL").toString()
+        val isFirstLogin = SharePreference.getBooleanPref(requireContext(), "FirstLogin")
+        if (isFirstLogin == false) {
 
-        }else if (isFirstLogin == true){
+        } else if (isFirstLogin == true) {
 
         }
         actionView()
@@ -40,68 +43,109 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
         binding.imgSetting.setClickableWithScale {
             router?.dialogSetting()
         }
+        binding.imgCustom.setClickableWithScale {
+            binding.ctnHome.transitionToState(R.id.theme)
+        }
+        binding.ctnCustomTheme.btnClose.setClickableWithScale {
+            binding.ctnHome.transitionToState(R.id.end)
+        }
+        handleLevelVisibility(binding.txtCrown.text.toString().toInt())
+        binding.ctnCustomTheme.bgLv10.setClickableWithScale {
+            binding.ctnHome.transitionToState(R.id.chage_theme)
+            binding.imgBgHome.setBackgroundResource(R.drawable.bg_lv10)
+        }
+        binding.ctnCustomTheme.bgLv20.setClickableWithScale {
+            binding.imgBgHome.setBackgroundResource(R.drawable.bg_lv20)
+        }
+        binding.ctnCustomTheme.bgLv30.setClickableWithScale {
+            binding.imgBgHome.setBackgroundResource(R.drawable.bg_lv30)
+        }
+        binding.ctnCustomTheme.bgLv40.setClickableWithScale {
+            binding.imgBgHome.setBackgroundResource(R.drawable.bg_lv40)
+        }
+    }
+
+    private fun handleLevelVisibility(level: Int) {
+        when {
+            level >= 40 -> {
+                binding.ctnCustomTheme.imgLookLv40.gone()
+                binding.ctnCustomTheme.viewLv40.gone()
+            }
+            level >= 30 -> {
+                binding.ctnCustomTheme.imgLookLv30.gone()
+                binding.ctnCustomTheme.viewLv30.gone()
+            }
+            level >= 20 -> {
+                binding.ctnCustomTheme.imgLookLv20.gone()
+                binding.ctnCustomTheme.viewLv20.gone()
+            }
+            level >= 10 -> {
+                binding.ctnCustomTheme.imgLookLv10.gone()
+                binding.ctnCustomTheme.viewLv10.gone()
+            }
+        }
     }
 
     private fun onConstraintLayoutClick() {
 
         when (clickCount) {
             0 -> {
-                binding.ctnTutorial1.visibility = View.INVISIBLE
-                binding.imgArrow2.visibility = View.VISIBLE
-                binding.txtDiamondTutorial.visibility = View.VISIBLE
-                binding.txtTutorial2.visibility = View.VISIBLE
-                binding.logoTutorial2.visibility = View.VISIBLE
-                binding.imgRounded2.visibility = View.VISIBLE
+                binding.ctnTutorial1.invisible()
+                binding.imgArrow2.visible()
+                binding.txtDiamondTutorial.visible()
+                binding.txtTutorial2.visible()
+                binding.logoTutorial2.visible()
+                binding.imgRounded2.visible()
             }
 
             1 -> {
-                binding.imgArrow2.visibility = View.INVISIBLE
-                binding.txtTutorial2.visibility = View.INVISIBLE
-                binding.logoTutorial2.visibility = View.INVISIBLE
-                binding.imgRounded2.visibility = View.INVISIBLE
-                binding.txtDiamondTutorial.visibility = View.INVISIBLE
-                binding.imgArrow3.visibility = View.VISIBLE
-                binding.txtTutorial3.visibility = View.VISIBLE
-                binding.logoTutorial3.visibility = View.VISIBLE
-                binding.imgRounded3.visibility = View.VISIBLE
-                binding.txtCrownTutorial.visibility = View.VISIBLE
+                binding.imgArrow2.invisible()
+                binding.txtTutorial2.invisible()
+                binding.logoTutorial2.invisible()
+                binding.imgRounded2.invisible()
+                binding.txtDiamondTutorial.invisible()
+                binding.imgArrow3.visible()
+                binding.txtTutorial3.visible()
+                binding.logoTutorial3.visible()
+                binding.imgRounded3.visible()
+                binding.txtCrownTutorial.visible()
             }
 
             2 -> {
-                binding.imgArrow3.visibility = View.INVISIBLE
-                binding.txtTutorial3.visibility = View.INVISIBLE
-                binding.logoTutorial3.visibility = View.INVISIBLE
-                binding.imgRounded3.visibility = View.INVISIBLE
-                binding.txtCrownTutorial.visibility = View.INVISIBLE
-                binding.imgArrow4.visibility = View.VISIBLE
-                binding.txtTutorial4.visibility = View.VISIBLE
-                binding.logoTutorial4.visibility = View.VISIBLE
-                binding.btnPlayNowTutorial.visibility = View.VISIBLE
+                binding.imgArrow3.invisible()
+                binding.txtTutorial3.invisible()
+                binding.logoTutorial3.invisible()
+                binding.imgRounded3.invisible()
+                binding.txtCrownTutorial.invisible()
+                binding.imgArrow4.visible()
+                binding.txtTutorial4.visible()
+                binding.logoTutorial4.visible()
+                binding.btnPlayNowTutorial.visible()
             }
 
             3 -> {
-                binding.imgArrow4.visibility = View.INVISIBLE
-                binding.txtTutorial4.visibility = View.INVISIBLE
-                binding.logoTutorial4.visibility = View.INVISIBLE
-                binding.btnPlayNowTutorial.visibility = View.INVISIBLE
-                binding.imgArrow5.visibility = View.VISIBLE
-                binding.txtTutorial5.visibility = View.VISIBLE
-                binding.logoTutorial5.visibility = View.VISIBLE
-                binding.btnLeaderBoardTutorial.visibility = View.VISIBLE
+                binding.imgArrow4.invisible()
+                binding.txtTutorial4.invisible()
+                binding.btnPlayNowTutorial.invisible()
+                binding.logoTutorial4.invisible()
+                binding.imgArrow5.visible()
+                binding.txtTutorial5.visible()
+                binding.logoTutorial5.visible()
+                binding.btnLeaderBoardTutorial.visible()
             }
 
             4 -> {
 
-                binding.imgArrow5.visibility = View.INVISIBLE
-                binding.txtTutorial5.visibility = View.INVISIBLE
-                binding.logoTutorial5.visibility = View.INVISIBLE
-                binding.btnLeaderBoardTutorial.visibility = View.INVISIBLE
-                binding.ctnTutorial6.visibility = View.VISIBLE
+                binding.imgArrow5.invisible()
+                binding.txtTutorial5.invisible()
+                binding.logoTutorial5.invisible()
+                binding.btnLeaderBoardTutorial.invisible()
+                binding.ctnTutorial6.visible()
             }
 
             5 -> {
-                binding.ctnTutorial6.visibility = View.INVISIBLE
-                binding.ctnTutorial7.visibility = View.VISIBLE
+                binding.ctnTutorial6.invisible()
+                binding.ctnTutorial7.visible()
             }
 
             else -> resetUI()
@@ -113,7 +157,7 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
     private fun resetUI() {
         binding.ctnHome.removeView(binding.ctnTutorial)
         firstLogin = true
-        SharePreference.setBooleanPref(requireContext(),"FirstLogin",firstLogin)
+        SharePreference.setBooleanPref(requireContext(), "FirstLogin", firstLogin)
     }
 
     override fun getModelNavigator() = ViewModelProvider(activity)[MainNavigator::class.java]
