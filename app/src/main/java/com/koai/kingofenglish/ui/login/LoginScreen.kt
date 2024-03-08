@@ -17,7 +17,7 @@ class LoginScreen :
         actionView()
     }
 
-    private fun actionView()  {
+    private fun actionView() {
         binding.ctnLinkAccount.btnNo.setClickableWithScale {
             // todo
         }
