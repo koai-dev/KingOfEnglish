@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.koai.kingofenglish.ui.splash.SplashScreen"
+        android:label="SplashScreen"
+        tools:layout="@layout/screen_splash" />
+    <fragment
+        android:id="@+id/loginScreen"
+        android:name="com.koai.kingofenglish.ui.login.LoginScreen"
+        android:label="LoginScreen"
+        tools:layout="@layout/screen_login" />
+    <action
+        android:id="@+id/action_global_loginScreen"
+        app:destination="@id/loginScreen"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+
+</navigation>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+
+        android:id="@+id/motionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_splash"
+        app:layoutDescription="@xml/screen_login_xml_constraintlayout_scene">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/logo"
+            android:layout_width="122dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/logo"
+            android:translationX="-10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_let_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/super_corn"
+            android:text="@string/hi_let_s_get_started"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/logo"
+            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintTop_toTopOf="@+id/logo" />
+
+        <include
+            android:id="@+id/ctn_link_account"
+            layout="@layout/layout_link_account"
+           />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/btn_welcome"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="300dp"
+            android:src="@drawable/img_welcome"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/point_mid_btn_welcome"
+            android:layout_width="1dp"
+            android:layout_height="1dp" />
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>
