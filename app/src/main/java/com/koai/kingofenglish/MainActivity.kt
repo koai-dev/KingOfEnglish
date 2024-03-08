@@ -10,8 +10,9 @@ class MainActivity :
     BaseActivity<ActivityMainBinding, BaseRouter, MainNavigator>(R.layout.activity_main) {
     override fun getModelNavigator() = ViewModelProvider(this)[MainNavigator::class.java]
 
-    override fun initView(savedInstanceState: Bundle?, binding: ActivityMainBinding) {
-
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: ActivityMainBinding,
+    ) {
     }
-
 }

@@ -10,20 +10,22 @@ import com.koai.kingofenglish.databinding.ScreenLoginBinding
 
 class LoginScreen :
     BaseScreen<ScreenLoginBinding, LoginRouter, MainNavigator>(R.layout.screen_login) {
-    override fun initView(savedInstanceState: Bundle?, binding: ScreenLoginBinding) {
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: ScreenLoginBinding,
+    ) {
         actionView()
     }
 
-    private fun actionView(){
+    private fun actionView()  {
         binding.ctnLinkAccount.btnNo.setClickableWithScale {
-            //todo
+            // todo
         }
 
         binding.ctnLinkAccount.btnYes.setClickableWithScale {
-            //todo
+            // todo
         }
     }
-
 
     override fun getModelNavigator() = ViewModelProvider(activity)[MainNavigator::class.java]
 }

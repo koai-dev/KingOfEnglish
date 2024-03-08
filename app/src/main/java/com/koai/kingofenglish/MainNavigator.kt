@@ -8,5 +8,4 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter {
     override fun goToHome() {
         offNavScreen(R.id.action_global_loginScreen)
     }
-
 }
