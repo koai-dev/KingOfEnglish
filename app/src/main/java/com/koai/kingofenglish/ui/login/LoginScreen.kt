@@ -28,7 +28,7 @@ class LoginScreen :
         binding.ctnLinkAccount.textView.text = spannableStringBuilder
     }
 
-    private fun actionView() {
+    private fun actionView(){
         binding.ctnLinkAccount.btnNo.setClickableWithScale {
             router?.goToHome()
         }
@@ -36,7 +36,6 @@ class LoginScreen :
         binding.ctnLinkAccount.btnYes.setClickableWithScale {
         }
     }
-
 
     override fun getModelNavigator() = ViewModelProvider(activity)[MainNavigator::class.java]
 }

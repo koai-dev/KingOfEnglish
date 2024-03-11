@@ -12,13 +12,14 @@ import com.koai.kingofenglish.databinding.ScreenSplashBinding
 @SuppressLint("CustomSplashScreen")
 class SplashScreen :
     BaseScreen<ScreenSplashBinding, SplashRouter, MainNavigator>(R.layout.screen_splash) {
-
-    override fun initView(savedInstanceState: Bundle?, binding: ScreenSplashBinding) {
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: ScreenSplashBinding,
+    ) {
         binding.btnWelcome.setClickableWithScale {
             router?.goToLogin()
         }
     }
 
     override fun getModelNavigator() = ViewModelProvider(activity)[MainNavigator::class.java]
-
 }
