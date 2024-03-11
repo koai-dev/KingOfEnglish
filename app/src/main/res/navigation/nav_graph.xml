@@ -49,6 +49,9 @@
     <action
         android:id="@+id/action_global_playScreen"
         app:destination="@+id/playScreen"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true"
         />
     <fragment
         android:id="@+id/homeScreen"
@@ -59,5 +62,16 @@
         android:id="@+id/action_global_homeScreen"
         app:destination="@+id/homeScreen"
         />
-
+    <dialog
+        android:id="@+id/dialogLevelUp"
+        android:name="com.koai.kingofenglish.ui.dialog.DialogLevelUp"
+        android:label="DialogLevelUp"
+        tools:layout="@layout/dialog_level_up"/>
+    <action
+        android:id="@+id/action_global_dialogLevelUp"
+        app:destination="@+id/dialogLevelUp"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true"
+        />
 </navigation>

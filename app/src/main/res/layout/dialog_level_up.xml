@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.dialog.DialogLevelUp">
+
+        <LinearLayout
+            android:id="@+id/ctn_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:background="@drawable/bg_dialog_level_up"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/_40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_40dp"
+                android:fontFamily="@font/super_corn"
+                android:gravity="center"
+                android:text="@string/awsome_n_now_we_can_go_future_n_a_few_more_step_to_victory"
+                android:textColor="#FA6FA0"
+                android:textSize="@dimen/_20sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginBottom="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:orientation="horizontal">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctn_btn_reward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_button_dialog"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_30dp"
+                    android:paddingVertical="@dimen/_5dp"
+                    app:layout_constraintEnd_toStartOf="@+id/ctn_btn_rewardx2"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/txt_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/super_corn"
+                        android:text="+100"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"
+                        app:drawableEndCompat="@drawable/ic_diamond"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctn_btn_rewardx2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_button_dialog"
+                    android:paddingHorizontal="@dimen/_30dp"
+                    android:paddingVertical="@dimen/_5dp"
+                    android:layout_marginStart="@dimen/_20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintStart_toEndOf="@id/ctn_btn_reward"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/txt_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/super_corn"
+                        android:gravity="center_horizontal"
+                        android:text="+200"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"
+                        app:drawableEndCompat="@drawable/ic_diamond"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/ctn_btn_ads"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_button_ads"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_15dp"
+                    android:paddingVertical="@dimen/_5dp"
+                    android:translationY="-5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/ctn_btn_rewardx2"
+                    app:layout_constraintStart_toStartOf="@+id/ctn_btn_rewardx2"
+                    app:layout_constraintTop_toBottomOf="@id/ctn_btn_rewardx2">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="@dimen/_24dp"
+                        android:layout_height="@dimen/_24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_ads" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:translationY="-30dp"
+            android:weightSum="3"
+            app:layout_constraintTop_toBottomOf="@id/ctn_dialog"
+            app:layout_constraintBottom_toBottomOf="@+id/ctn_dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/ctn_btn_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_35dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_dialog"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:paddingVertical="@dimen/_10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/ctn_btn_rewardx2"
+                app:layout_constraintStart_toStartOf="@+id/ctn_btn_rewardx2"
+                app:layout_constraintTop_toBottomOf="@id/ctn_btn_rewardx2">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="@dimen/_24dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_share" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ctn_btn_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_35dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_dialog"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:paddingVertical="@dimen/_10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/ctn_btn_rewardx2"
+                app:layout_constraintStart_toStartOf="@+id/ctn_btn_rewardx2"
+                app:layout_constraintTop_toBottomOf="@id/ctn_btn_rewardx2">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="@dimen/_24dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_home" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ctn_btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_35dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_dialog"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:paddingVertical="@dimen/_10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/ctn_btn_rewardx2"
+                app:layout_constraintStart_toStartOf="@+id/ctn_btn_rewardx2"
+                app:layout_constraintTop_toBottomOf="@id/ctn_btn_rewardx2">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="@dimen/_24dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_next" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10dp"
+            android:padding="@dimen/_5dp"
+            android:src="@drawable/logo_level_up"
+            android:translationY="-20dp"
+            app:layout_constraintEnd_toEndOf="@id/ctn_dialog"
+            app:layout_constraintStart_toStartOf="@id/ctn_dialog"
+            app:layout_constraintTop_toTopOf="@id/ctn_dialog" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

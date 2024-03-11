@@ -16,7 +16,9 @@ import android.widget.EditText
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.screens.BaseScreen
 import com.koai.base.utils.SharePreference
@@ -25,7 +27,9 @@ import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenPlayBinding
 import com.koai.kingofenglish.network.ApiController
 import com.koai.kingofenglish.network.DataApi
+import com.koai.kingofenglish.network.QuestionViewModel
 import com.koai.wordsdk.WordSdk
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,67 +37,26 @@ import java.util.Random
 
 
 class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.layout.screen_play) {
+    private val viewModel : QuestionViewModel by viewModels()
+    private var level = 1
     private var presCounter = 0
     private var maxPresCounter = 0
     private var keys: Array<String> = emptyArray()
-    private lateinit var textAnswer: String
+    private var textAnswer : String = ""
     private lateinit var countDownTimer: CountDownTimer
     override fun initView(savedInstanceState: Bundle?, binding: ScreenPlayBinding) {
+        level = SharePreference.getIntPref(requireContext(),"LEVEL")
         getData()
-        setupViews()
+
     }
 
     private fun getData() {
-        val apiController = ApiController()
-        val questionApi = apiController.getService(requireContext())
-        if (questionApi != null) {
-            val call = questionApi.getQuestion(1)
-            call.enqueue(object : Callback<DataApi> {
-                override fun onResponse(call: Call<DataApi>, response: Response<DataApi>) {
-                    if (response.isSuccessful) {
-                        val questionResponse = response.body()
-                        if (questionResponse != null) {
-                            val questionData = questionResponse.data
-                            Toast.makeText(
-                                requireContext(),
-                                "${questionData?.question}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            Log.d("hoang", "onResponse:${questionData?.answerRight} ")
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<DataApi>, t: Throwable) {
-                }
-            })
-        }
+        binding.txtLevel.text = level.toString()
+        textAnswer = arguments?.getString("QUESTION")!!
+        setupViews()
     }
 
     private fun setupViews() {
-        binding.txtLevel.text = SharePreference.getIntPref(requireContext(), "LEVEL").toString()
-        when (binding.txtLevel.text.toString().toInt()) {
-            1 -> {
-                textAnswer = GameDataProvider.gameDataList[0].question
-            }
-
-            2 -> {
-                textAnswer = GameDataProvider.gameDataList[1].question
-            }
-
-            3 -> {
-                textAnswer = GameDataProvider.gameDataList[2].question
-            }
-
-            4 -> {
-                textAnswer = GameDataProvider.gameDataList[3].question
-            }
-
-            5 -> {
-                textAnswer = GameDataProvider.gameDataList[4].question
-            }
-        }
-
         maxPresCounter = keys.size
         maxPresCounter = textAnswer.length
         keys = textAnswer.toCharArray().map { it.toString() }.toTypedArray()
@@ -214,7 +177,6 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
         textViewAnswer.setClickableWithScale {
             if (presCounter > 0) {
                 presCounter--
-                Toast.makeText(requireContext(), "$presCounter", Toast.LENGTH_SHORT).show()
                 val currentText = editText.text.toString()
                 val charToRemove = textViewAnswer.text
                 val newText = currentText.replace(charToRemove.toString(), "")
@@ -246,9 +208,10 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
             SharePreference.setIntPref(
                 requireContext(),
                 "LEVEL",
-                binding.txtLevel.text.toString().toInt() + 1
+                level + 1
             )
-            Toast.makeText(requireContext(), "Correct", Toast.LENGTH_SHORT).show()
+            countDownTimer.cancel()
+            router?.dialogLevelUp()
         } else {
             presCounter = 0
             Toast.makeText(requireContext(), "Wrong", Toast.LENGTH_SHORT).show()

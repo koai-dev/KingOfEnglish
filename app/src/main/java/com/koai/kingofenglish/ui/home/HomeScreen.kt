@@ -2,7 +2,9 @@ package com.koai.kingofenglish.ui.home
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.gone
 import com.koai.base.main.extension.invisible
@@ -12,22 +14,33 @@ import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenHomeBinding
+import com.koai.kingofenglish.network.QuestionViewModel
+import kotlinx.coroutines.launch
 
 class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.layout.screen_home) {
+    private val viewModel : QuestionViewModel by viewModels()
     private var clickCount = 0
     private var firstLogin = false
+    private var textAnswer : String = ""
 
     override fun initView(savedInstanceState: Bundle?, binding: ScreenHomeBinding) {
-        SharePreference.setIntPref(requireContext(),"LEVEL",binding.txtCrown.text.toString().toInt())
         binding.txtCrown.text = SharePreference.getIntPref(requireContext(),"LEVEL").toString()
         val isFirstLogin = SharePreference.getBooleanPref(requireContext(), "FirstLogin")
-        if (isFirstLogin == false) {
-
-        } else if (isFirstLogin == true) {
-
+         if (isFirstLogin) {
+            binding.ctnHome.removeView(binding.ctnTutorial)
         }
         actionView()
-        Toast.makeText(requireContext(), "$isFirstLogin", Toast.LENGTH_SHORT).show()
+        getData()
+    }
+    private fun getData() {
+        viewModel.getQuestionByLevel(binding.txtCrown.text.toString().toInt(),requireContext())
+        lifecycleScope.launch {
+            viewModel.questionStateFlow.collect {
+                if (it != null) {
+                    textAnswer = it.data?.answerRight.toString()
+                }
+            }
+        }
     }
 
     private fun actionView() {
@@ -35,7 +48,10 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
             onConstraintLayoutClick()
         }
         binding.btnPlayNow.setClickableWithScale {
-            router?.goToPlay()
+            val bundle = Bundle().apply {
+                putString("QUESTION", textAnswer)
+            }
+            router?.goToPlay(bundle)
         }
         binding.imgUser.setClickableWithScale {
             router?.dialogProfile()
