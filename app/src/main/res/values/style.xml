@@ -2,7 +2,14 @@
 <resources>
     <style name="roundedTips">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50%</item> <!-- Đặt giá trị này để làm cho hình tròn -->
+        <item name="cornerSize">50%</item>
     </style>
-
+    <style name="top_2">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#D9D9D9</item>
+        <item name="android:shadowColor">#40000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
 </resources>

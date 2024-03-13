@@ -74,4 +74,14 @@
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true"
         />
+    <fragment
+        android:id="@+id/leaderBoardScreen"
+        android:name="com.koai.kingofenglish.ui.leaderboard.LeaderBoardScreen"
+        android:label="LeaderBoardScreen"
+        tools:layout="@layout/screen_leader_board"/>
+    <action
+        android:id="@+id/action_global_leaderBoardScreen"
+        app:destination="@+id/leaderBoardScreen"
+
+        />
 </navigation>

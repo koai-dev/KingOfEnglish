@@ -41,6 +41,7 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
                 }
             }
         }
+
     }
 
     private fun actionView() {
@@ -52,6 +53,9 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
                 putString("QUESTION", textAnswer)
             }
             router?.goToPlay(bundle)
+        }
+        binding.btnLeaderBoard.setClickableWithScale {
+            router?.goToLeaderBoard()
         }
         binding.imgUser.setClickableWithScale {
             router?.dialogProfile()

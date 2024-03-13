@@ -8,4 +8,6 @@ import retrofit2.http.Query
 interface ApiService : BaseApiService {
     @GET("question")
     fun getQuestion(@Query("level") level: Int): Call<DataApi>
+    @GET("topRanks")
+    fun getTopsRank(@Query("dev") dev : Int): Call<DataTopRanks>
 }

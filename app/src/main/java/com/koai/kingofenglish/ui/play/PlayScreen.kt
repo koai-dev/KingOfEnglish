@@ -10,7 +10,6 @@ import android.os.Handler
 import android.os.Looper
 import android.os.VibrationEffect
 import android.os.Vibrator
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.GridLayout
@@ -18,21 +17,14 @@ import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.screens.BaseScreen
 import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenPlayBinding
-import com.koai.kingofenglish.network.ApiController
-import com.koai.kingofenglish.network.DataApi
 import com.koai.kingofenglish.network.QuestionViewModel
 import com.koai.wordsdk.WordSdk
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.util.Random
 
 

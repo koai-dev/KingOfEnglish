@@ -7,4 +7,5 @@ interface HomeRouter : BaseRouter {
     fun goToPlay(bundle: Bundle)
     fun dialogProfile()
     fun dialogSetting()
+    fun goToLeaderBoard()
 }

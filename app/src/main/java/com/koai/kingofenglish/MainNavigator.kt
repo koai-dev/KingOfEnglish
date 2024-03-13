@@ -24,6 +24,10 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter,HomeRouter,Play
         offNavScreen(R.id.action_global_dialogSetting)
     }
 
+    override fun goToLeaderBoard() {
+        offNavScreen(R.id.action_global_leaderBoardScreen)
+    }
+
     override fun dialogLevelUp() {
         offNavScreen(R.id.action_global_dialogLevelUp)
     }
