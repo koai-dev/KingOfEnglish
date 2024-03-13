@@ -17,7 +17,7 @@ class SplashScreen :
         binding: ScreenSplashBinding,
     ) {
         binding.btnWelcome.setClickableWithScale {
-            router?.goToHome()
+            router?.goToLogin()
         }
     }
 

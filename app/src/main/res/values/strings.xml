@@ -9,4 +9,16 @@
     <string name="play_now">PLAY NOW</string>
     <string name="leader_board">LEADER BOARD</string>
     <string name="click_here_to_edit_personal_information">Click here to edit personal information</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="your_profile">YOUR PROFILE</string>
+    <string name="_15">15</string>
+    <string name="watch_video">Watch video</string>
+    <string name="setting">SETTING</string>
+    <string name="term">Term</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="incorrect">INCORRECT</string>
+    <string name="custom_theme_according_to_your_personality">Custom theme according to your personality</string>
+    <string name="click_here_to_set_the_mode">Click here to set the mode</string>
+    <string name="awsome_n_now_we_can_go_future_n_a_few_more_step_to_victory">Awsome!\n NOw we can go future.\n A few more sTep to victory :)</string>
 </resources>

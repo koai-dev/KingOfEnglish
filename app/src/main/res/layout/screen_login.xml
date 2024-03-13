@@ -4,7 +4,7 @@
 
     <androidx.constraintlayout.motion.widget.MotionLayout
 
-        android:id="@+id/motionLayout"
+        android:id="@+id/ctn_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_splash"

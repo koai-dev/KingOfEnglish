@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_item_leader_board"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/_17dp"
+    android:weightSum="4"
+    >
+
+    <TextView
+        android:id="@+id/txt_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_14dp"
+        android:fontFamily="@font/super_corn"
+        android:gravity="center"
+        android:layout_weight="2"
+        android:maxLines="1"
+        android:text="235"
+        android:textColor="#FFCA28"
+        android:textSize="@dimen/_32sp"
+        app:drawableEndCompat="@drawable/ic_crown"
+        />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_avt"
+        android:layout_width="@dimen/_50dp"
+        android:layout_height="@dimen/_50dp"
+        android:layout_marginStart="@dimen/_14dp"
+        android:layout_marginTop="@dimen/_9dp"
+        android:layout_marginBottom="@dimen/_9dp"
+        android:src="@drawable/img_test"
+        app:layout_constraintEnd_toEndOf="@id/img_ring_top_3"
+        app:layout_constraintStart_toStartOf="@id/img_ring_top_3"
+        app:layout_constraintTop_toTopOf="@id/img_ring_top_3"
+        app:shapeAppearanceOverlay="@style/roundedTips" />
+
+    <TextView
+        android:id="@+id/txt_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/super_corn"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="KOE number 1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_24sp" />
+
+    <TextView
+        android:id="@+id/txt_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:maxLines="1"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:fontFamily="@font/super_corn"
+        android:gravity="center"
+        android:text="40,5k"
+        android:textColor="#0C1B51"
+        android:textSize="@dimen/_32sp"
+        app:drawableEndCompat="@drawable/ic_diamond" />
+</LinearLayout>
