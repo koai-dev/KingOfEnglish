@@ -42,6 +42,6 @@ android {
 }
 
 dependencies {
-    implementation("com.koai:base:1.0.4")
-    implementation("com.koai:wordsdk:1.0.0")
+    implementation("com.koai:base:1.0.6")
+    implementation("com.koai:wordsdk:1.0.2")
 }

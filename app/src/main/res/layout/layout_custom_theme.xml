@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_20dp"
+            android:alpha="0.25"
+            android:background="@color/black" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:id="@+id/ctn_layout_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_24dp"
+                    android:weightSum="2">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ctn_lv10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_24dp"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/bg_lv10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bg_lv10"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/img_look_lv10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_6dp"
+                            android:src="@drawable/ic_lock"
+                            app:layout_constraintBottom_toTopOf="@+id/txt_lv10"
+                            app:layout_constraintEnd_toEndOf="@+id/bg_lv10"
+                            app:layout_constraintStart_toStartOf="@+id/bg_lv10" />
+
+                        <TextView
+                            android:id="@+id/txt_lv10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/super_corn"
+                            android:text="level 10"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_24sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/bg_lv10"
+                            app:layout_constraintStart_toStartOf="@+id/bg_lv10"
+                            app:layout_constraintTop_toTopOf="@id/bg_lv10" />
+
+                        <View
+                            android:id="@+id/view_lv10"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:alpha="0.5"
+                            android:background="@color/black"
+                            app:layout_constraintBottom_toBottomOf="@id/bg_lv10"
+                            app:layout_constraintEnd_toEndOf="@id/bg_lv10"
+                            app:layout_constraintStart_toStartOf="@id/bg_lv10"
+                            app:layout_constraintTop_toTopOf="@id/bg_lv10" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ctn_lv20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_24dp"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/bg_lv20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bg_lv20"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/img_look_lv20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_6dp"
+                            android:src="@drawable/ic_lock"
+                            app:layout_constraintBottom_toTopOf="@+id/txt_lv20"
+                            app:layout_constraintEnd_toEndOf="@+id/bg_lv20"
+                            app:layout_constraintStart_toStartOf="@+id/bg_lv20" />
+
+                        <TextView
+                            android:id="@+id/txt_lv20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/super_corn"
+                            android:text="level 20"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_24sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/bg_lv20"
+                            app:layout_constraintStart_toStartOf="@+id/bg_lv20"
+                            app:layout_constraintTop_toTopOf="@id/bg_lv20" />
+
+                        <View
+                            android:id="@+id/view_lv20"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:alpha="0.5"
+                            android:background="@color/black"
+                            app:layout_constraintBottom_toBottomOf="@id/bg_lv20"
+                            app:layout_constraintEnd_toEndOf="@id/bg_lv20"
+                            app:layout_constraintStart_toStartOf="@id/bg_lv20"
+                            app:layout_constraintTop_toTopOf="@id/bg_lv20" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ctn_layout_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_24dp"
+                    android:weightSum="2">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ctn_lv30"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_24dp"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/bg_lv30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bg_lv30"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/img_look_lv30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_6dp"
+                            android:src="@drawable/ic_lock"
+                            app:layout_constraintBottom_toTopOf="@+id/txt_lv30"
+                            app:layout_constraintEnd_toEndOf="@+id/bg_lv30"
+                            app:layout_constraintStart_toStartOf="@+id/bg_lv30" />
+
+                        <TextView
+                            android:id="@+id/txt_lv30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/super_corn"
+                            android:text="level 30"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_24sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/bg_lv30"
+                            app:layout_constraintStart_toStartOf="@+id/bg_lv30"
+                            app:layout_constraintTop_toTopOf="@id/bg_lv30" />
+
+                        <View
+                            android:id="@+id/view_lv30"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:alpha="0.5"
+                            android:background="@color/black"
+                            app:layout_constraintBottom_toBottomOf="@id/bg_lv30"
+                            app:layout_constraintEnd_toEndOf="@id/bg_lv30"
+                            app:layout_constraintStart_toStartOf="@id/bg_lv30"
+                            app:layout_constraintTop_toTopOf="@id/bg_lv30" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ctn_lv40"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_24dp"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/bg_lv40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bg_lv40"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/img_look_lv40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_6dp"
+                            android:src="@drawable/ic_lock"
+                            app:layout_constraintBottom_toTopOf="@+id/txt_lv40"
+                            app:layout_constraintEnd_toEndOf="@+id/bg_lv40"
+                            app:layout_constraintStart_toStartOf="@+id/bg_lv40" />
+
+                        <TextView
+                            android:id="@+id/txt_lv40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/super_corn"
+                            android:text="level 20"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_24sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/bg_lv40"
+                            app:layout_constraintStart_toStartOf="@+id/bg_lv40"
+                            app:layout_constraintTop_toTopOf="@id/bg_lv40" />
+
+                        <View
+                            android:id="@+id/view_lv40"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:alpha="0.5"
+                            android:background="@color/black"
+                            app:layout_constraintBottom_toBottomOf="@id/bg_lv40"
+                            app:layout_constraintEnd_toEndOf="@id/bg_lv40"
+                            app:layout_constraintStart_toStartOf="@id/bg_lv40"
+                            app:layout_constraintTop_toTopOf="@id/bg_lv40" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/btn_close"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="@dimen/_50dp"
+            android:padding="@dimen/_5dp"
+            android:src="@drawable/ic_close"
+            android:translationY="@dimen/_5dp"
+            app:layout_constraintBottom_toTopOf="@id/view"
+            app:layout_constraintStart_toStartOf="@id/view"
+            app:layout_constraintTop_toTopOf="@id/view"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

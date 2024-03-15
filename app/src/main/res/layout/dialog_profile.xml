@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:context=".ui.dialog.DialogProfile">
+
+        <LinearLayout
+            android:id="@+id/ctn_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:background="@drawable/bg_dialog"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/_20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/_70dp"
+                android:fontFamily="@font/super_corn"
+                android:gravity="center"
+                android:text="@string/your_profile"
+                android:textColor="#0C1B51"
+                android:textSize="@dimen/_24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ic_user"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_30dp"
+                android:src="@drawable/ic_avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+
+
+            <EditText
+                android:id="@+id/edt_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:drawablePadding="@dimen/_0dp"
+                android:fontFamily="@font/super_corn"
+                android:hint="MEE"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLength="5"
+                android:maxLines="1"
+                android:textColor="#FCB6CF"
+                android:textColorHint="#FCB6CF"
+                android:textSize="32sp"
+                app:drawableStartCompat="@drawable/ic_change_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ic_user" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15dp"
+                    android:layout_marginTop="@dimen/_20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_button_dialog"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_5dp">
+
+                    <TextView
+                        android:id="@+id/txt_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/_30dp"
+                        android:fontFamily="@font/super_corn"
+                        android:gravity="center_horizontal"
+                        android:text="5"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"
+                        app:drawableEndCompat="@drawable/ic_diamond" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15dp"
+                    android:layout_marginTop="@dimen/_20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_button_dialog"
+                    android:paddingVertical="@dimen/_5dp">
+
+                    <TextView
+                        android:id="@+id/txt_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/_20dp"
+                        android:fontFamily="@font/super_corn"
+                        android:gravity="center_horizontal"
+                        android:text="@string/_15"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"
+                        app:drawableEndCompat="@drawable/ic_crown" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_40dp"
+                android:background="@drawable/bg_button_dialog"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_12dp"
+                android:paddingVertical="@dimen/_8dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_button_hint"
+                    android:padding="@dimen/_10dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="@dimen/_20dp"
+                        android:layout_height="@dimen/_20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_hint" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:background="@drawable/bg_button_hint"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="@dimen/_20dp"
+                        android:layout_height="@dimen/_20dp"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:src="@drawable/ic_ads" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:fontFamily="@font/super_corn"
+                        android:text="@string/watch_video"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/btn_close"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="@dimen/_50dp"
+            android:padding="@dimen/_5dp"
+            android:src="@drawable/ic_close"
+            android:translationY="@dimen/_5dp"
+            app:layout_constraintBottom_toTopOf="@id/ctn_dialog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ctn_dialog" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -21,6 +21,71 @@
         app:launchSingleTop="true"
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/playScreen"
+        android:name="com.koai.kingofenglish.ui.play.PlayScreen"
+        android:label="PlayScreen"
+        tools:layout="@layout/screen_play" />
+    <dialog
+        android:id="@+id/dialogProfile"
+        android:name="com.koai.kingofenglish.ui.dialog.DialogProfile"
+        android:label="DialogProfile"
+        tools:layout="@layout/dialog_profile" />
+    <action
+        android:id="@+id/action_global_dialogProfile"
+        app:destination="@+id/dialogProfile" />
+    <dialog
+        android:id="@+id/dialogSetting"
+        android:name="com.koai.kingofenglish.ui.dialog.DialogSetting"
+        android:label="DialogSetting"
+        tools:layout="@layout/dialog_setting" />
+    <action
+        android:id="@+id/action_global_dialogSetting"
+        app:destination="@+id/dialogSetting" />
+    <action
+        android:id="@+id/action_global_playScreen"
+        app:destination="@+id/playScreen"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.koai.kingofenglish.ui.home.HomeScreen"
+        android:label="screen_home"
+        tools:layout="@layout/screen_home" />
+    <action
+        android:id="@+id/action_global_homeScreen"
+        app:destination="@+id/homeScreen" />
+    <dialog
+        android:id="@+id/dialogLevelUp"
+        android:name="com.koai.kingofenglish.ui.dialog.DialogLevelUp"
+        android:label="DialogLevelUp"
+        tools:layout="@layout/dialog_level_up" />
+    <action
+        android:id="@+id/action_global_dialogLevelUp"
+        app:destination="@+id/dialogLevelUp"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/leaderBoardScreen"
+        android:name="com.koai.kingofenglish.ui.leaderboard.LeaderBoardScreen"
+        android:label="LeaderBoardScreen"
+        tools:layout="@layout/screen_leader_board" />
+    <action
+        android:id="@+id/action_global_leaderBoardScreen"
+        app:destination="@+id/leaderBoardScreen"
 
-
+        />
+    <dialog
+        android:id="@+id/dialogPause"
+        android:name="com.koai.kingofenglish.ui.dialog.DialogPause"
+        android:label="DialogPause"
+        tools:layout="@layout/dialog_pause" />
+    <action
+        android:id="@+id/action_global_dialogPause"
+        app:destination="@+id/dialogPause"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
 </navigation>

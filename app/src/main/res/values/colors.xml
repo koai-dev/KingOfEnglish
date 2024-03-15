@@ -3,4 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black_tran">#7f8e91</color>
+    <color name="border_txt_top1">#8C6E15</color>
+    <color name="border_txt_top2">#86837B</color>
+    <color name="border_txt_top3">#1C4D4E</color>
 </resources>
