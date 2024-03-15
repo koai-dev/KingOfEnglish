@@ -24,7 +24,7 @@ class LoginScreen :
         val fcsTerms = ForegroundColorSpan(resources.getColor(R.color.black_tran))
         val fcsPrivacyPolicy = ForegroundColorSpan(resources.getColor(R.color.black_tran))
         spannableStringBuilder.setSpan(fcsTerms, 29, 34, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableStringBuilder.setSpan(fcsPrivacyPolicy, 37, 50, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableStringBuilder.setSpan(fcsPrivacyPolicy, 37, 51, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.ctnLinkAccount.textView.text = spannableStringBuilder
     }
 

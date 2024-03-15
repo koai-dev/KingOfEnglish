@@ -39,7 +39,6 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
     override fun initView(savedInstanceState: Bundle?, binding: ScreenPlayBinding) {
         level = SharePreference.getIntPref(requireContext(),"LEVEL")
         getData()
-
     }
 
     private fun getData() {
@@ -58,6 +57,24 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
             addView(binding.layoutQuestion, key, binding.editText, binding.layoutAnswer)
         }
         countDownTimer()
+        binding.imgPause.setClickableWithScale {
+            router?.dialogPause()
+            countDownTimer.cancel()
+        }
+        binding.imgCup.setClickableWithScale {
+            router?.goToLeaderBoard()
+            countDownTimer.onFinish()
+        }
+        binding.ctnBtnHome.setClickableWithScale {
+            router?.goToHome()
+        }
+        binding.ctnBtnTips.setClickableWithScale {
+            addTips()
+        }
+    }
+
+    private fun addTips() {
+        
     }
 
     private fun countDownTimer() {

@@ -32,11 +32,11 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter,HomeRouter,Play
         offNavScreen(R.id.action_global_dialogLevelUp)
     }
 
-    override fun backToHome() {
-        offNavScreen(R.id.action_global_homeScreen)
-    }
-
     override fun reloadPlay(bundle: Bundle) {
         offNavScreen(R.id.action_global_playScreen,bundle)
+    }
+
+    override fun dialogPause() {
+        offNavScreen(R.id.action_global_dialogPause)
     }
 }

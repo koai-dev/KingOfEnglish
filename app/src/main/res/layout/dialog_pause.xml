@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.dialog.DialogPause">
+
+        <LinearLayout
+            android:id="@+id/ctn_dialog"
+            android:layout_width="@dimen/_268dp"
+            android:layout_height="@dimen/_150dp"
+            android:layout_margin="@dimen/_46dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:background="@drawable/bg_dialog_level_up"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="@dimen/_10dp"
+                android:src="@drawable/ic_logo_dialog_pause" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/super_corn"
+                android:gravity="center"
+                android:text="@string/you_just_have_2_pauses_use_it_effectively"
+                android:textColor="#FA6FA0"
+                android:textSize="@dimen/_16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:translationY="-40dp"
+            android:weightSum="2"
+            app:layout_constraintBottom_toBottomOf="@+id/ctn_dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ctn_dialog">
+
+            <LinearLayout
+                android:id="@+id/ctn_btn_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_35dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_dialog"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:paddingVertical="@dimen/_10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/ctn_btn_rewardx2"
+                app:layout_constraintStart_toStartOf="@+id/ctn_btn_rewardx2"
+                app:layout_constraintTop_toBottomOf="@id/ctn_btn_rewardx2">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="@dimen/_24dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_home" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ctn_btn_continue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_dialog"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:paddingVertical="@dimen/_10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/ctn_btn_rewardx2"
+                app:layout_constraintStart_toStartOf="@+id/ctn_btn_rewardx2"
+                app:layout_constraintTop_toBottomOf="@id/ctn_btn_rewardx2">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="@dimen/_24dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_pause_dialog" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
