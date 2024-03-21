@@ -3,6 +3,7 @@ package com.koai.kingofenglish.ui.login
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
+import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.screens.BaseScreen
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
@@ -27,5 +28,5 @@ class LoginScreen :
         }
     }
 
-    override fun getModelNavigator() = ViewModelProvider(activity)[MainNavigator::class.java]
+    override val navigator: MainNavigator by navigatorViewModel()
 }

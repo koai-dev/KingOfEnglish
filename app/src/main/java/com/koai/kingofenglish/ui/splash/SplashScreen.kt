@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
+import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.screens.BaseScreen
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
@@ -19,7 +20,8 @@ class SplashScreen :
         binding.btnWelcome.setClickableWithScale {
             router?.goToHome()
         }
+        binding.root.postDelayed({router?.goToHome()},1200)
     }
 
-    override fun getModelNavigator() = ViewModelProvider(activity)[MainNavigator::class.java]
+    override val navigator: MainNavigator by navigatorViewModel()
 }
