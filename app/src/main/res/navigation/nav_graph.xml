@@ -22,5 +22,24 @@
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true" />
 
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.koai.kingofenglish.ui.home.HomeScreen"
+        android:label="HomeScreen"
+        tools:layout="@layout/screen_home" />
+    <action
+        android:id="@+id/action_global_homeScreen"
+        app:destination="@id/homeScreen"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+    <dialog
+        android:id="@+id/tutorialJourney"
+        tools:layout="@layout/journey_tutorial"
+        android:name="com.koai.kingofenglish.ui.tutorial.TutorialJourney"
+        android:label="TutorialJourney" />
+    <action
+        android:id="@+id/action_global_tutorialJourney"
+        app:destination="@id/tutorialJourney" />
 
 </navigation>

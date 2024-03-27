@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_tutorial"
+    app:startDestination="@id/tutorial1Screen">
+
+    <fragment
+        android:id="@+id/tutorial1Screen"
+        android:name="com.koai.kingofenglish.ui.tutorial.tutorial_1.Tutorial1Screen"
+        android:label="Tutorial1Screen"
+        tools:layout="@layout/screen_tutorial_1" />
+
+    <fragment
+        android:id="@+id/tutorial2Screen"
+        android:name="com.koai.kingofenglish.ui.tutorial.tutorial_2.Tutorial2Screen"
+        android:label="Tutorial2Screen"
+        tools:layout="@layout/screen_tutorial_2" />
+    <action
+        android:id="@+id/action_global_tutorial2Screen"
+        app:destination="@id/tutorial2Screen"
+        app:launchSingleTop="true"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/tutorial3Screen"
+        android:name="com.koai.kingofenglish.ui.tutorial.tutorial_3.Tutorial3Screen"
+        android:label="Tutorial3Screen" />
+    <fragment
+        android:id="@+id/tutorial4Screen"
+        android:name="com.koai.kingofenglish.ui.tutorial.tutorial_4.Tutorial4Screen"
+        android:label="Tutorial4Screen" />
+    <fragment
+        android:id="@+id/tutorial5Screen"
+        android:name="com.koai.kingofenglish.ui.tutorial.tutorial_5.Tutorial5Screen"
+        android:label="Tutorial5Screen" />
+    <fragment
+        android:id="@+id/tutorial6Screen"
+        android:name="com.koai.kingofenglish.ui.tutorial.tutorial_6.Tutorial6Screen"
+        android:label="Tutorial6Screen" />
+    <fragment
+        android:id="@+id/tutorial7Screen"
+        android:name="com.koai.kingofenglish.ui.tutorial.tutorial_7.Tutorial7Screen"
+        android:label="Tutorial7Screen" />
+    <action
+        android:id="@+id/action_global_tutorial3Screen"
+        app:destination="@id/tutorial3Screen"
+        app:launchSingleTop="true"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_tutorial5Screen"
+        app:destination="@id/tutorial5Screen"
+        app:launchSingleTop="true"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_tutorial4Screen"
+        app:destination="@id/tutorial4Screen"
+        app:launchSingleTop="true"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_tutorial6Screen"
+        app:destination="@id/tutorial6Screen"
+        app:popUpToInclusive="true"
+        app:launchSingleTop="true" />
+    <action
+        android:id="@+id/action_global_tutorial7Screen"
+        app:destination="@id/tutorial7Screen"
+        app:popUpToInclusive="true"
+        app:launchSingleTop="true" />
+</navigation>

@@ -20,7 +20,7 @@ class LoginScreen :
 
     private fun actionView() {
         binding.ctnLinkAccount.btnNo.setClickableWithScale {
-            // todo
+            router?.gotoHomeScreen()
         }
 
         binding.ctnLinkAccount.btnYes.setClickableWithScale {

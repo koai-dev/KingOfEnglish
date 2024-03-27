@@ -11,17 +11,17 @@ import kotlinx.coroutines.launch
 
 class PlayViewModel(private val service: ApiService) : ViewModel() {
     fun getQuestionByLevel(level: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            service.getQuestion(1)
-                .onStart {
-                    emit(ResponseStatus.Loading)
-                }.catch {
-                    emit(ResponseStatus.Error(message = it.message?:""))
-                }.collect {
-                    if (it is ResponseStatus.Success){
-                        it.data is
-                    }
-                }
-        }
+//        viewModelScope.launch(Dispatchers.IO) {
+//            service.getQuestion(1)
+//                .onStart {
+//                    emit(ResponseStatus.Loading)
+//                }.catch {
+//                    emit(ResponseStatus.Error(message = it.message?:""))
+//                }.collect {
+//                    if (it is ResponseStatus.Success){
+//                        it.data is
+//                    }
+//                }
+//        }
     }
 }

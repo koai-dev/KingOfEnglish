@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B3000000">
+
+        <TextView
+            android:id="@+id/txt_tutorial_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/super_corn"
+            android:gravity="center"
+            android:text="@string/click_here_to_play"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:drawableStartCompat="@drawable/ic_hand"
+            app:layout_constraintBottom_toTopOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/btn_play_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_button_home"
+            android:elevation="1dp"
+            android:fontFamily="@font/super_corn"
+            android:gravity="center"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="16dp"
+            android:singleLine="true"
+            android:text="@string/play_now"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_leader_board"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/btn_leader_board"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/bg_button_home"
+            android:elevation="1dp"
+            android:fontFamily="@font/super_corn"
+            android:gravity="center"
+            android:paddingVertical="12dp"
+            android:paddingStart="56dp"
+            android:paddingEnd="32dp"
+            android:singleLine="true"
+            android:text="@string/leader_board"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:visibility="invisible"
+            app:drawableEndCompat="@drawable/ic_cup"
+            app:layout_constraintBottom_toTopOf="@+id/img_custom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_custom"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_custom"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textView4" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_setting"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_setting"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textView4" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_play_now"
+            app:layout_constraintEnd_toEndOf="@+id/txt_tutorial_2"
+            app:layout_constraintStart_toStartOf="@+id/txt_tutorial_2"
+            app:srcCompat="@drawable/ic_arrow_4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
