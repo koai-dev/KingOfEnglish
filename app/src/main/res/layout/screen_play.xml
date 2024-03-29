@@ -5,6 +5,12 @@
 
     <data>
 
+        <import type="com.koai.kingofenglish.utils.StringExtentionsKt" />
+
+        <variable
+            name="question"
+            type="com.koai.kingofenglish.domain.models.Question" />
+
         <variable
             name="user"
             type="com.koai.kingofenglish.domain.models.User" />
@@ -91,7 +97,7 @@
 
         <TextView
             android:id="@+id/textView7"
-            text_app="@{user.currentLevel}"
+            text_app="@{question.level}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -118,7 +124,7 @@
             android:background="@drawable/bg_circle_ping"
             android:fontFamily="@font/super_corn"
             android:gravity="center"
-            android:text="60"
+            android:text="@string/_60"
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView10"
@@ -166,6 +172,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="470dp" />
+
+        <TextView
+            android:id="@+id/textView10"
+            array_to_string="@{question.answers}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:fontFamily="@font/super_corn"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@string/a_b_c"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+            app:layout_constraintEnd_toEndOf="@+id/imageView11"
+            app:layout_constraintStart_toStartOf="@+id/imageView11"
+            app:layout_constraintTop_toTopOf="@+id/imageView11"
+            app:layout_constraintVertical_bias="0.75" />
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintDimensionRatio="180:32"
+            app:layout_constraintBottom_toTopOf="@+id/imageView13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView11"
+            app:srcCompat="@drawable/ic_cloud2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
