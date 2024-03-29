@@ -7,4 +7,5 @@ interface HomeRouter : BaseRouter {
     fun gotoCustomTheme()
     fun gotoSetting()
     fun gotoTutorial()
+    fun gotoLeaderBoard()
 }

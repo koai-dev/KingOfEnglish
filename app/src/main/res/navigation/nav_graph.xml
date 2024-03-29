@@ -35,11 +35,19 @@
         app:popUpToInclusive="true" />
     <dialog
         android:id="@+id/tutorialJourney"
-        tools:layout="@layout/journey_tutorial"
         android:name="com.koai.kingofenglish.ui.tutorial.TutorialJourney"
-        android:label="TutorialJourney" />
+        android:label="TutorialJourney"
+        tools:layout="@layout/journey_tutorial" />
     <action
         android:id="@+id/action_global_tutorialJourney"
         app:destination="@id/tutorialJourney" />
+    <fragment
+        android:id="@+id/playScreen"
+        android:name="com.koai.kingofenglish.ui.play.PlayScreen"
+        android:label="PlayScreen"
+        tools:layout="@layout/screen_play" />
+    <action
+        android:id="@+id/action_global_playScreen"
+        app:destination="@id/playScreen" />
 
 </navigation>

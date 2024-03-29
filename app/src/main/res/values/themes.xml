@@ -9,6 +9,11 @@
         <item name="cornerSize">20dp</item>
     </style>
 
+    <style name="ImageCircle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item> <!-- Đặt giá trị này để làm cho hình tròn -->
+    </style>
+
     <style name="Theme.TransparentDialog" parent="Theme.AppCompat.Light">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>

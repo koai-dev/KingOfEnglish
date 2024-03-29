@@ -31,33 +31,29 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
     }
 
     private fun setFirstLaunch() {
-//        val isFirstLaunch = !sharePreference.getBooleanPref(Constants.IS_FIRST_LAUNCH)
-//        if (isFirstLaunch) {
-        router?.gotoTutorial()
-        sharePreference.setBooleanPref(Constants.IS_FIRST_LAUNCH, true)
-//        }
+        val isFirstLaunch = !sharePreference.getBooleanPref(Constants.IS_FIRST_LAUNCH)
+        if (isFirstLaunch) {
+            router?.gotoTutorial()
+            sharePreference.setBooleanPref(Constants.IS_FIRST_LAUNCH, true)
+        }
     }
-
-//    private fun onTutorial(step: Int) {
-//        when(step){
-//            0 -> binding.tutorial1Screen.root.visible()
-//            else -> binding.tutorial2Screen.container.visible()
-//        }
-//    }
 
     private fun setAction() {
         binding.layoutItemDashboard.btnPlayNow.setClickableWithScale {
-
+            router?.gotoPlay()
         }
 
         binding.layoutItemDashboard.btnLeaderBoard.setClickableWithScale {
-
+            router?.gotoLeaderBoard()
         }
 
-//        binding.tutorial1Screen.root.setOnClickListener {
-//            it.gone()
-//            onTutorial(1)
-//        }
+        binding.layoutItemDashboard.btnCustom.setClickableWithScale {
+            router?.gotoCustomTheme()
+        }
+
+        binding.layoutItemDashboard.btnSetting.setClickableWithScale {
+            router?.gotoSetting()
+        }
     }
 
     override val navigator: MainNavigator by navigatorViewModel()

@@ -15,7 +15,7 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter, HomeRouter {
     }
 
     override fun gotoPlay() {
-
+        offNavScreen(R.id.action_global_playScreen)
     }
 
     override fun gotoCustomTheme() {
@@ -28,5 +28,9 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter, HomeRouter {
 
     override fun gotoTutorial() {
         offNavScreen(R.id.action_global_tutorialJourney)
+    }
+
+    override fun gotoLeaderBoard() {
+
     }
 }
