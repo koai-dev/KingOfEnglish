@@ -1,6 +1,7 @@
 package com.koai.kingofenglish.ui.tutorial
 
 import android.app.Dialog
+import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -12,6 +13,7 @@ import com.koai.base.main.action.navigator.BaseNavigator
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.screens.BaseJourneyDialog
+import com.koai.kingofenglish.DashboardEvent
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.JourneyTutorialBinding
 
@@ -40,6 +42,5 @@ class TutorialJourney : BaseJourneyDialog<JourneyTutorialBinding, BaseRouter, Tu
         }
     }
     override fun initView(savedInstanceState: Bundle?, binding: JourneyTutorialBinding) {
-
     }
 }

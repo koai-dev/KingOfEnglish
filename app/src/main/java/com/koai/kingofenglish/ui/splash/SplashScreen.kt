@@ -2,7 +2,6 @@ package com.koai.kingofenglish.ui.splash
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.screens.BaseScreen
@@ -18,9 +17,9 @@ class SplashScreen :
         binding: ScreenSplashBinding,
     ) {
         binding.btnWelcome.setClickableWithScale {
-            router?.goToHome()
+            router?.gotoLoginScreen()
         }
-        binding.root.postDelayed({router?.goToHome()},1200)
+        binding.root.postDelayed({router?.gotoLoginScreen()},1200)
     }
 
     override val navigator: MainNavigator by navigatorViewModel()

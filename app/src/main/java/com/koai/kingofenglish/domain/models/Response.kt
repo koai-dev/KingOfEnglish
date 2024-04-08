@@ -3,12 +3,13 @@ package com.koai.kingofenglish.domain.models
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class Response<T>(
 
     @field:SerializedName("data")
-    val data: Class<T>? = null,
+    val data: @RawValue T? = null,
 
     @field:SerializedName("message")
     val message: String? = null,

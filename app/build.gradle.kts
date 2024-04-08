@@ -43,7 +43,7 @@ android {
 }
 
 dependencies {
-    implementation("com.koai:base:1.3.5")
-    implementation("com.koai:wordsdk:1.0.0")
+    implementation("com.koai:base:1.4.0")
     testImplementation("org.testng:testng:7.4.0")
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
 }

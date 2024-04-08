@@ -11,8 +11,8 @@ import retrofit2.http.Query
 
 interface ApiService : BaseApiService {
     @GET("question")
-    suspend fun getQuestion(@Query("level") level: Int): Flow<ResponseStatus<Response<Question>>>
+    suspend fun getQuestion(@Query("level") level: Int): Response<Question>
 
     @GET("user")
-    suspend fun getUser(@Query("userId") userId: String): Flow<ResponseStatus<Response<User>>>
+    suspend fun getUser(@Query("userId") userId: String): ResponseStatus<Response<User>>
 }

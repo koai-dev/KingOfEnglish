@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WordView">
+        <attr name="type">
+            <enum name="type_question" value="1"/>
+            <enum name="type_result" value="0"/>
+        </attr>
+    </declare-styleable>
+</resources>

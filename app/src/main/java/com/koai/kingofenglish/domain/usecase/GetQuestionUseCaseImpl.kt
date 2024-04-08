@@ -10,13 +10,8 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onStart
 
 class GetQuestionUseCaseImpl(private val service: ApiService) : GetQuestionUseCase {
-    override fun execute(level: Int): Flow<ResponseStatus<Response<Question>>> = flow {
-        service.getQuestion(level).onStart {
-            emit(ResponseStatus.Loading)
-        }.catch {
-            emit(ResponseStatus.Error(message = it.message.toString()))
-        }.collect{
-            emit(it)
-        }
+    override suspend fun execute(level: Int): Flow<Response<Question>> = flow {
+        emit(service.getQuestion(level))
     }
+
 }

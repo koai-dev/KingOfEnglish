@@ -16,6 +16,6 @@ fun ArrayList<String?>?.arrayToString(): String{
             string +="$it/"
         }
     }
-    string = string.replaceBeforeLast("/","")
+    string = string.trim().substring(0, string.length-1)
     return string
 }

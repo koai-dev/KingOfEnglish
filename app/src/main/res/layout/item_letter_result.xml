@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="letter"
+            type="com.koai.kingofenglish.ui.play.widget.Letter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:padding="7dp"
+        android:elevation="1dp"
+        android:translationZ="1dp">
+
+        <TextView
+            android:id="@+id/textView11"
+            text_app="@{letter.letter}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_round_5_yellow"
+            android:fontFamily="@font/super_corn"
+            android:gravity="center"
+            android:text="@string/k"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:visibility="@{letter.selected? View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_round_5_yellow_8"
+            android:fontFamily="@font/super_corn"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:visibility="@{letter.selected? View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

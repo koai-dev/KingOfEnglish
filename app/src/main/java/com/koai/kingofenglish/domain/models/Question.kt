@@ -26,5 +26,10 @@ data class Question(
 	val type: String? = null,
 
 	@field:SerializedName("answerRight")
-	val answerRight: String? = null
+	val answerRight: String? = null,
+
+	@field:SerializedName("subQuestion")
+	val subQuestion: String? = null,
+
+
 ) : Parcelable

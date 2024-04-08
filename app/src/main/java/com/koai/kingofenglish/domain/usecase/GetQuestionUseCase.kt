@@ -6,5 +6,5 @@ import com.koai.kingofenglish.domain.models.Response
 import kotlinx.coroutines.flow.Flow
 
 interface GetQuestionUseCase {
-    fun execute(level: Int): Flow<ResponseStatus<Response<Question>>>
+    suspend fun execute(level: Int): Flow<Response<Question>>
 }
