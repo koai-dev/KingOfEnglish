@@ -4,6 +4,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.koai.base.main.extension.ClickableViewExtensions.loadImage
+import com.koai.base.main.extension.gone
+import com.koai.base.main.extension.visible
 import com.koai.kingofenglish.utils.arrayToString
 
 @BindingAdapter("loadImage")
@@ -24,10 +26,18 @@ fun setText(txt: TextView, text: Any?) {
         is Float? -> txt.text = (text ?: 0).toString()
         else -> txt.text = (text ?: "").toString()
     }
+
+    if (text is String?) {
+        if (text?.lowercase()?.contains("null") == true) {
+            txt.gone()
+        } else {
+            txt.visible()
+        }
+    }
 }
 
 @BindingAdapter("array_to_string")
-fun arrayToString(txt: TextView, list: ArrayList<String?>?){
+fun arrayToString(txt: TextView, list: ArrayList<String?>?) {
     list?.let {
         txt.text = list.arrayToString()
     }

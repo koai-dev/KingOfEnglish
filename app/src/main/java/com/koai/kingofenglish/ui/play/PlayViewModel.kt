@@ -14,6 +14,7 @@ import com.koai.kingofenglish.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -24,15 +25,22 @@ class PlayViewModel(
 ) : ViewModel() {
     private val _question = MutableLiveData<ResponseStatus<Response<Question>>>()
     val questionLiveData: LiveData<ResponseStatus<Response<Question>>?> = _question
+
     private val _timerCountdown = MutableLiveData<Int>()
     val timerCountdown: LiveData<Int> = _timerCountdown
     private var jobTimer: Job? = null
-    private var currentLevel = 0
-    private var question: Question? = null
     private var timer: CountDownTimer? = null
 
-    private var _currentPoint = MutableLiveData<Int>()
-    var currentPoint: LiveData<Int> = _currentPoint
+    private var question: Question? = null
+
+    private var currentLevel = 0
+    private var currentPoint = 0
+
+    private val _currentPointLive = MutableLiveData<Int>()
+    val currentPointLive: LiveData<Int> = _currentPointLive
+    private val _currentLevelLive = MutableLiveData<Int>()
+    val currentLevelLive: LiveData<Int> = _currentLevelLive
+
     fun getQuestionByLevel() {
         viewModelScope.launch(Dispatchers.IO) {
             getQuestionUseCase.execute(currentLevel)
@@ -49,15 +57,15 @@ class PlayViewModel(
 
     fun getCurrentState() {
         currentLevel = sharePreference.getIntPref(Constants.CURRENT_QUESTION)
-        var savePoints = sharePreference.getIntPref(Constants.CURRENT_POINTS)
-        if (savePoints <= 0) {
-            savePoints = 0
+        currentPoint = sharePreference.getIntPref(Constants.CURRENT_POINTS)
+        if (currentPoint <= 0) {
+            currentPoint = 0
         }
-        _currentPoint.postValue(savePoints)
+        _currentPointLive.postValue(currentPoint)
         if (currentLevel <= 1) {
             currentLevel = 1
         }
-
+        _currentLevelLive.postValue(currentLevel)
     }
 
     fun countdownTimeAnswer() {
@@ -82,9 +90,13 @@ class PlayViewModel(
 
     fun calculateCurrentPoint() {
         viewModelScope.launch(Dispatchers.IO) {
-            val point = (timerCountdown.value ?: 0) * 10 * (question?.levelQuestion ?: 1)
-            val currentPoints = point + (currentPoint.value ?: 0)
-            _currentPoint.postValue(currentPoints)
+            var point = (timerCountdown.value ?: 0) * 10 * (question?.levelQuestion ?: 1)
+            while (point > 0) {
+                currentPoint = 1 + (currentPointLive.value ?: 0)
+                _currentPointLive.postValue(currentPoint)
+                point -= 1
+                delay(5)
+            }
         }
     }
 
@@ -93,8 +105,10 @@ class PlayViewModel(
     }
 
     fun onDestroy() {
-        currentLevel-=1
-        sharePreference.setIntPref(Constants.CURRENT_QUESTION, currentLevel)
-        currentPoint.value?.let { sharePreference.setIntPref(Constants.CURRENT_POINTS, it) }
+        viewModelScope.launch {
+            currentLevel -= 1
+            sharePreference.setIntPref(Constants.CURRENT_QUESTION, currentLevel)
+            sharePreference.setIntPref(Constants.CURRENT_POINTS, currentPoint)
+        }
     }
 }

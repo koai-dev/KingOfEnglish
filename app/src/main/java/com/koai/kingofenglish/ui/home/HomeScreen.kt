@@ -2,30 +2,41 @@ package com.koai.kingofenglish.ui.home
 
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.asFlow
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.gone
 import com.koai.base.main.extension.navigatorViewModel
+import com.koai.base.main.extension.screenViewModel
 import com.koai.base.main.screens.BaseScreen
 import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.DashboardEvent
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenHomeBinding
+import com.koai.kingofenglish.domain.models.User
+import com.koai.kingofenglish.ui.play.PlayViewModel
 import com.koai.kingofenglish.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 
 class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.layout.screen_home) {
     private val sharePreference by inject<SharePreference>()
+    private val playViewModel: PlayViewModel by screenViewModel()
+
     override fun initView(savedInstanceState: Bundle?, binding: ScreenHomeBinding) {
         Log.d("initView", HomeScreen::class.simpleName.toString())
+        playViewModel.getCurrentState()
         setupUI()
         setAction()
         setFirstLaunch()
+        observer()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,6 +78,20 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
 
         binding.layoutItemDashboard.btnSetting.setClickableWithScale {
             router?.gotoSettingScreen()
+        }
+    }
+
+    private fun observer() {
+        val data = playViewModel.currentLevelLive.asFlow()
+            .combine(playViewModel.currentPointLive.asFlow()) { level, point ->
+                User(currentLevel = level, points = point)
+            }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED){
+                data.collectLatest { user ->
+                    binding.layoutItemDashboard.user = user
+                }
+            }
         }
     }
 

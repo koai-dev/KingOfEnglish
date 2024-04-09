@@ -145,7 +145,7 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.la
             binding.txtTimer.text = it.toString()
         }
 
-        viewModel.currentPoint.observe(this){
+        viewModel.currentPointLive.observe(this){
             binding.currentPoint = it
         }
     }
@@ -164,9 +164,9 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.la
         }
     }
 
-    override fun onStop() {
+    override fun onPause() {
         viewModel.onDestroy()
-        super.onStop()
+        super.onPause()
     }
 
     override val navigator: MainNavigator by navigatorViewModel()
