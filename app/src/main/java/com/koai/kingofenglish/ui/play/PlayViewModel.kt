@@ -88,17 +88,29 @@ class PlayViewModel(
         }
     }
 
-    fun calculateCurrentPoint() {
+    fun calculateCurrentPoint(pointAdd: Int = 0) {
+        var point = pointAdd
         viewModelScope.launch(Dispatchers.IO) {
-            var point = (timerCountdown.value ?: 0) * 10 * (question?.levelQuestion ?: 1)
-            while (point > 0) {
-                currentPoint = 1 + (currentPointLive.value ?: 0)
-                _currentPointLive.postValue(currentPoint)
-                point -= 1
-                delay(5)
+            if (point > 0) {
+                while (point > 0) {
+                    currentPoint = 1 + (currentPointLive.value ?: 0)
+                    _currentPointLive.postValue(currentPoint)
+                    point -= 1
+                    delay(5)
+                }
+            } else {
+                point *= -1
+                while (point > 0 && currentPoint > 0) {
+                    currentPoint = (currentPointLive.value ?: 0) - 1
+                    _currentPointLive.postValue(currentPoint)
+                    point -= 1
+                    delay(5)
+                }
             }
         }
     }
+
+    fun getCurrentPointAdd() = (timerCountdown.value ?: 0) * 10 * (question?.levelQuestion ?: 1)
 
     fun setQuestion(question: Question?) {
         this.question = question

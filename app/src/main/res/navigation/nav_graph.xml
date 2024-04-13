@@ -49,5 +49,19 @@
     <action
         android:id="@+id/action_global_playScreen"
         app:destination="@id/playScreen" />
+    <dialog
+        android:id="@+id/incorrectDialog"
+        android:name="com.koai.kingofenglish.ui.dialog.incorrect.IncorrectDialog"
+        android:label="IncorrectDialog" />
+    <action
+        android:id="@+id/action_global_incorrectDialog"
+        app:destination="@id/incorrectDialog" />
+    <dialog
+        android:id="@+id/levelUpDialog"
+        android:name="com.koai.kingofenglish.ui.dialog.levelup.LevelUpDialog"
+        android:label="LevelUpDialog" />
+    <action
+        android:id="@+id/action_global_levelUpDialog"
+        app:destination="@id/levelUpDialog" />
 
 </navigation>

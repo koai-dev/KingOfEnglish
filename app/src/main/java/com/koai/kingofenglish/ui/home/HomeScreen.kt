@@ -87,7 +87,7 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
                 User(currentLevel = level, points = point)
             }
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.CREATED){
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
                 data.collectLatest { user ->
                     binding.layoutItemDashboard.user = user
                 }

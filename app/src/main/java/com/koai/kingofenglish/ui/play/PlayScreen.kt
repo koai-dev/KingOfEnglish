@@ -3,6 +3,8 @@ package com.koai.kingofenglish.ui.play
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResultListener
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
@@ -14,6 +16,7 @@ import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenPlayBinding
 import com.koai.kingofenglish.ui.play.widget.Letter
 import com.koai.kingofenglish.ui.play.widget.WordView
+import com.koai.kingofenglish.utils.Constants
 
 class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.layout.screen_play) {
 
@@ -22,6 +25,12 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.la
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("onCreate", PlayScreen::class.simpleName.toString())
+        setFragmentResultListener(Constants.ADDED_POINTS){ requestKey, bundle ->
+            if (requestKey== Constants.ADDED_POINTS){
+                val pointAdd = bundle.getInt(Constants.ADDED_POINTS)
+                viewModel.calculateCurrentPoint(pointAdd)
+            }
+        }
     }
 
     override fun initView(savedInstanceState: Bundle?, binding: ScreenPlayBinding) {
@@ -75,11 +84,10 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.la
                             showCurrentAnswer(currentList)
                             if (currentList.firstOrNull { letter -> letter.isSelected } == null) {
                                 if (checkValidAnswer(currentList.toMutableList())) {
-                                    Toast.makeText(activity, "Right", Toast.LENGTH_SHORT).show()
-                                    viewModel.calculateCurrentPoint()
+                                    navigator.offNavScreen(R.id.action_global_levelUpDialog, bundleOf(Constants.ADDED_POINTS to viewModel.getCurrentPointAdd()))
                                     getData()
                                 } else {
-                                    Toast.makeText(activity, "Wrong", Toast.LENGTH_SHORT).show()
+                                    navigator.offNavScreen(R.id.action_global_incorrectDialog)
                                 }
                             }
                         }
@@ -96,7 +104,7 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.la
         listAnswer.forEach { letter ->
             answer += if (!letter.isSelected) {
                 letter.letter
-            }else{
+            } else {
                 " "
             }
         }
@@ -141,11 +149,11 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.la
             }
         }
 
-        viewModel.timerCountdown.observe(this){
+        viewModel.timerCountdown.observe(this) {
             binding.txtTimer.text = it.toString()
         }
 
-        viewModel.currentPointLive.observe(this){
+        viewModel.currentPointLive.observe(this) {
             binding.currentPoint = it
         }
     }
