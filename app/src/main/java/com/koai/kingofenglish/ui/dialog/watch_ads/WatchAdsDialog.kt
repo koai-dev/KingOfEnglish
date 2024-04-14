@@ -26,7 +26,7 @@ class WatchAdsDialog :
         return super.onCreateDialog(savedInstanceState).apply {
             this.requestWindowFeature(Window.FEATURE_NO_TITLE)
             this.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            this.setCanceledOnTouchOutside(false)
+            this.setCanceledOnTouchOutside(true)
         }
     }
 
