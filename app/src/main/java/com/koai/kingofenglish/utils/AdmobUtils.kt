@@ -12,6 +12,7 @@ import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 
 object AdmobUtils {
     private var mRewardedAd: RewardedAd? = null
+    private var action: Action? = null
 
     fun setAdmob(context: Context, liveData: MutableLiveData<Boolean>? = null) {
         val adRequest = AdRequest.Builder().build()
@@ -39,6 +40,7 @@ object AdmobUtils {
             override fun onAdDismissedFullScreenContent() {
                 // Called when ad is dismissed.
                 // Set the ad reference to null so you don't show the ad a second time.
+                action?.onReward()
                 mRewardedAd = null
                 RewardedAd.load(
                     context,
@@ -87,7 +89,7 @@ object AdmobUtils {
     fun showAdmob(context: Activity, action: Action? = null) {
         if (mRewardedAd != null) {
             mRewardedAd?.show(context) {
-                action?.onReward()
+                this.action = action
                 mRewardedAd = null
                 setAdmob(context)
             }
