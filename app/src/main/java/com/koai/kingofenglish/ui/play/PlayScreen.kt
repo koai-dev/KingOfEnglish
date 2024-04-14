@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResultListener
+import androidx.fragment.app.viewModels
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
@@ -12,15 +13,18 @@ import com.koai.base.main.extension.screenViewModel
 import com.koai.base.main.screens.BaseScreen
 import com.koai.base.network.ResponseStatus
 import com.koai.kingofenglish.MainNavigator
+import com.koai.kingofenglish.MainViewModel
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenPlayBinding
 import com.koai.kingofenglish.ui.play.widget.Letter
 import com.koai.kingofenglish.ui.play.widget.WordView
+import com.koai.kingofenglish.utils.AdmobUtils
 import com.koai.kingofenglish.utils.Constants
 
-class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.layout.screen_play) {
+class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.layout.screen_play) {
 
     private val viewModel: PlayViewModel by screenViewModel()
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +33,21 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.la
             if (requestKey== Constants.ADDED_POINTS){
                 val pointAdd = bundle.getInt(Constants.ADDED_POINTS)
                 viewModel.calculateCurrentPoint(pointAdd)
+            }
+        }
+        setFragmentResultListener(Constants.REPLAY){requestKey, bundle ->
+            if (requestKey == Constants.REPLAY){
+                getData()
+            }
+        }
+        setFragmentResultListener(Constants.RESUME){requestKey, bundle ->
+            if (requestKey == Constants.RESUME){
+                viewModel.resume()
+            }
+        }
+        setFragmentResultListener(Constants.SHOW_TIP){requestKey, bundle ->
+            if (requestKey == Constants.SHOW_TIP){
+                viewModel.question?.thumb?.let { router?.gotoTip(it) }
             }
         }
     }
@@ -84,10 +103,10 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.la
                             showCurrentAnswer(currentList)
                             if (currentList.firstOrNull { letter -> letter.isSelected } == null) {
                                 if (checkValidAnswer(currentList.toMutableList())) {
-                                    navigator.offNavScreen(R.id.action_global_levelUpDialog, bundleOf(Constants.ADDED_POINTS to viewModel.getCurrentPointAdd()))
+                                    router?.nextLevel(viewModel.getCurrentPointAdd())
                                     getData()
                                 } else {
-                                    navigator.offNavScreen(R.id.action_global_incorrectDialog)
+                                    router?.showWrongToast()
                                 }
                             }
                         }
@@ -133,7 +152,7 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.la
             question?.let {
                 if (it is ResponseStatus.Success) {
                     viewModel.countdownTimeAnswer()
-                    viewModel.setQuestion(it.data.data)
+                    viewModel.question = it.data.data
                     binding.question = it.data.data
                     binding.answer = null
                     val letters =
@@ -156,11 +175,18 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.la
         viewModel.currentPointLive.observe(this) {
             binding.currentPoint = it
         }
+
+        mainViewModel.isFirstLoadAds.observe(activity){
+            if (it) {
+                AdmobUtils.showAdmob(activity)
+            }
+        }
     }
 
     private fun onAction() {
         binding.btnPause.setClickableWithScale {
-
+            viewModel.pause()
+            router?.onPause()
         }
 
         binding.btnHome.setClickableWithScale {
@@ -168,7 +194,7 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, BaseRouter, MainNavigator>(R.la
         }
 
         binding.btnTip.setClickableWithScale {
-
+            router?.watchAds()
         }
     }
 

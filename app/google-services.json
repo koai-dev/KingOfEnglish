@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "191802769483",
+    "project_id": "kingofenglish-4ae13",
+    "storage_bucket": "kingofenglish-4ae13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191802769483:android:22a386025c8e5229da4dce",
+        "android_client_info": {
+          "package_name": "com.koai.kingofenglish"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDizw5n1RpjIv9eL--G7TxiTfSfFp15gnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

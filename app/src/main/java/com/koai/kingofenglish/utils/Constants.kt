@@ -7,5 +7,8 @@ object Constants{
     const val CURRENT_QUESTION = "CURRENT_QUESTION"
     const val CURRENT_POINTS = "CURRENT_POINTS"
     const val ADDED_POINTS = "ADDED_POINTS"
+    const val REPLAY = "REPLAY"
+    const val RESUME = "RESUME"
+    const val SHOW_TIP = "SHOW_TIP"
 
 }

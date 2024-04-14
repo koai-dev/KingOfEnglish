@@ -63,5 +63,33 @@
     <action
         android:id="@+id/action_global_levelUpDialog"
         app:destination="@id/levelUpDialog" />
+    <dialog
+        android:id="@+id/loseDialog"
+        android:name="com.koai.kingofenglish.ui.dialog.lose.LoseDialog"
+        android:label="LoseDialog" />
+    <dialog
+        android:id="@+id/pauseDialog"
+        android:name="com.koai.kingofenglish.ui.dialog.pause.PauseDialog"
+        android:label="PauseDialog" />
+    <dialog
+        android:id="@+id/watchAdsDialog"
+        android:name="com.koai.kingofenglish.ui.dialog.watch_ads.WatchAdsDialog"
+        android:label="TipDialog" />
+    <action
+        android:id="@+id/action_global_pauseDialog"
+        app:destination="@id/pauseDialog" />
+    <action
+        android:id="@+id/action_global_loseDialog"
+        app:destination="@id/loseDialog" />
+    <action
+        android:id="@+id/action_global_watchAdsDialog"
+        app:destination="@id/watchAdsDialog" />
+    <dialog
+        android:id="@+id/tipDialog"
+        android:name="com.koai.kingofenglish.ui.dialog.tip.TipDialog"
+        android:label="TipDialog" />
+    <action
+        android:id="@+id/action_global_tipDialog"
+        app:destination="@id/tipDialog" />
 
 </navigation>

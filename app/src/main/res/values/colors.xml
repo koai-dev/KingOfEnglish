@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black_tran">#7f8e91</color>
+    <color name="notify_color">#FCCCBE</color>
 </resources>

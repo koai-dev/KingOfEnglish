@@ -31,7 +31,7 @@ class PlayViewModel(
     private var jobTimer: Job? = null
     private var timer: CountDownTimer? = null
 
-    private var question: Question? = null
+    var question: Question? = null
 
     private var currentLevel = 0
     private var currentPoint = 0
@@ -112,15 +112,19 @@ class PlayViewModel(
 
     fun getCurrentPointAdd() = (timerCountdown.value ?: 0) * 10 * (question?.levelQuestion ?: 1)
 
-    fun setQuestion(question: Question?) {
-        this.question = question
-    }
-
     fun onDestroy() {
         viewModelScope.launch {
             currentLevel -= 1
             sharePreference.setIntPref(Constants.CURRENT_QUESTION, currentLevel)
             sharePreference.setIntPref(Constants.CURRENT_POINTS, currentPoint)
         }
+    }
+
+    fun resume() {
+
+    }
+
+    fun pause(){
+
     }
 }
