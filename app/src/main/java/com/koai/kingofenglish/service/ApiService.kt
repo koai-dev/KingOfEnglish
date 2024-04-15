@@ -15,4 +15,6 @@ interface ApiService : BaseApiService {
 
     @GET("user")
     suspend fun getUser(@Query("userId") userId: String): ResponseStatus<Response<User>>
+
+
 }

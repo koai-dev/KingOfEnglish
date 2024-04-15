@@ -1,4 +1,4 @@
-package com.koai.kingofenglish.utils
+package com.koai.kingofenglish.ads
 
 import android.app.Activity
 import android.content.Context
@@ -9,12 +9,13 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
+import com.koai.kingofenglish.utils.AppConfig
 
 object AdmobUtils {
     private var mRewardedAd: RewardedAd? = null
     private var action: Action? = null
 
-    fun setAdmob(context: Context, liveData: MutableLiveData<Boolean>? = null) {
+    fun setAdmob(context: Context) {
         val adRequest = AdRequest.Builder().build()
         RewardedAd.load(
             context,
@@ -29,10 +30,12 @@ object AdmobUtils {
 
                 override fun onAdLoaded(rewardedAd: RewardedAd) {
                     mRewardedAd = rewardedAd
-                    liveData?.postValue(true)
                     mRewardedAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                         override fun onAdClicked() {
                             // Called when a click is recorded for an ad.
+                            action?.onReward()
+                            mRewardedAd = null
+                            setAdmob(context)
                         }
 
                         override fun onAdDismissedFullScreenContent() {
@@ -40,17 +43,20 @@ object AdmobUtils {
                             // Set the ad reference to null so you don't show the ad a second time.
                             action?.onReward()
                             mRewardedAd = null
-                            setAdmob(context,liveData)
+                            setAdmob(context)
                         }
 
                         override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                             // Called when ad fails to show.
                             mRewardedAd = null
-                            setAdmob(context,liveData)
+                            setAdmob(context)
                         }
 
                         override fun onAdImpression() {
                             // Called when an impression is recorded for an ad.
+                            action?.onReward()
+                            mRewardedAd = null
+                            setAdmob(context)
                         }
 
                         override fun onAdShowedFullScreenContent() {
@@ -64,7 +70,7 @@ object AdmobUtils {
     fun showAdmob(context: Activity, action: Action? = null) {
         if (mRewardedAd != null) {
             mRewardedAd?.show(context) {
-                this.action = action
+                AdmobUtils.action = action
             }
         } else {
             setAdmob(context)

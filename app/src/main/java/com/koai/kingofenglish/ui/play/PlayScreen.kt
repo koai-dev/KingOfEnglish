@@ -2,11 +2,8 @@ package com.koai.kingofenglish.ui.play
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.extension.screenViewModel
@@ -18,13 +15,13 @@ import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenPlayBinding
 import com.koai.kingofenglish.ui.play.widget.Letter
 import com.koai.kingofenglish.ui.play.widget.WordView
-import com.koai.kingofenglish.utils.AdmobUtils
+import com.koai.kingofenglish.ads.AdmobUtils
+import com.koai.kingofenglish.ads.AdsViewModel
 import com.koai.kingofenglish.utils.Constants
 
 class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.layout.screen_play) {
 
     private val viewModel: PlayViewModel by screenViewModel()
-    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -174,12 +171,6 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
 
         viewModel.currentPointLive.observe(this) {
             binding.currentPoint = it
-        }
-
-        mainViewModel.isFirstLoadAds.observe(activity){
-            if (it) {
-                AdmobUtils.showAdmob(activity)
-            }
         }
     }
 

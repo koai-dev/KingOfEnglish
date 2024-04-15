@@ -44,30 +44,30 @@ class LevelUpDialog :
         }
         binding.pointAdded = pointAdd
         binding.btnHome.setClickableWithScale {
+            dismiss()
             setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd))
             navigator.offNavScreen(R.id.action_global_homeScreen)
-            dismiss()
         }
 
         binding.btnNormal.setClickableWithScale {
-            setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd))
             dismiss()
+            setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd))
         }
 
         binding.btnDoublePoint.setClickableWithScale {
-            setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd * 2))
             dismiss()
+            setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd * 2))
         }
 
         binding.btnShare.setClickableWithScale {
 //            router?.onShareFile()
-            setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd))
             dismiss()
+            setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd))
         }
 
         binding.btnAds.setClickableWithScale {
-            setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd * 2))
             dismiss()
+            setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd * 2))
         }
     }
 }

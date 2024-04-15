@@ -2,14 +2,12 @@ package com.koai.kingofenglish
 
 import android.media.MediaPlayer
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.ads.MobileAds
 import com.koai.base.main.BaseActivity
 import com.koai.base.main.action.event.NavigationEvent
 import com.koai.base.main.action.router.BaseRouter
-import com.koai.base.main.extension.navigatorViewModel
+import com.koai.kingofenglish.ads.AdsViewModel
 import com.koai.kingofenglish.databinding.ActivityMainBinding
-import com.koai.kingofenglish.utils.AdmobUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity :
@@ -17,10 +15,10 @@ class MainActivity :
     override val navigator: MainNavigator by viewModel()
     private var mediaPlayer: MediaPlayer? = null
     private var isOnDashBoard = false
-    private val mainViewModel: MainViewModel by viewModel()
+    private val adsViewModel: AdsViewModel by viewModel()
     override fun initView(savedInstanceState: Bundle?, binding: ActivityMainBinding) {
         MobileAds.initialize(this) {}
-        AdmobUtils.setAdmob(this, mainViewModel.isFirstLoadAds)
+        adsViewModel.scheduleShowAds(this)
     }
 
     override fun onNavigationEvent(event: NavigationEvent) {
@@ -33,7 +31,7 @@ class MainActivity :
 
     private fun playSound() {
         try {
-            if (mediaPlayer == null){
+            if (mediaPlayer == null) {
                 mediaPlayer = MediaPlayer()
                 mediaPlayer?.setDataSource("https://koai-dev.github.io/assets/raw/music/music.mp3")
                 isOnDashBoard = true
@@ -52,7 +50,7 @@ class MainActivity :
         super.onPause()
         try {
             mediaPlayer?.pause()
-        }catch (e: Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
@@ -62,7 +60,7 @@ class MainActivity :
         try {
             mediaPlayer?.release()
             mediaPlayer = null
-        }catch (e: Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }

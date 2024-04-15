@@ -60,4 +60,7 @@ dependencies {
     implementation("com.google.firebase:firebase-inappmessaging-display-ktx:20.4.2")
     implementation("com.google.firebase:firebase-config-ktx:21.6.3")
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
+
+    //worker
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 }

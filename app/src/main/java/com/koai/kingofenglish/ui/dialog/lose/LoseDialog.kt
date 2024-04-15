@@ -36,13 +36,13 @@ class LoseDialog: BaseDialog<DialogLoseBinding, BaseRouter, MainNavigator>(R.lay
     }
     override fun initView(savedInstanceState: Bundle?, binding: DialogLoseBinding) {
         binding.btnHome.setClickableWithScale{
-            navigator.offNavScreen(R.id.action_global_homeScreen)
             dismiss()
+            router?.onPopScreen()
         }
 
         binding.btnReplay.setClickableWithScale {
-            setFragmentResult(Constants.REPLAY, bundleOf())
             dismiss()
+            setFragmentResult(Constants.REPLAY, bundleOf())
         }
     }
 }

@@ -4,5 +4,4 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
-    val isFirstLoadAds = MutableLiveData<Boolean>()
 }

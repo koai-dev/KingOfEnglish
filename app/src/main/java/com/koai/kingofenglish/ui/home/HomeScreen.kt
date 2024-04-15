@@ -2,19 +2,23 @@ package com.koai.kingofenglish.ui.home
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.gone
+import com.koai.base.main.extension.journeyViewModel
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.extension.screenViewModel
 import com.koai.base.main.screens.BaseScreen
 import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.DashboardEvent
 import com.koai.kingofenglish.MainNavigator
+import com.koai.kingofenglish.MainViewModel
 import com.koai.kingofenglish.R
+import com.koai.kingofenglish.ads.AdsViewModel
 import com.koai.kingofenglish.databinding.ScreenHomeBinding
 import com.koai.kingofenglish.domain.models.User
 import com.koai.kingofenglish.ui.play.PlayViewModel
@@ -25,10 +29,13 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.layout.screen_home) {
     private val sharePreference by inject<SharePreference>()
     private val playViewModel: PlayViewModel by screenViewModel()
+    private val mainViewModel: MainViewModel by journeyViewModel()
+    private val adsViewModel: AdsViewModel by journeyViewModel()
 
     override fun initView(savedInstanceState: Bundle?, binding: ScreenHomeBinding) {
         Log.d("initView", HomeScreen::class.simpleName.toString())

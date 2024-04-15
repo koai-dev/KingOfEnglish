@@ -1,5 +1,6 @@
 package com.koai.kingofenglish
 
+import android.app.Activity
 import com.koai.base.BaseApplication
 import com.koai.kingofenglish.di.NavigatorModule
 import com.koai.kingofenglish.di.ServiceModule
