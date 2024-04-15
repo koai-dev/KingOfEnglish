@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
-import androidx.fragment.app.viewModels
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.journeyViewModel
@@ -49,6 +48,10 @@ class WatchAdsDialog :
                     setFragmentResult(Constants.SHOW_TIP, bundleOf())
                 }
             })
+        }
+
+        binding.btnClose.setClickableWithScale {
+            dismiss()
         }
     }
 }

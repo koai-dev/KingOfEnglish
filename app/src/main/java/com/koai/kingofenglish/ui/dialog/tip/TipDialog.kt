@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.Window
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions.loadImage
+import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.screens.BaseDialog
 import com.koai.kingofenglish.MainNavigator
@@ -29,12 +30,17 @@ class TipDialog : BaseDialog<DialogTipBinding, BaseRouter, MainNavigator>(R.layo
     override fun onStart() {
         super.onStart()
         this@TipDialog.dialog?.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
         )
     }
+
     override fun initView(savedInstanceState: Bundle?, binding: DialogTipBinding) {
-        binding.imgTip.loadImage(arguments?.getString(Constants.BASE_URL)?:"", onFail = {
+        binding.imgTip.loadImage(arguments?.getString(Constants.BASE_URL) ?: "", onFail = {
             dismiss()
         })
+
+        binding.btnClose.setClickableWithScale {
+            dismiss()
+        }
     }
 }

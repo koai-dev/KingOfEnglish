@@ -59,6 +59,16 @@
             app:layout_constraintStart_toStartOf="@+id/imageView14"
             app:srcCompat="@drawable/btn_more_tip" />
 
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/app_name"
+            android:padding="12dp"
+            android:src="@drawable/com_facebook_close"
+            app:layout_constraintEnd_toEndOf="@+id/imageView14"
+            app:layout_constraintStart_toStartOf="@+id/imageView14"
+            app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
