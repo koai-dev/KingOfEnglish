@@ -5,6 +5,7 @@ import com.koai.kingofenglish.MainViewModel
 import com.koai.kingofenglish.ads.AdsViewModel
 import com.koai.kingofenglish.ui.play.PlayViewModel
 import com.koai.kingofenglish.ads.AdsWorkManager
+import com.koai.kingofenglish.ui.login.LoginViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -13,5 +14,6 @@ object ViewModelModule {
         viewModel { MainViewModel() }
         screenViewModel { PlayViewModel(get(), get()) }
         viewModel { AdsViewModel(get()) }
+        screenViewModel { LoginViewModel(get(), get()) }
     }
 }
