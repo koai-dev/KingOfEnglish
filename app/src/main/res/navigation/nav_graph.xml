@@ -51,6 +51,7 @@
         app:destination="@id/playScreen" />
     <dialog
         android:id="@+id/incorrectDialog"
+        tools:layout="@layout/dialog_incorrect"
         android:name="com.koai.kingofenglish.ui.dialog.incorrect.IncorrectDialog"
         android:label="IncorrectDialog" />
     <action
@@ -58,6 +59,7 @@
         app:destination="@id/incorrectDialog" />
     <dialog
         android:id="@+id/levelUpDialog"
+        tools:layout="@layout/dialog_level_up"
         android:name="com.koai.kingofenglish.ui.dialog.levelup.LevelUpDialog"
         android:label="LevelUpDialog" />
     <action
@@ -65,14 +67,17 @@
         app:destination="@id/levelUpDialog" />
     <dialog
         android:id="@+id/loseDialog"
+        tools:layout="@layout/dialog_lose"
         android:name="com.koai.kingofenglish.ui.dialog.lose.LoseDialog"
         android:label="LoseDialog" />
     <dialog
         android:id="@+id/pauseDialog"
+        tools:layout="@layout/dialog_pause"
         android:name="com.koai.kingofenglish.ui.dialog.pause.PauseDialog"
         android:label="PauseDialog" />
     <dialog
         android:id="@+id/watchAdsDialog"
+        tools:layout="@layout/dialog_watch_ads"
         android:name="com.koai.kingofenglish.ui.dialog.watch_ads.WatchAdsDialog"
         android:label="TipDialog" />
     <action
@@ -86,10 +91,27 @@
         app:destination="@id/watchAdsDialog" />
     <dialog
         android:id="@+id/tipDialog"
+        tools:layout="@layout/dialog_tip"
         android:name="com.koai.kingofenglish.ui.dialog.tip.TipDialog"
         android:label="TipDialog" />
     <action
         android:id="@+id/action_global_tipDialog"
         app:destination="@id/tipDialog" />
+    <dialog
+        android:id="@+id/profileDialog"
+        tools:layout="@layout/dialog_profile"
+        android:name="com.koai.kingofenglish.ui.dialog.profile.ProfileDialog"
+        android:label="ProfileDialog" />
+    <dialog
+        android:id="@+id/settingDialog"
+        tools:layout="@layout/dialog_setting"
+        android:name="com.koai.kingofenglish.ui.dialog.setting.SettingDialog"
+        android:label="SettingDialog" />
+    <action
+        android:id="@+id/action_global_profileDialog"
+        app:destination="@id/profileDialog" />
+    <action
+        android:id="@+id/action_global_settingDialog"
+        app:destination="@id/settingDialog" />
 
 </navigation>

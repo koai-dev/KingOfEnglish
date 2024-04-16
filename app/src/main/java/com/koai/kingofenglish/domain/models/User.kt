@@ -8,16 +8,16 @@ import com.google.gson.annotations.SerializedName
 data class User(
 
 	@field:SerializedName("currentLevel")
-	val currentLevel: Int? = null,
+	var currentLevel: Int? = null,
 
 	@field:SerializedName("timeActive")
 	val timeActive: Int? = null,
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	var name: String? = null,
 
 	@field:SerializedName("avatar")
-	val avatar: String? = null,
+	var avatar: String? = null,
 
 	@field:SerializedName("accessToken")
 	val accessToken: String? = null,
@@ -26,8 +26,8 @@ data class User(
 	val userId: String? = null,
 
 	@field:SerializedName("fcmToken")
-	val fcmToken: String? = null,
+	var fcmToken: String? = null,
 
 	@field:SerializedName("points")
-	val points: Int? = null
+	var points: Int? = null
 ) : Parcelable

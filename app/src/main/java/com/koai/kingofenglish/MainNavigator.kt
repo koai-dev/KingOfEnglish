@@ -27,7 +27,7 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter, HomeRouter, Pl
     }
 
     override fun gotoSettingScreen() {
-
+        offNavScreen(R.id.action_global_settingDialog)
     }
 
     override fun gotoTutorial() {
