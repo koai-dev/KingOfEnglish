@@ -7,6 +7,7 @@ plugins {
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     id("com.google.firebase.firebase-perf")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -19,7 +20,9 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -63,4 +66,11 @@ dependencies {
 
     //worker
     implementation("androidx.work:work-runtime-ktx:2.9.0")
+
+    //room
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    testImplementation("androidx.room:room-testing:2.6.1")
 }
