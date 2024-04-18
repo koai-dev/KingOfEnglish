@@ -11,7 +11,7 @@ data class User(
 	var currentLevel: Int? = null,
 
 	@field:SerializedName("timeActive")
-	val timeActive: Int? = null,
+	val timeActive: Long? = null,
 
 	@field:SerializedName("name")
 	var name: String? = null,

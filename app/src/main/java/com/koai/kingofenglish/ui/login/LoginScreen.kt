@@ -6,6 +6,7 @@ import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScal
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.extension.screenViewModel
 import com.koai.base.main.screens.BaseScreen
+import com.koai.base.network.ResponseStatus
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenLoginBinding
@@ -35,7 +36,11 @@ class LoginScreen :
 
     private fun observer() {
         viewModel.stateLogin.observe(this) {
-
+            if (it is ResponseStatus.Success) {
+                if (it.data.userId != null) {
+                    router?.gotoHomeScreen()
+                }
+            }
         }
     }
 
@@ -55,6 +60,6 @@ class LoginScreen :
     }
 
     override fun onLoginFail(message: String?) {
-        //todo
+
     }
 }

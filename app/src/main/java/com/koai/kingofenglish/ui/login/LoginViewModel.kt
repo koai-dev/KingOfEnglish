@@ -57,7 +57,18 @@ class LoginViewModel(
                         Firebase.auth.signInWithCredential(credential)
                             .addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
-                                    loginCallBack.onLoginSuccess()
+                                    loginCallBack.onLoginSuccess(
+                                        User(
+                                            currentLevel = 0,
+                                            timeActive = System.currentTimeMillis(),
+                                            avatar = Firebase.auth.currentUser?.photoUrl?.toString(),
+                                            accessToken = accessToken.token,
+                                            fcmToken = accessToken.token,
+                                            name = Firebase.auth.currentUser?.displayName?: "KOE",
+                                            points = 0,
+                                            userId = Firebase.auth.currentUser?.uid
+                                        )
+                                    )
                                 } else {
                                     loginCallBack.onLoginFail(
                                         task.exception?.message ?: "Unknown Error!"
