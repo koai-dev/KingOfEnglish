@@ -56,7 +56,9 @@ class LoginScreen :
 
     override val navigator: MainNavigator by navigatorViewModel()
     override fun onLoginSuccess(user: User?) {
-        user?.let { viewModel.addNewUser(it) }
+        user?.let {
+            viewModel.addNewUser(it)
+        }
     }
 
     override fun onLoginFail(message: String?) {
