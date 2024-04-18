@@ -20,12 +20,21 @@ class LoginScreen :
         binding: ScreenLoginBinding,
     ) {
         LoginViewModel.loginCallBack = this
+        checkAuthStatus()
         actionView()
         observer()
     }
 
+    private fun checkAuthStatus() {
+        if (viewModel.isLogin()) {
+            binding.root.postDelayed(
+                { router?.gotoHomeScreen() }, 1000
+            )
+        }
+    }
+
     private fun observer() {
-        viewModel.stateLogin.observe(this){
+        viewModel.stateLogin.observe(this) {
 
         }
     }

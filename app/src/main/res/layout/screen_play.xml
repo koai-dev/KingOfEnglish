@@ -238,7 +238,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/super_corn"
-            android:text="Tip 1 : This is a fruit"
+            allowNullTextVisible="@{question.subQuestion!=null}"
             android:textColor="#C87895"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/imageView11"

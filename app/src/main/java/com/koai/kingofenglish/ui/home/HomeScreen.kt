@@ -71,6 +71,9 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
     }
 
     private fun setAction() {
+        binding.layoutItemDashboard.imgUserTutorial.setClickableWithScale {
+            router?.gotoProfile()
+        }
         binding.layoutItemDashboard.btnPlayNow.setClickableWithScale {
             router?.gotoPlayScreen()
         }

@@ -4,5 +4,4 @@ import com.koai.base.main.action.router.BaseRouter
 
 interface SplashRouter : BaseRouter {
     fun gotoLoginScreen()
-    fun gotoHomeScreen()
 }

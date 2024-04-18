@@ -1,5 +1,6 @@
 package com.koai.kingofenglish.common
 
+import android.graphics.Color
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -15,24 +16,51 @@ fun loadImage(img: ImageView, source: Any?) {
     }
 }
 
-@BindingAdapter("text_app")
-fun setText(txt: TextView, text: Any?) {
-    when (text) {
-        is Char? -> txt.text = (text ?: "").toString()
-        is Int? -> txt.text = (text ?: 0).toString()
-        is Long? -> txt.text = (text ?: 0).toString()
-        is Short? -> txt.text = (text ?: 0).toString()
-        is Double? -> txt.text = (text ?: 0).toString()
-        is Float? -> txt.text = (text ?: 0).toString()
-        else -> txt.text = (text ?: "").toString()
+@BindingAdapter(
+    value = ["text_app", "color_enable", "color_disable", "stateEnable", "allowNullTextVisible"],
+    requireAll = false
+)
+fun setText(
+    txt: TextView,
+    text: Any?,
+    colorEnable: Any? = null,
+    colorDisable: Any? = null,
+    enable: Boolean = true,
+    allowNullTextVisible: Boolean = false,
+) {
+    if (!allowNullTextVisible && text == null) {
+        txt.text = ""
+    } else {
+        text?.let {
+            txt.text = it.toString()
+        }
     }
-
     if (text is String?) {
         if (text?.lowercase()?.contains("null") == true) {
-            txt.gone()
-        } else {
-            txt.visible()
+            if (!allowNullTextVisible) {
+                txt.gone()
+            }
         }
+    }
+    if (allowNullTextVisible){
+        txt.visible()
+    }
+    if (enable) {
+        if (colorEnable != null) {
+            txt.setColor(colorEnable)
+        }
+    } else {
+        if (colorDisable != null) {
+            txt.setColor(colorDisable)
+        }
+    }
+}
+
+private fun TextView.setColor(color: Any) {
+    when (color) {
+        is String -> this.setTextColor(Color.parseColor(color))
+        is Int -> this.setTextColor(color)
+        else -> Unit
     }
 }
 

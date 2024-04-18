@@ -8,4 +8,5 @@ interface HomeRouter : BaseRouter {
     fun gotoSettingScreen()
     fun gotoTutorial()
     fun gotoLeaderBoardScreen()
+    fun gotoProfile()
 }

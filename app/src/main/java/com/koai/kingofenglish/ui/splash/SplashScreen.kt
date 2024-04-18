@@ -14,22 +14,18 @@ import com.koai.kingofenglish.ui.login.LoginViewModel
 @SuppressLint("CustomSplashScreen")
 class SplashScreen :
     BaseScreen<ScreenSplashBinding, SplashRouter, MainNavigator>(R.layout.screen_splash) {
-    private val viewModel: LoginViewModel by screenViewModel()
-    override fun onStart() {
-        super.onStart()
-        if (viewModel.isLogin()) {
-            router?.gotoHomeScreen()
-        }
-    }
 
     override fun initView(
         savedInstanceState: Bundle?,
         binding: ScreenSplashBinding,
     ) {
+
         binding.btnWelcome.setClickableWithScale {
             router?.gotoLoginScreen()
         }
-        binding.root.postDelayed({ router?.gotoLoginScreen() }, 1200)
+        binding.root.postDelayed({
+            router?.gotoLoginScreen()
+        }, 1200)
     }
 
     override val navigator: MainNavigator by navigatorViewModel()
