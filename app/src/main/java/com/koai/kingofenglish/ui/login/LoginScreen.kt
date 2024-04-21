@@ -1,7 +1,6 @@
 package com.koai.kingofenglish.ui.login
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
@@ -14,11 +13,13 @@ import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenLoginBinding
 import com.koai.kingofenglish.domain.account.AccountUtils
 import com.koai.kingofenglish.domain.models.User
+import com.koai.kingofenglish.utils.AppConfig
 
 class LoginScreen :
     BaseScreen<ScreenLoginBinding, LoginRouter, MainNavigator>(R.layout.screen_login),
     LoginViewModel.LoginCallBack {
     private val viewModel: LoginViewModel by screenViewModel()
+
     override fun initView(
         savedInstanceState: Bundle?,
         binding: ScreenLoginBinding,
@@ -47,27 +48,29 @@ class LoginScreen :
 
         viewModel.user.observe(this) {
             if (it is ResponseStatus.Success) {
-                AccountUtils.user = it.data.apply {
-                    if ((currentLevel ?: 0) <= 0) {
-                        currentLevel = 1
+                AccountUtils.user =
+                    it.data.apply {
+                        if ((currentLevel ?: 0) <= 0) {
+                            currentLevel = 1
+                        }
                     }
-                }
                 router?.gotoHomeScreen()
             }
         }
     }
 
     private fun actionView() {
-        binding.ctnLinkAccount.btnNo.setClickableWithScale() {
+        binding.ctnLinkAccount.btnNo.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             viewModel.getUserInfoOffline()
         }
 
-        binding.ctnLinkAccount.btnYes.setClickableWithScale {
+        binding.ctnLinkAccount.btnYes.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             viewModel.login(this)
         }
     }
 
     override val navigator: MainNavigator by navigatorViewModel()
+
     override fun onLoginSuccess(user: User?) {
         user?.let {
             viewModel.addNewUser(it)
@@ -75,6 +78,5 @@ class LoginScreen :
     }
 
     override fun onLoginFail(message: String?) {
-
     }
 }

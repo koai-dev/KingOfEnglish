@@ -7,24 +7,26 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class AdsViewModel(private val adsRepository: AdsRepository) : ViewModel() {
-    fun getAds(){
+    fun getAds()  {
         viewModelScope.launch {
             adsRepository.getAds()
         }
     }
 
-    fun showAdsOneTime(activity: Activity, action: AdmobUtils.Action? = null){
+    fun showAdsOneTime(
+        activity: Activity,
+        action: AdmobUtils.Action? = null,
+    )  {
         viewModelScope.launch {
             adsRepository.showAdsOneTime(activity, action)
         }
     }
 
-    fun scheduleShowAds(activity: Activity){
+    fun scheduleShowAds(activity: Activity)  {
         viewModelScope.launch {
             adsRepository.scheduleShowAds(activity).onStart {
                 getAds()
-            }.collect{
-
+            }.collect {
             }
         }
     }

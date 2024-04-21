@@ -10,20 +10,17 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
-import com.koai.base.main.extension.journeyViewModel
 import com.koai.base.main.extension.navigatorViewModel
-import com.koai.base.main.extension.screenViewModel
 import com.koai.base.main.screens.BaseDialog
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.DialogPauseBinding
-import com.koai.kingofenglish.ui.play.PlayViewModel
+import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
 
 class PauseDialog :
     BaseDialog<DialogPauseBinding, BaseRouter, MainNavigator>(R.layout.dialog_pause) {
     override val navigator: MainNavigator by navigatorViewModel()
-
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return super.onCreateDialog(savedInstanceState).apply {
@@ -36,17 +33,21 @@ class PauseDialog :
     override fun onStart() {
         super.onStart()
         this@PauseDialog.dialog?.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT,
         )
     }
 
-    override fun initView(savedInstanceState: Bundle?, binding: DialogPauseBinding) {
-        binding.btnHome.setClickableWithScale {
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: DialogPauseBinding,
+    ) {
+        binding.btnHome.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             dismiss()
             router?.onPopScreen()
         }
 
-        binding.btnResume.setClickableWithScale {
+        binding.btnResume.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             dismiss()
             setFragmentResult(Constants.RESUME, bundleOf())
         }

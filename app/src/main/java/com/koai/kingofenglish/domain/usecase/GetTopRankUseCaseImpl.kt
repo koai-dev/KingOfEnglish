@@ -7,7 +7,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GetTopRankUseCaseImpl(private val service: ApiService) : GetTopRankUseCase {
-    override suspend fun execute(): Flow<Response<List<User>>>  = flow {
-        emit(service.getTopRanks())
-    }
+    override suspend fun execute(): Flow<Response<List<User>>> =
+        flow {
+            emit(service.getTopRanks())
+        }
 }

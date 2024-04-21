@@ -15,9 +15,10 @@ import com.koai.base.main.screens.BaseDialog
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.DialogLoseBinding
+import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
 
-class LoseDialog: BaseDialog<DialogLoseBinding, BaseRouter, MainNavigator>(R.layout.dialog_lose) {
+class LoseDialog : BaseDialog<DialogLoseBinding, BaseRouter, MainNavigator>(R.layout.dialog_lose) {
     override val navigator: MainNavigator by navigatorViewModel()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -31,16 +32,21 @@ class LoseDialog: BaseDialog<DialogLoseBinding, BaseRouter, MainNavigator>(R.lay
     override fun onStart() {
         super.onStart()
         this@LoseDialog.dialog?.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT,
         )
     }
-    override fun initView(savedInstanceState: Bundle?, binding: DialogLoseBinding) {
-        binding.btnHome.setClickableWithScale{
+
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: DialogLoseBinding,
+    ) {
+        binding.btnHome.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             dismiss()
             router?.onPopScreen()
         }
 
-        binding.btnReplay.setClickableWithScale {
+        binding.btnReplay.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             dismiss()
             setFragmentResult(Constants.REPLAY, bundleOf())
         }

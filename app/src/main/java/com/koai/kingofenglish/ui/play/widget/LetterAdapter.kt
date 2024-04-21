@@ -5,23 +5,26 @@ import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScal
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ItemLetterResultBinding
 import com.koai.kingofenglish.databinding.ItemLetterUnderBinding
+import com.koai.kingofenglish.utils.AppConfig
 
 class LetterAdapter(private val type: TypeLetter = TypeLetter.TYPE_QUESTION) :
     BaseListAdapter<Letter>() {
-    override fun getLayoutId() =
-        if (type == TypeLetter.TYPE_QUESTION) R.layout.item_letter_under else R.layout.item_letter_result
+    override fun getLayoutId() = if (type == TypeLetter.TYPE_QUESTION) R.layout.item_letter_under else R.layout.item_letter_result
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
+    override fun onBindViewHolder(
+        holder: VH,
+        position: Int,
+    ) {
         if (type == TypeLetter.TYPE_QUESTION) {
             (holder.binding as ItemLetterUnderBinding).apply {
                 letter = getItem(holder.bindingAdapterPosition)
-                root.setClickableWithScale (100){
+                root.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect, delayTimeDoubleClick = 100) {
                     try {
                         listener?.click(
                             holder.bindingAdapterPosition,
-                            getItem(holder.bindingAdapterPosition)
+                            getItem(holder.bindingAdapterPosition),
                         )
-                    }catch (e: Exception){
+                    } catch (e: Exception) {
                         e.printStackTrace()
                     }
                 }
@@ -30,14 +33,14 @@ class LetterAdapter(private val type: TypeLetter = TypeLetter.TYPE_QUESTION) :
         } else {
             (holder.binding as ItemLetterResultBinding).apply {
                 letter = getItem(holder.bindingAdapterPosition)
-                root.setClickableWithScale(100) {
+                root.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect, delayTimeDoubleClick = 100) {
                     try {
                         listener?.click(
                             holder.bindingAdapterPosition,
                             getItem(holder.bindingAdapterPosition),
-                            1
+                            1,
                         )
-                    }catch (e: Exception){
+                    } catch (e: Exception) {
                         e.printStackTrace()
                     }
                 }
@@ -48,5 +51,6 @@ class LetterAdapter(private val type: TypeLetter = TypeLetter.TYPE_QUESTION) :
 }
 
 enum class TypeLetter {
-    TYPE_QUESTION, TYPE_ANSWER
+    TYPE_QUESTION,
+    TYPE_ANSWER,
 }

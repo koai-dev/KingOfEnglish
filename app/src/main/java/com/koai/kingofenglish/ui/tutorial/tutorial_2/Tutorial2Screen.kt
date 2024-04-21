@@ -10,7 +10,10 @@ import com.koai.kingofenglish.ui.tutorial.TutorialNavigator
 class Tutorial2Screen : BaseScreen<ScreenTutorial2Binding, Tutorial2Router, TutorialNavigator>(R.layout.screen_tutorial_2) {
     override val navigator: TutorialNavigator by navigatorViewModel()
 
-    override fun initView(savedInstanceState: Bundle?, binding: ScreenTutorial2Binding) {
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: ScreenTutorial2Binding,
+    ) {
         binding.container.setOnClickListener {
             router?.gotoTutorial3()
         }

@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 class LoginViewModel(
     private val addUserUseCase: AddUserUseCase,
     private val getUserUseCase: GetUserUseCase,
-    private val sharePreference: SharePreference
+    private val sharePreference: SharePreference,
 ) : ViewModel() {
     companion object {
         val callbackManager = CallbackManager.Factory.create()
@@ -44,52 +44,56 @@ class LoginViewModel(
 
     init {
         LoginManager.getInstance()
-            .registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
-                override fun onCancel() {
-                    loginCallBack.onLoginFail("Cancel")
-                }
-
-                override fun onError(error: FacebookException) {
-                    loginCallBack.onLoginFail(message = error.message)
-                }
-
-                override fun onSuccess(result: LoginResult) {
-                    val accessToken = AccessToken.getCurrentAccessToken()
-                    if (accessToken != null && !accessToken.isExpired) {
-                        val credential = FacebookAuthProvider.getCredential(accessToken.token)
-                        Firebase.auth.currentUser?.linkWithCredential(credential)
-                        Firebase.auth.signInWithCredential(credential)
-                            .addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    loginCallBack.onLoginSuccess(
-                                        User(
-                                            currentLevel = 1,
-                                            timeActive = System.currentTimeMillis(),
-                                            avatar = Firebase.auth.currentUser?.photoUrl?.toString(),
-                                            accessToken = accessToken.token,
-                                            fcmToken = accessToken.token,
-                                            name = Firebase.auth.currentUser?.displayName ?: "KOE",
-                                            points = 0,
-                                            userId = Firebase.auth.currentUser?.uid
-                                        )
-                                    )
-                                } else {
-                                    loginCallBack.onLoginFail(
-                                        task.exception?.message ?: "Unknown Error!"
-                                    )
-                                }
-                            }
+            .registerCallback(
+                callbackManager,
+                object : FacebookCallback<LoginResult> {
+                    override fun onCancel() {
+                        loginCallBack.onLoginFail("Cancel")
                     }
-                }
 
-            })
+                    override fun onError(error: FacebookException) {
+                        loginCallBack.onLoginFail(message = error.message)
+                    }
+
+                    override fun onSuccess(result: LoginResult) {
+                        val accessToken = AccessToken.getCurrentAccessToken()
+                        if (accessToken != null && !accessToken.isExpired) {
+                            val credential = FacebookAuthProvider.getCredential(accessToken.token)
+                            Firebase.auth.currentUser?.linkWithCredential(credential)
+                            Firebase.auth.signInWithCredential(credential)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        loginCallBack.onLoginSuccess(
+                                            User(
+                                                currentLevel = 1,
+                                                timeActive = System.currentTimeMillis(),
+                                                avatar = Firebase.auth.currentUser?.photoUrl?.toString(),
+                                                accessToken = accessToken.token,
+                                                fcmToken = accessToken.token,
+                                                name = Firebase.auth.currentUser?.displayName ?: "KOE",
+                                                points = 0,
+                                                userId = Firebase.auth.currentUser?.uid,
+                                            ),
+                                        )
+                                    } else {
+                                        loginCallBack.onLoginFail(
+                                            task.exception?.message ?: "Unknown Error!",
+                                        )
+                                    }
+                                }
+                        }
+                    }
+                },
+            )
     }
 
     fun login(fragment: Fragment) {
         viewModelScope.launch(Dispatchers.IO) {
             _stateLogin.postValue(ResponseStatus.Loading)
             LoginManager.getInstance().logInWithReadPermissions(
-                fragment, callbackManager, listOf("public_profile", "email")
+                fragment,
+                callbackManager,
+                listOf("public_profile", "email"),
             )
         }
     }
@@ -135,9 +139,9 @@ class LoginViewModel(
             ResponseStatus.Success(
                 User(
                     points = currentPoint,
-                    currentLevel = currentLevel
-                )
-            )
+                    currentLevel = currentLevel,
+                ),
+            ),
         )
     }
 
@@ -155,6 +159,7 @@ class LoginViewModel(
 
     interface LoginCallBack {
         fun onLoginSuccess(user: User? = null)
+
         fun onLoginFail(message: String?)
     }
 }

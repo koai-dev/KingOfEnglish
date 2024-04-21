@@ -10,12 +10,16 @@ import com.koai.base.main.screens.BaseScreen
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenTermBinding
+import com.koai.kingofenglish.utils.AppConfig
 
 class TermScreen : BaseScreen<ScreenTermBinding, BaseRouter, MainNavigator>(R.layout.screen_term) {
     override val navigator: MainNavigator by navigatorViewModel()
 
     @SuppressLint("SetJavaScriptEnabled")
-    override fun initView(savedInstanceState: Bundle?, binding: ScreenTermBinding) {
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: ScreenTermBinding,
+    ) {
         binding.root.post {
             binding.btnClose.setWidthHeight(binding.root.measuredHeight)
         }
@@ -28,9 +32,8 @@ class TermScreen : BaseScreen<ScreenTermBinding, BaseRouter, MainNavigator>(R.la
             }
             loadUrl("https://sites.google.com/view/koaidev-privacypolicy/")
         }
-        binding.btnClose.setClickableWithScale{
+        binding.btnClose.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             router?.onPopScreen()
         }
-
     }
 }

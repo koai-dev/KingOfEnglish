@@ -11,8 +11,14 @@ import com.koai.kingofenglish.ui.play.PlayRouter
 import com.koai.kingofenglish.ui.splash.SplashRouter
 import com.koai.kingofenglish.utils.Constants
 
-class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter, HomeRouter, PlayRouter,
-    SettingRouter, ProfileRouter {
+class MainNavigator :
+    BaseNavigator(),
+    SplashRouter,
+    LoginRouter,
+    HomeRouter,
+    PlayRouter,
+    SettingRouter,
+    ProfileRouter {
     override fun gotoLoginScreen() {
         offNavScreen(R.id.action_global_loginScreen)
     }
@@ -26,7 +32,6 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter, HomeRouter, Pl
     }
 
     override fun gotoCustomThemeScreen() {
-
     }
 
     override fun gotoSettingScreen() {
@@ -38,7 +43,6 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter, HomeRouter, Pl
     }
 
     override fun gotoLeaderBoardScreen() {
-
     }
 
     override fun gotoProfile() {
@@ -56,7 +60,7 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter, HomeRouter, Pl
     override fun nextLevel(currentPoint: Int) {
         offNavScreen(
             R.id.action_global_levelUpDialog,
-            bundleOf(Constants.ADDED_POINTS to currentPoint)
+            bundleOf(Constants.ADDED_POINTS to currentPoint),
         )
     }
 
@@ -106,7 +110,11 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter, HomeRouter, Pl
 }
 
 class DashboardEvent : NavigationEvent()
+
 class MusicEvent(val enable: Boolean) : NavigationEvent()
+
 class SoundEffectEvent(val enable: Boolean) : NavigationEvent()
+
 class VibrateEvent(val enable: Boolean) : NavigationEvent()
+
 class ReportEvent : NavigationEvent()

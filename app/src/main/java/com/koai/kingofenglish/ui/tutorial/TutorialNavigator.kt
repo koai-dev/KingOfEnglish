@@ -11,8 +11,15 @@ import com.koai.kingofenglish.ui.tutorial.tutorial_5.Tutorial5Router
 import com.koai.kingofenglish.ui.tutorial.tutorial_6.Tutorial6Router
 import com.koai.kingofenglish.ui.tutorial.tutorial_7.Tutorial7Router
 
-class TutorialNavigator : BaseNavigator(), Tutorial1Router, Tutorial2Router, Tutorial3Router,
-    Tutorial4Router, Tutorial5Router, Tutorial6Router, Tutorial7Router {
+class TutorialNavigator :
+    BaseNavigator(),
+    Tutorial1Router,
+    Tutorial2Router,
+    Tutorial3Router,
+    Tutorial4Router,
+    Tutorial5Router,
+    Tutorial6Router,
+    Tutorial7Router {
     override fun gotoTutorial2() {
         offNavScreen(R.id.action_global_tutorial2Screen)
     }

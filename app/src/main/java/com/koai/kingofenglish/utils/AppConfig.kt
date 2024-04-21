@@ -14,10 +14,11 @@ import com.koai.kingofenglish.R
 
 object AppConfig {
     private const val REWARD_ADS = "reward_ads"
+
     fun initRemote() {
         FirebaseRemoteConfig.getInstance().setDefaultsAsync(R.xml.remote_config_defaults)
         FirebaseRemoteConfig.getInstance().setConfigSettingsAsync(
-            FirebaseRemoteConfigSettings.Builder().setMinimumFetchIntervalInSeconds(10).build()
+            FirebaseRemoteConfigSettings.Builder().setMinimumFetchIntervalInSeconds(10).build(),
         )
         FirebaseRemoteConfig.getInstance().fetchAndActivate()
     }
@@ -25,8 +26,6 @@ object AppConfig {
     val rewardAds: String
         get() = FirebaseRemoteConfig.getInstance().getString(REWARD_ADS)
 
-
     var enableSoundEffect = true
     var enableVibrate = true
-
 }

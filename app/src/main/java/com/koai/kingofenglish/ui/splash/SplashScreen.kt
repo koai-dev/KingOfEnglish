@@ -8,17 +8,16 @@ import com.koai.base.main.screens.BaseScreen
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenSplashBinding
+import com.koai.kingofenglish.utils.AppConfig
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen :
     BaseScreen<ScreenSplashBinding, SplashRouter, MainNavigator>(R.layout.screen_splash) {
-
     override fun initView(
         savedInstanceState: Bundle?,
         binding: ScreenSplashBinding,
     ) {
-
-        binding.btnWelcome.setClickableWithScale {
+        binding.btnWelcome.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             router?.gotoLoginScreen()
         }
         binding.root.postDelayed({

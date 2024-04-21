@@ -11,7 +11,10 @@ class Tutorial1Screen :
     BaseScreen<ScreenTutorial1Binding, Tutorial1Router, TutorialNavigator>(R.layout.screen_tutorial_1) {
     override val navigator: TutorialNavigator by navigatorViewModel()
 
-    override fun initView(savedInstanceState: Bundle?, binding: ScreenTutorial1Binding) {
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: ScreenTutorial1Binding,
+    ) {
         binding.container.setOnClickListener {
             router?.gotoTutorial2()
         }

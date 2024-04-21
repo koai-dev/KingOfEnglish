@@ -18,6 +18,7 @@ import com.koai.kingofenglish.R
 import com.koai.kingofenglish.ads.AdmobUtils
 import com.koai.kingofenglish.ads.AdsViewModel
 import com.koai.kingofenglish.databinding.DialogWatchAdsBinding
+import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
 
 class WatchAdsDialog :
@@ -36,21 +37,28 @@ class WatchAdsDialog :
     override fun onStart() {
         super.onStart()
         this@WatchAdsDialog.dialog?.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT,
         )
     }
 
-    override fun initView(savedInstanceState: Bundle?, binding: DialogWatchAdsBinding) {
-        binding.btnWatchAds.setClickableWithScale {
-            adsViewModel.showAdsOneTime(activity, object : AdmobUtils.Action{
-                override fun onReward() {
-                    dismiss()
-                    setFragmentResult(Constants.SHOW_TIP, bundleOf())
-                }
-            })
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: DialogWatchAdsBinding,
+    ) {
+        binding.btnWatchAds.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
+            adsViewModel.showAdsOneTime(
+                activity,
+                object : AdmobUtils.Action {
+                    override fun onReward() {
+                        dismiss()
+                        setFragmentResult(Constants.SHOW_TIP, bundleOf())
+                    }
+                },
+            )
         }
 
-        binding.btnClose.setClickableWithScale {
+        binding.btnClose.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             dismiss()
             setFragmentResult(Constants.RESUME, bundleOf())
         }

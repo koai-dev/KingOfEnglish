@@ -13,6 +13,7 @@ import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenHomeBinding
 import com.koai.kingofenglish.domain.account.AccountUtils
+import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -22,7 +23,10 @@ import org.koin.android.ext.android.inject
 class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.layout.screen_home) {
     private val sharePreference by inject<SharePreference>()
 
-    override fun initView(savedInstanceState: Bundle?, binding: ScreenHomeBinding) {
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: ScreenHomeBinding,
+    ) {
         Log.d("initView", HomeScreen::class.simpleName.toString())
         setupUI()
         setAction()
@@ -55,22 +59,22 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
     }
 
     private fun setAction() {
-        binding.layoutItemDashboard.imgUserTutorial.setClickableWithScale {
+        binding.layoutItemDashboard.imgUserTutorial.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             router?.gotoProfile()
         }
-        binding.layoutItemDashboard.btnPlayNow.setClickableWithScale {
+        binding.layoutItemDashboard.btnPlayNow.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             router?.gotoPlayScreen()
         }
 
-        binding.layoutItemDashboard.btnLeaderBoard.setClickableWithScale {
+        binding.layoutItemDashboard.btnLeaderBoard.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             router?.gotoLeaderBoardScreen()
         }
 
-        binding.layoutItemDashboard.btnCustom.setClickableWithScale {
+        binding.layoutItemDashboard.btnCustom.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             router?.gotoCustomThemeScreen()
         }
 
-        binding.layoutItemDashboard.btnSetting.setClickableWithScale {
+        binding.layoutItemDashboard.btnSetting.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             router?.gotoSettingScreen()
         }
     }

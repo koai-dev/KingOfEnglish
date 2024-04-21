@@ -7,12 +7,12 @@ import com.koai.kingofenglish.domain.models.User
 
 object AccountUtils {
     var user: User? = null
+
     fun isLogin() = user?.userId != null
 
-    fun signOut(){
+    fun signOut()  {
         Firebase.auth.signOut()
         LoginManager.getInstance().logOut()
         user = null
     }
-
 }

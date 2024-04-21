@@ -16,6 +16,7 @@ import com.koai.base.main.screens.BaseDialog
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.DialogTipBinding
+import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
 
 class TipDialog : BaseDialog<DialogTipBinding, BaseRouter, MainNavigator>(R.layout.dialog_tip) {
@@ -32,17 +33,21 @@ class TipDialog : BaseDialog<DialogTipBinding, BaseRouter, MainNavigator>(R.layo
     override fun onStart() {
         super.onStart()
         this@TipDialog.dialog?.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
         )
     }
 
-    override fun initView(savedInstanceState: Bundle?, binding: DialogTipBinding) {
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: DialogTipBinding,
+    ) {
         binding.imgTip.loadImage(arguments?.getString(Constants.BASE_URL) ?: "", onFail = {
             dismiss()
             setFragmentResult(Constants.RESUME, bundleOf())
         })
 
-        binding.btnClose.setClickableWithScale {
+        binding.btnClose.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             dismiss()
             setFragmentResult(Constants.RESUME, bundleOf())
         }

@@ -49,14 +49,14 @@ android {
 }
 
 dependencies {
-    implementation("com.koai:base:1.4.4")
+    implementation("com.koai:base:1.4.5")
     testImplementation("org.testng:testng:7.4.0")
 
     implementation("com.google.android.flexbox:flexbox:3.0.0")
-    //admob
+    // admob
     implementation("com.google.android.gms:play-services-ads:23.0.0")
 
-    //firebase
+    // firebase
     implementation("com.facebook.android:facebook-android-sdk:16.2.0")
     implementation("com.google.firebase:firebase-perf-ktx:20.5.2")
     implementation("com.google.firebase:firebase-messaging-ktx:23.4.1")
@@ -64,10 +64,10 @@ dependencies {
     implementation("com.google.firebase:firebase-config-ktx:21.6.3")
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
 
-    //worker
+    // worker
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
-    //room
+    // room
     implementation("androidx.room:room-runtime:2.6.1")
     annotationProcessor("androidx.room:room-compiler:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")

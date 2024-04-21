@@ -10,7 +10,10 @@ import com.koai.base.main.extension.visible
 import com.koai.kingofenglish.utils.arrayToString
 
 @BindingAdapter("loadImage")
-fun loadImage(img: ImageView, source: Any?) {
+fun loadImage(
+    img: ImageView,
+    source: Any?,
+) {
     source?.let {
         img.loadImage(source, onSuccess = {}, onFail = {})
     }
@@ -18,7 +21,7 @@ fun loadImage(img: ImageView, source: Any?) {
 
 @BindingAdapter(
     value = ["text_app", "color_enable", "color_disable", "stateEnable", "allowNullTextVisible"],
-    requireAll = false
+    requireAll = false,
 )
 fun setText(
     txt: TextView,
@@ -42,9 +45,10 @@ fun setText(
             }
         }
     }
-    if (allowNullTextVisible){
-        txt.visible()
-    }
+    if (allowNullTextVisible)
+        {
+            txt.visible()
+        }
     if (enable) {
         if (colorEnable != null) {
             txt.setColor(colorEnable)
@@ -65,7 +69,10 @@ private fun TextView.setColor(color: Any) {
 }
 
 @BindingAdapter("array_to_string")
-fun arrayToString(txt: TextView, list: ArrayList<String?>?) {
+fun arrayToString(
+    txt: TextView,
+    list: ArrayList<String?>?,
+) {
     list?.let {
         txt.text = list.arrayToString()
     }

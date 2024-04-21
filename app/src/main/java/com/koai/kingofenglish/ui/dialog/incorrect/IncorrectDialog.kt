@@ -25,7 +25,11 @@ class IncorrectDialog : BaseDialog<DialogIncorrectBinding, BaseRouter, BaseNavig
             this.setCanceledOnTouchOutside(false)
         }
     }
-    override fun initView(savedInstanceState: Bundle?, binding: DialogIncorrectBinding) {
+
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: DialogIncorrectBinding,
+    ) {
         lifecycleScope.launch {
             delay(1000)
             dismiss()

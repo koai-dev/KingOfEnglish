@@ -6,8 +6,9 @@ import com.koai.kingofenglish.ui.tutorial.TutorialNavigator
 import org.koin.dsl.module
 
 object NavigatorModule {
-    fun init() = module {
-        navigatorViewModel { MainNavigator() }
-        navigatorViewModel { TutorialNavigator() }
-    }
+    fun init() =
+        module {
+            navigatorViewModel { MainNavigator() }
+            navigatorViewModel { TutorialNavigator() }
+        }
 }

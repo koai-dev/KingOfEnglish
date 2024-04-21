@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
-import com.koai.base.main.action.navigator.BaseNavigator
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
@@ -16,6 +15,7 @@ import com.koai.base.main.screens.BaseDialog
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.DialogLevelUpBinding
+import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
 
 class LevelUpDialog :
@@ -33,28 +33,32 @@ class LevelUpDialog :
     override fun onStart() {
         super.onStart()
         this@LevelUpDialog.dialog?.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT,
         )
     }
 
-    override fun initView(savedInstanceState: Bundle?, binding: DialogLevelUpBinding) {
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: DialogLevelUpBinding,
+    ) {
         var pointAdd = arguments?.getInt(Constants.ADDED_POINTS) ?: 0
         if (pointAdd == 0) {
             pointAdd = -600
         }
         binding.pointAdded = pointAdd
-        binding.btnHome.setClickableWithScale {
+        binding.btnHome.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             dismiss()
             setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd))
             router?.onPopScreen()
         }
 
-        binding.btnNormal.setClickableWithScale {
+        binding.btnNormal.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             dismiss()
             setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd))
         }
 
-        binding.btnDoublePoint.setClickableWithScale {
+        binding.btnDoublePoint.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             dismiss()
             if (pointAdd <= 150) {
                 pointAdd = 300
@@ -64,13 +68,13 @@ class LevelUpDialog :
             setFragmentResult(Constants.WATCH_ADS, bundleOf(Constants.ADDED_POINTS to pointAdd))
         }
 
-        binding.btnShare.setClickableWithScale {
+        binding.btnShare.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
 //            router?.onShareFile()
             dismiss()
             setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd))
         }
 
-        binding.btnAds.setClickableWithScale {
+        binding.btnAds.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             dismiss()
             if (pointAdd <= 150) {
                 pointAdd = 300

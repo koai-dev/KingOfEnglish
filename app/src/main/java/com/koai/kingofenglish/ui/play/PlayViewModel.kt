@@ -11,7 +11,6 @@ import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.domain.account.AccountUtils
 import com.koai.kingofenglish.domain.models.Question
 import com.koai.kingofenglish.domain.models.Response
-import com.koai.kingofenglish.domain.models.User
 import com.koai.kingofenglish.domain.usecase.GetQuestionUseCase
 import com.koai.kingofenglish.domain.usecase.UpdateUserUseCase
 import com.koai.kingofenglish.utils.Constants
@@ -26,7 +25,7 @@ import kotlinx.coroutines.launch
 class PlayViewModel(
     private val getQuestionUseCase: GetQuestionUseCase,
     private val updateUserUseCase: UpdateUserUseCase,
-    private val sharePreference: SharePreference
+    private val sharePreference: SharePreference,
 ) : ViewModel() {
     private val _question = MutableLiveData<ResponseStatus<Response<Question>>>()
     val questionLiveData: LiveData<ResponseStatus<Response<Question>>?> = _question
@@ -62,26 +61,28 @@ class PlayViewModel(
 
     fun updateUserInfo() {
         viewModelScope.launch(Dispatchers.IO) {
-            if (AccountUtils.isLogin()){
-                AccountUtils.user?.let {user->
-                    updateUserUseCase.execute(user).collect {
-                        Log.d("UPDATE: ", it.message ?: it.data?.userId ?: "Success")
+            if (AccountUtils.isLogin())
+                {
+                    AccountUtils.user?.let { user ->
+                        updateUserUseCase.execute(user).collect {
+                            Log.d("UPDATE: ", it.message ?: it.data?.userId ?: "Success")
+                        }
                     }
+                } else
+                {
+                    updateUserInfoOffline()
                 }
-            }else{
-                updateUserInfoOffline()
-            }
         }
     }
 
     private fun updateUserInfoOffline() {
         sharePreference.setIntPref(
             Constants.CURRENT_POINTS,
-            AccountUtils.user?.points ?: 0
+            AccountUtils.user?.points ?: 0,
         )
         sharePreference.setIntPref(
             Constants.CURRENT_QUESTION,
-            AccountUtils.user?.currentLevel ?: 1
+            AccountUtils.user?.currentLevel ?: 1,
         )
     }
 
@@ -89,25 +90,26 @@ class PlayViewModel(
         viewModelScope.launch {
             timer?.cancel()
             jobTimer?.cancelAndJoin()
-            jobTimer = viewModelScope.launch {
-                timer = object : CountDownTimer(timeOut, 1000) {
-                    override fun onTick(millisUntilFinished: Long) {
-                        if (isPlaying) {
-                            timeOut = millisUntilFinished
-                            _timerCountdown.postValue((millisUntilFinished / 1000).toInt())
-                        }
-                    }
+            jobTimer =
+                viewModelScope.launch {
+                    timer =
+                        object : CountDownTimer(timeOut, 1000) {
+                            override fun onTick(millisUntilFinished: Long) {
+                                if (isPlaying) {
+                                    timeOut = millisUntilFinished
+                                    _timerCountdown.postValue((millisUntilFinished / 1000).toInt())
+                                }
+                            }
 
-                    override fun onFinish() {
-                        if (isPlaying) {
-                            timeOut = 61000L
-                            _timerCountdown.postValue(0)
+                            override fun onFinish() {
+                                if (isPlaying) {
+                                    timeOut = 61000L
+                                    _timerCountdown.postValue(0)
+                                }
+                            }
                         }
-                    }
-
+                    timer?.start()
                 }
-                timer?.start()
-            }
         }
     }
 
@@ -137,7 +139,6 @@ class PlayViewModel(
     }
 
     fun getCurrentPointAdd() = (timerCountdown.value ?: 0) * 10 * (question?.levelQuestion ?: 1)
-
 
     fun resume() {
         isPlaying = true
