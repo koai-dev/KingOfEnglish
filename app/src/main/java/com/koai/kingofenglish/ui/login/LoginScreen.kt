@@ -58,7 +58,7 @@ class LoginScreen :
     }
 
     private fun actionView() {
-        binding.ctnLinkAccount.btnNo.setClickableWithScale {
+        binding.ctnLinkAccount.btnNo.setClickableWithScale() {
             viewModel.getUserInfoOffline()
         }
 

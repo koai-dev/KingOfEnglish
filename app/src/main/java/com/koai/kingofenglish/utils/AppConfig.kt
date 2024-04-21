@@ -25,4 +25,8 @@ object AppConfig {
     val rewardAds: String
         get() = FirebaseRemoteConfig.getInstance().getString(REWARD_ADS)
 
+
+    var enableSoundEffect = true
+    var enableVibrate = true
+
 }
