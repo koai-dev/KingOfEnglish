@@ -77,6 +77,8 @@ object AdmobUtils {
         }
     }
 
+    fun isLoadedAdmob() = mRewardedAd != null
+
     interface Action {
         fun onReward()
     }

@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.Window
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions.loadImage
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
@@ -23,7 +25,7 @@ class TipDialog : BaseDialog<DialogTipBinding, BaseRouter, MainNavigator>(R.layo
         return super.onCreateDialog(savedInstanceState).apply {
             this.requestWindowFeature(Window.FEATURE_NO_TITLE)
             this.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            this.setCanceledOnTouchOutside(true)
+            this.setCanceledOnTouchOutside(false)
         }
     }
 
@@ -37,10 +39,12 @@ class TipDialog : BaseDialog<DialogTipBinding, BaseRouter, MainNavigator>(R.layo
     override fun initView(savedInstanceState: Bundle?, binding: DialogTipBinding) {
         binding.imgTip.loadImage(arguments?.getString(Constants.BASE_URL) ?: "", onFail = {
             dismiss()
+            setFragmentResult(Constants.RESUME, bundleOf())
         })
 
         binding.btnClose.setClickableWithScale {
             dismiss()
+            setFragmentResult(Constants.RESUME, bundleOf())
         }
     }
 }

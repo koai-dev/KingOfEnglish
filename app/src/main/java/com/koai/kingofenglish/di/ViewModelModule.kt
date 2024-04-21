@@ -12,8 +12,8 @@ import org.koin.dsl.module
 object ViewModelModule {
     fun init() = module {
         viewModel { MainViewModel() }
-        screenViewModel { PlayViewModel(get(), get()) }
+        screenViewModel { PlayViewModel(get(), get(), get()) }
         viewModel { AdsViewModel(get()) }
-        screenViewModel { LoginViewModel(get(), get()) }
+        screenViewModel { LoginViewModel(get(), get(), get()) }
     }
 }

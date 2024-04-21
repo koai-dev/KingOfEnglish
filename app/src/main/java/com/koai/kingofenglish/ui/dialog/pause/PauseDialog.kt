@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.Window
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.journeyViewModel
@@ -16,6 +18,7 @@ import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.DialogPauseBinding
 import com.koai.kingofenglish.ui.play.PlayViewModel
+import com.koai.kingofenglish.utils.Constants
 
 class PauseDialog :
     BaseDialog<DialogPauseBinding, BaseRouter, MainNavigator>(R.layout.dialog_pause) {
@@ -39,12 +42,13 @@ class PauseDialog :
 
     override fun initView(savedInstanceState: Bundle?, binding: DialogPauseBinding) {
         binding.btnHome.setClickableWithScale {
-            navigator.offNavScreen(R.id.action_global_homeScreen)
             dismiss()
+            router?.onPopScreen()
         }
 
         binding.btnResume.setClickableWithScale {
-
+            dismiss()
+            setFragmentResult(Constants.RESUME, bundleOf())
         }
     }
 }

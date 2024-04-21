@@ -39,14 +39,14 @@ class LevelUpDialog :
 
     override fun initView(savedInstanceState: Bundle?, binding: DialogLevelUpBinding) {
         var pointAdd = arguments?.getInt(Constants.ADDED_POINTS) ?: 0
-        if (pointAdd==0){
+        if (pointAdd == 0) {
             pointAdd = -600
         }
         binding.pointAdded = pointAdd
         binding.btnHome.setClickableWithScale {
             dismiss()
             setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd))
-            navigator.offNavScreen(R.id.action_global_homeScreen)
+            router?.onPopScreen()
         }
 
         binding.btnNormal.setClickableWithScale {
@@ -56,7 +56,12 @@ class LevelUpDialog :
 
         binding.btnDoublePoint.setClickableWithScale {
             dismiss()
-            setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd * 2))
+            if (pointAdd <= 150) {
+                pointAdd = 300
+            } else {
+                pointAdd *= 2
+            }
+            setFragmentResult(Constants.WATCH_ADS, bundleOf(Constants.ADDED_POINTS to pointAdd))
         }
 
         binding.btnShare.setClickableWithScale {
@@ -67,7 +72,12 @@ class LevelUpDialog :
 
         binding.btnAds.setClickableWithScale {
             dismiss()
-            setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd * 2))
+            if (pointAdd <= 150) {
+                pointAdd = 300
+            } else {
+                pointAdd *= 2
+            }
+            setFragmentResult(Constants.WATCH_ADS, bundleOf(Constants.ADDED_POINTS to pointAdd))
         }
     }
 }

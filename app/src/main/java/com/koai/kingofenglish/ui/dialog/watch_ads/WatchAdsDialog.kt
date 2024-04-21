@@ -29,7 +29,7 @@ class WatchAdsDialog :
         return super.onCreateDialog(savedInstanceState).apply {
             this.requestWindowFeature(Window.FEATURE_NO_TITLE)
             this.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            this.setCanceledOnTouchOutside(true)
+            this.setCanceledOnTouchOutside(false)
         }
     }
 
@@ -52,6 +52,7 @@ class WatchAdsDialog :
 
         binding.btnClose.setClickableWithScale {
             dismiss()
+            setFragmentResult(Constants.RESUME, bundleOf())
         }
     }
 }

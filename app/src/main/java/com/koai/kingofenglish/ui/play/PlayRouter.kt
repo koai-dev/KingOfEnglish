@@ -12,4 +12,6 @@ interface PlayRouter : BaseRouter {
     fun showWrongToast()
 
     fun watchAds()
+
+    fun lose()
 }

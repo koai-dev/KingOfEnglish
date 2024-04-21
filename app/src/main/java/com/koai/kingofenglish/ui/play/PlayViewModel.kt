@@ -1,15 +1,19 @@
 package com.koai.kingofenglish.ui.play
 
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.koai.base.network.ResponseStatus
 import com.koai.base.utils.SharePreference
+import com.koai.kingofenglish.domain.account.AccountUtils
 import com.koai.kingofenglish.domain.models.Question
 import com.koai.kingofenglish.domain.models.Response
+import com.koai.kingofenglish.domain.models.User
 import com.koai.kingofenglish.domain.usecase.GetQuestionUseCase
+import com.koai.kingofenglish.domain.usecase.UpdateUserUseCase
 import com.koai.kingofenglish.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -21,6 +25,7 @@ import kotlinx.coroutines.launch
 
 class PlayViewModel(
     private val getQuestionUseCase: GetQuestionUseCase,
+    private val updateUserUseCase: UpdateUserUseCase,
     private val sharePreference: SharePreference
 ) : ViewModel() {
     private val _question = MutableLiveData<ResponseStatus<Response<Question>>>()
@@ -30,56 +35,74 @@ class PlayViewModel(
     val timerCountdown: LiveData<Int> = _timerCountdown
     private var jobTimer: Job? = null
     private var timer: CountDownTimer? = null
+    private var timeOut = 61000L
+    private var isPlaying = false
 
     var question: Question? = null
 
-    private var currentLevel = 0
-    private var currentPoint = 0
+    private var _pointAdd = MutableLiveData<Int?>()
+    var pointAdd: LiveData<Int?> = _pointAdd
 
-    private val _currentPointLive = MutableLiveData<Int>()
-    val currentPointLive: LiveData<Int> = _currentPointLive
-    private val _currentLevelLive = MutableLiveData<Int>()
-    val currentLevelLive: LiveData<Int> = _currentLevelLive
+    private val _needUpdateUserInfo = MutableLiveData<Boolean>()
+    val needUpdateUserInfo: LiveData<Boolean> = _needUpdateUserInfo
 
     fun getQuestionByLevel() {
         viewModelScope.launch(Dispatchers.IO) {
-            getQuestionUseCase.execute(currentLevel)
+            getQuestionUseCase.execute(AccountUtils.user?.currentLevel ?: 0)
                 .onStart {
+                    timeOut = 61000L
                     _question.postValue(ResponseStatus.Loading)
                 }.catch {
                     _question.postValue(ResponseStatus.Error(message = it.message ?: ""))
                 }.collect {
-                    currentLevel += 1
                     _question.postValue(ResponseStatus.Success(it))
                 }
         }
     }
 
-    fun getCurrentState() {
-        currentLevel = sharePreference.getIntPref(Constants.CURRENT_QUESTION)
-        currentPoint = sharePreference.getIntPref(Constants.CURRENT_POINTS)
-        if (currentPoint <= 0) {
-            currentPoint = 0
+    fun updateUserInfo() {
+        viewModelScope.launch(Dispatchers.IO) {
+            if (AccountUtils.isLogin()){
+                AccountUtils.user?.let {user->
+                    updateUserUseCase.execute(user).collect {
+                        Log.d("UPDATE: ", it.message ?: it.data?.userId ?: "Success")
+                    }
+                }
+            }else{
+                updateUserInfoOffline()
+            }
         }
-        _currentPointLive.postValue(currentPoint)
-        if (currentLevel <= 1) {
-            currentLevel = 1
-        }
-        _currentLevelLive.postValue(currentLevel)
     }
 
-    fun countdownTimeAnswer() {
+    private fun updateUserInfoOffline() {
+        sharePreference.setIntPref(
+            Constants.CURRENT_POINTS,
+            AccountUtils.user?.points ?: 0
+        )
+        sharePreference.setIntPref(
+            Constants.CURRENT_QUESTION,
+            AccountUtils.user?.currentLevel ?: 1
+        )
+    }
+
+    private fun countdownTimeAnswer() {
         viewModelScope.launch {
             timer?.cancel()
             jobTimer?.cancelAndJoin()
             jobTimer = viewModelScope.launch {
-                timer = object : CountDownTimer(61000, 1000) {
+                timer = object : CountDownTimer(timeOut, 1000) {
                     override fun onTick(millisUntilFinished: Long) {
-                        _timerCountdown.postValue((millisUntilFinished / 1000).toInt())
+                        if (isPlaying) {
+                            timeOut = millisUntilFinished
+                            _timerCountdown.postValue((millisUntilFinished / 1000).toInt())
+                        }
                     }
 
                     override fun onFinish() {
-                        _timerCountdown.postValue(0)
+                        if (isPlaying) {
+                            timeOut = 61000L
+                            _timerCountdown.postValue(0)
+                        }
                     }
 
                 }
@@ -91,40 +114,41 @@ class PlayViewModel(
     fun calculateCurrentPoint(pointAdd: Int = 0) {
         var point = pointAdd
         viewModelScope.launch(Dispatchers.IO) {
+            _needUpdateUserInfo.postValue(false)
             if (point > 0) {
                 while (point > 0) {
-                    currentPoint = 1 + (currentPointLive.value ?: 0)
-                    _currentPointLive.postValue(currentPoint)
+                    AccountUtils.user?.points = AccountUtils.user?.points?.plus(1)
                     point -= 1
-                    delay(5)
+                    _pointAdd.postValue(AccountUtils.user?.points)
+                    delay(3)
                 }
             } else {
                 point *= -1
-                while (point > 0 && currentPoint > 0) {
-                    currentPoint = (currentPointLive.value ?: 0) - 1
-                    _currentPointLive.postValue(currentPoint)
+                while (point > 0 && (AccountUtils.user?.points ?: 0) > 0) {
+                    AccountUtils.user?.points = AccountUtils.user?.points?.minus(1)
                     point -= 1
-                    delay(5)
+                    _pointAdd.postValue(AccountUtils.user?.points)
+                    delay(3)
                 }
             }
+        }.invokeOnCompletion {
+            _needUpdateUserInfo.postValue(true)
         }
     }
 
     fun getCurrentPointAdd() = (timerCountdown.value ?: 0) * 10 * (question?.levelQuestion ?: 1)
 
-    fun onDestroy() {
-        viewModelScope.launch {
-            currentLevel -= 1
-            sharePreference.setIntPref(Constants.CURRENT_QUESTION, currentLevel)
-            sharePreference.setIntPref(Constants.CURRENT_POINTS, currentPoint)
-        }
-    }
 
     fun resume() {
-
+        isPlaying = true
+        countdownTimeAnswer()
     }
 
-    fun pause(){
-
+    fun pause() {
+        isPlaying = false
+        viewModelScope.launch {
+            timer?.cancel()
+            jobTimer?.cancelAndJoin()
+        }
     }
 }

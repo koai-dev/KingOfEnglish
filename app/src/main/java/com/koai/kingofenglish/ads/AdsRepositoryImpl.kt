@@ -13,9 +13,11 @@ class AdsRepositoryImpl(private val context: Context) : AdsRepository {
     }
 
     override fun showAdsOneTime(activity: Activity, action: AdmobUtils.Action?) {
-        if (System.currentTimeMillis()-lastShowAdsTime>= minIntervalMillis){
+        if (System.currentTimeMillis() - lastShowAdsTime >= minIntervalMillis) {
             AdmobUtils.showAdmob(activity, action)
             lastShowAdsTime = System.currentTimeMillis()
+        } else {
+            action?.onReward()
         }
     }
 

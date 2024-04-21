@@ -8,9 +8,12 @@ import com.google.android.gms.ads.MobileAds
 import com.koai.base.main.BaseActivity
 import com.koai.base.main.action.event.NavigationEvent
 import com.koai.base.main.action.router.BaseRouter
+import com.koai.base.main.extension.screenViewModel
 import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.ads.AdsViewModel
 import com.koai.kingofenglish.databinding.ActivityMainBinding
+import com.koai.kingofenglish.domain.account.AccountUtils
+import com.koai.kingofenglish.ui.play.PlayViewModel
 import com.koai.kingofenglish.utils.Constants
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,6 +25,7 @@ class MainActivity :
     private var isOnDashBoard = false
     private val adsViewModel: AdsViewModel by viewModel()
     private val sharePreference: SharePreference by inject()
+
     override fun initView(savedInstanceState: Bundle?, binding: ActivityMainBinding) {
         MobileAds.initialize(this) {}
         adsViewModel.scheduleShowAds(this)

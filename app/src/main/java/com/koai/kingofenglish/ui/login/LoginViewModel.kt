@@ -15,9 +15,12 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.koai.base.network.ResponseStatus
+import com.koai.base.utils.SharePreference
+import com.koai.kingofenglish.domain.account.AccountUtils
 import com.koai.kingofenglish.domain.models.User
 import com.koai.kingofenglish.domain.usecase.AddUserUseCase
 import com.koai.kingofenglish.domain.usecase.GetUserUseCase
+import com.koai.kingofenglish.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
@@ -25,7 +28,8 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(
     private val addUserUseCase: AddUserUseCase,
-    private val getUserUseCase: GetUserUseCase
+    private val getUserUseCase: GetUserUseCase,
+    private val sharePreference: SharePreference
 ) : ViewModel() {
     companion object {
         val callbackManager = CallbackManager.Factory.create()
@@ -59,12 +63,12 @@ class LoginViewModel(
                                 if (task.isSuccessful) {
                                     loginCallBack.onLoginSuccess(
                                         User(
-                                            currentLevel = 0,
+                                            currentLevel = 1,
                                             timeActive = System.currentTimeMillis(),
                                             avatar = Firebase.auth.currentUser?.photoUrl?.toString(),
                                             accessToken = accessToken.token,
                                             fcmToken = accessToken.token,
-                                            name = Firebase.auth.currentUser?.displayName?: "KOE",
+                                            name = Firebase.auth.currentUser?.displayName ?: "KOE",
                                             points = 0,
                                             userId = Firebase.auth.currentUser?.uid
                                         )
@@ -118,10 +122,32 @@ class LoginViewModel(
         }
     }
 
+    fun getUserInfoOffline() {
+        var currentLevel = sharePreference.getIntPref(Constants.CURRENT_QUESTION)
+        var currentPoint = sharePreference.getIntPref(Constants.CURRENT_POINTS)
+        if (currentPoint <= 0) {
+            currentPoint = 0
+        }
+        if (currentLevel <= 1) {
+            currentLevel = 1
+        }
+        _user.postValue(
+            ResponseStatus.Success(
+                User(
+                    points = currentPoint,
+                    currentLevel = currentLevel
+                )
+            )
+        )
+    }
+
     fun logout() {
         viewModelScope.launch(Dispatchers.IO) {
             LoginManager.getInstance().logOut()
             Firebase.auth.signOut()
+            sharePreference.setIntPref(Constants.CURRENT_QUESTION, 1)
+            sharePreference.setIntPref(Constants.CURRENT_POINTS, 0)
+            AccountUtils.user = null
         }
     }
 

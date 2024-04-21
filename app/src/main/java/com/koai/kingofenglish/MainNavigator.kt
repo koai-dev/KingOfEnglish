@@ -3,6 +3,7 @@ package com.koai.kingofenglish
 import androidx.core.os.bundleOf
 import com.koai.base.main.action.event.NavigationEvent
 import com.koai.base.main.action.navigator.BaseNavigator
+import com.koai.kingofenglish.ui.dialog.profile.ProfileRouter
 import com.koai.kingofenglish.ui.dialog.setting.SettingRouter
 import com.koai.kingofenglish.ui.home.HomeRouter
 import com.koai.kingofenglish.ui.login.LoginRouter
@@ -11,7 +12,7 @@ import com.koai.kingofenglish.ui.splash.SplashRouter
 import com.koai.kingofenglish.utils.Constants
 
 class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter, HomeRouter, PlayRouter,
-    SettingRouter {
+    SettingRouter, ProfileRouter {
     override fun gotoLoginScreen() {
         offNavScreen(R.id.action_global_loginScreen)
     }
@@ -65,6 +66,10 @@ class MainNavigator : BaseNavigator(), SplashRouter, LoginRouter, HomeRouter, Pl
 
     override fun watchAds() {
         offNavScreen(R.id.action_global_watchAdsDialog)
+    }
+
+    override fun lose() {
+        offNavScreen(R.id.action_global_loseDialog)
     }
 
     override fun turnOnMusic() {

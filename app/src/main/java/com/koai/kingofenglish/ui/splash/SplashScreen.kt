@@ -4,12 +4,10 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
-import com.koai.base.main.extension.screenViewModel
 import com.koai.base.main.screens.BaseScreen
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenSplashBinding
-import com.koai.kingofenglish.ui.login.LoginViewModel
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen :

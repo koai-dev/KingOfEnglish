@@ -2,9 +2,14 @@ package com.koai.kingofenglish.ui.play
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
+import com.koai.base.main.extension.gone
+import com.koai.base.main.extension.journeyViewModel
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.extension.screenViewModel
 import com.koai.base.main.screens.BaseScreen
@@ -17,33 +22,54 @@ import com.koai.kingofenglish.ui.play.widget.Letter
 import com.koai.kingofenglish.ui.play.widget.WordView
 import com.koai.kingofenglish.ads.AdmobUtils
 import com.koai.kingofenglish.ads.AdsViewModel
+import com.koai.kingofenglish.domain.account.AccountUtils
 import com.koai.kingofenglish.utils.Constants
 
 class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.layout.screen_play) {
 
     private val viewModel: PlayViewModel by screenViewModel()
+    private val adsViewModel: AdsViewModel by journeyViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("onCreate", PlayScreen::class.simpleName.toString())
-        setFragmentResultListener(Constants.ADDED_POINTS){ requestKey, bundle ->
-            if (requestKey== Constants.ADDED_POINTS){
+        setFragmentResultListener(Constants.ADDED_POINTS) { requestKey, bundle ->
+            if (requestKey == Constants.ADDED_POINTS) {
                 val pointAdd = bundle.getInt(Constants.ADDED_POINTS)
                 viewModel.calculateCurrentPoint(pointAdd)
-            }
-        }
-        setFragmentResultListener(Constants.REPLAY){requestKey, bundle ->
-            if (requestKey == Constants.REPLAY){
                 getData()
             }
         }
-        setFragmentResultListener(Constants.RESUME){requestKey, bundle ->
-            if (requestKey == Constants.RESUME){
+        setFragmentResultListener(Constants.WATCH_ADS) { requestKey, bundle ->
+            if (requestKey == Constants.WATCH_ADS) {
+                if (AdmobUtils.isLoadedAdmob()) {
+                    adsViewModel.showAdsOneTime(activity, object : AdmobUtils.Action {
+                        override fun onReward() {
+                            val pointAdd = bundle.getInt(Constants.ADDED_POINTS)
+                            viewModel.calculateCurrentPoint(pointAdd)
+                            getData()
+                        }
+                    })
+                } else {
+                    val pointAdd = bundle.getInt(Constants.ADDED_POINTS)
+                    viewModel.calculateCurrentPoint(pointAdd)
+                    getData()
+                }
+            }
+        }
+        setFragmentResultListener(Constants.REPLAY) { requestKey, bundle ->
+            if (requestKey == Constants.REPLAY) {
+                getData()
+            }
+        }
+        setFragmentResultListener(Constants.RESUME) { requestKey, bundle ->
+            if (requestKey == Constants.RESUME) {
+                binding.btnPause.gone()
                 viewModel.resume()
             }
         }
-        setFragmentResultListener(Constants.SHOW_TIP){requestKey, bundle ->
-            if (requestKey == Constants.SHOW_TIP){
+        setFragmentResultListener(Constants.SHOW_TIP) { requestKey, bundle ->
+            if (requestKey == Constants.SHOW_TIP) {
                 viewModel.question?.thumb?.let { router?.gotoTip(it) }
             }
         }
@@ -51,7 +77,7 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
 
     override fun initView(savedInstanceState: Bundle?, binding: ScreenPlayBinding) {
         Log.d("initView", PlayScreen::class.simpleName.toString())
-        viewModel.getCurrentState()
+        binding.user = AccountUtils.user
         setupUI()
         getData()
         onAction()
@@ -100,9 +126,12 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
                             showCurrentAnswer(currentList)
                             if (currentList.firstOrNull { letter -> letter.isSelected } == null) {
                                 if (checkValidAnswer(currentList.toMutableList())) {
+                                    AccountUtils.user?.currentLevel =
+                                        AccountUtils.user?.currentLevel?.plus(1)
                                     router?.nextLevel(viewModel.getCurrentPointAdd())
-                                    getData()
+                                    viewModel.pause()
                                 } else {
+                                    viewModel.pointAdd
                                     router?.showWrongToast()
                                 }
                             }
@@ -114,6 +143,7 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
             }
         }
     }
+
 
     private fun showCurrentAnswer(listAnswer: List<Letter>) {
         var answer = ""
@@ -148,7 +178,7 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
         viewModel.questionLiveData.observe(this) { question ->
             question?.let {
                 if (it is ResponseStatus.Success) {
-                    viewModel.countdownTimeAnswer()
+                    viewModel.resume()
                     viewModel.question = it.data.data
                     binding.question = it.data.data
                     binding.answer = null
@@ -167,11 +197,26 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
 
         viewModel.timerCountdown.observe(this) {
             binding.txtTimer.text = it.toString()
+            if (it <= 0) {
+                viewModel.pause()
+                router?.lose()
+            }
         }
 
-        viewModel.currentPointLive.observe(this) {
-            binding.currentPoint = it
+        viewModel.pointAdd.observe(this) {
+            binding.user = AccountUtils.user
         }
+
+        viewModel.needUpdateUserInfo.observe(this) {
+            if (it) {
+                viewModel.updateUserInfo()
+            }
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.updateUserInfo()
     }
 
     private fun onAction() {
@@ -185,13 +230,11 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
         }
 
         binding.btnTip.setClickableWithScale {
+            if (binding.btnPause.visibility == View.VISIBLE) {
+                viewModel.pause()
+            }
             router?.watchAds()
         }
-    }
-
-    override fun onPause() {
-        viewModel.onDestroy()
-        super.onPause()
     }
 
     override val navigator: MainNavigator by navigatorViewModel()

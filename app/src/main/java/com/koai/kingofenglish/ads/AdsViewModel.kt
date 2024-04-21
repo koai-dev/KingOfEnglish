@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class AdsViewModel(private val adsRepository: AdsRepository) : ViewModel() {
-    private fun getAds(){
+    fun getAds(){
         viewModelScope.launch {
             adsRepository.getAds()
         }
