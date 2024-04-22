@@ -44,6 +44,7 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
 
     private fun setupUI() {
         binding.layoutItemDashboard.user = AccountUtils.user
+        binding.ctnLinkAccount.img = AppConfig.background
         binding.ctnLinkAccount.btnNo.gone()
         binding.ctnLinkAccount.btnYes.gone()
         binding.ctnLinkAccount.textView.gone()

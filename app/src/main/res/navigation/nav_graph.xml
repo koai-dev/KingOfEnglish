@@ -121,5 +121,13 @@
     <action
         android:id="@+id/action_global_termScreen"
         app:destination="@id/termScreen" />
+    <fragment
+        android:id="@+id/customThemeScreen"
+        android:name="com.koai.kingofenglish.ui.theme.CustomThemeScreen"
+        android:label="CustomThemeScreen"
+        tools:layout="@layout/screen_custom_theme" />
+    <action
+        android:id="@+id/action_global_customThemeScreen"
+        app:destination="@id/customThemeScreen" />
 
 </navigation>

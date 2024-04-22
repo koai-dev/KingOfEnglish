@@ -28,4 +28,5 @@ object AppConfig {
 
     var enableSoundEffect = true
     var enableVibrate = true
+    var background: String? = null
 }

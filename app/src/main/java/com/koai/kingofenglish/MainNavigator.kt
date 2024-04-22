@@ -9,6 +9,8 @@ import com.koai.kingofenglish.ui.home.HomeRouter
 import com.koai.kingofenglish.ui.login.LoginRouter
 import com.koai.kingofenglish.ui.play.PlayRouter
 import com.koai.kingofenglish.ui.splash.SplashRouter
+import com.koai.kingofenglish.ui.theme.CustomThemeRouter
+import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
 
 class MainNavigator :
@@ -18,7 +20,7 @@ class MainNavigator :
     HomeRouter,
     PlayRouter,
     SettingRouter,
-    ProfileRouter {
+    ProfileRouter, CustomThemeRouter {
     override fun gotoLoginScreen() {
         offNavScreen(R.id.action_global_loginScreen)
     }
@@ -32,6 +34,7 @@ class MainNavigator :
     }
 
     override fun gotoCustomThemeScreen() {
+        offNavScreen(R.id.action_global_customThemeScreen)
     }
 
     override fun gotoSettingScreen() {
@@ -106,6 +109,10 @@ class MainNavigator :
 
     override fun gotoReport() {
         sendEvent(ReportEvent())
+    }
+
+    override fun setBackground(url: String) {
+        AppConfig.background = url
     }
 }
 
