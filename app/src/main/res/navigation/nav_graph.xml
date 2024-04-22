@@ -129,5 +129,13 @@
     <action
         android:id="@+id/action_global_customThemeScreen"
         app:destination="@id/customThemeScreen" />
+    <fragment
+        android:id="@+id/leaderBoardScreen"
+        android:name="com.koai.kingofenglish.ui.leaderBoad.LeaderBoardScreen"
+        android:label="LeaderBoardScreen"
+        tools:layout="@layout/screen_leader_board" />
+    <action
+        android:id="@+id/action_global_leaderBoardScreen"
+        app:destination="@id/leaderBoardScreen" />
 
 </navigation>
