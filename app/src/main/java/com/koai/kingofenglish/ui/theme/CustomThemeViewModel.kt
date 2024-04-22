@@ -5,14 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.koai.base.network.ResponseStatus
+import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.domain.models.Background
 import com.koai.kingofenglish.domain.models.Response
 import com.koai.kingofenglish.domain.usecase.BackgroundUseCase
+import com.koai.kingofenglish.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class CustomThemeViewModel(private val backgroundUseCase: BackgroundUseCase) : ViewModel() {
+class CustomThemeViewModel(private val backgroundUseCase: BackgroundUseCase, private val sharePreference: SharePreference) : ViewModel() {
     private val _backgrounds = MutableLiveData<ResponseStatus<Response<List<Background>>>>()
     val backgrounds: LiveData<ResponseStatus<Response<List<Background>>>> = _backgrounds
 
@@ -23,6 +25,12 @@ class CustomThemeViewModel(private val backgroundUseCase: BackgroundUseCase) : V
             }.collect {
                 _backgrounds.postValue(ResponseStatus.Success(it))
             }
+        }
+    }
+
+    fun saveSetting(url: String){
+        viewModelScope.launch(Dispatchers.IO) {
+            sharePreference.setStringPref(Constants.BACKGROUND_URL, url)
         }
     }
 }

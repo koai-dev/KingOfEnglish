@@ -1,6 +1,7 @@
 package com.koai.kingofenglish
 
 import androidx.core.os.bundleOf
+import androidx.lifecycle.viewModelScope
 import com.koai.base.main.action.event.NavigationEvent
 import com.koai.base.main.action.navigator.BaseNavigator
 import com.koai.kingofenglish.ui.dialog.profile.ProfileRouter
@@ -12,6 +13,8 @@ import com.koai.kingofenglish.ui.splash.SplashRouter
 import com.koai.kingofenglish.ui.theme.CustomThemeRouter
 import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainNavigator :
     BaseNavigator(),

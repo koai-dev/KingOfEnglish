@@ -16,7 +16,7 @@ object ViewModelModule {
         screenViewModel { PlayViewModel(get(), get(), get()) }
         viewModel { AdsViewModel(get()) }
         screenViewModel { LoginViewModel(get(), get(), get()) }
-        screenViewModel { CustomThemeViewModel(get()) }
+        screenViewModel { CustomThemeViewModel(get(), get()) }
         screenViewModel { LeaderBoardViewModel(get()) }
     }
 }

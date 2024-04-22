@@ -25,6 +25,7 @@ class LoginScreen :
         binding: ScreenLoginBinding,
     ) {
         LoginViewModel.loginCallBack = this
+        binding.ctnLinkAccount.img = AppConfig.background
         checkAuthStatus()
         actionView()
         observer()

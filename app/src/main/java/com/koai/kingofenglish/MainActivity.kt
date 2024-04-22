@@ -37,6 +37,10 @@ class MainActivity :
     private fun configAppSetting(){
         AppConfig.enableSoundEffect = !sharePreference.getBooleanPref(Constants.DISABLE_SOUND_EFFECT)
         AppConfig.enableVibrate = !sharePreference.getBooleanPref(Constants.DISABLE_VIBRATE)
+        val background = sharePreference.getStringPref(Constants.BACKGROUND_URL)
+        if (!background.isNullOrEmpty()){
+            AppConfig.background = background
+        }
         if (AppConfig.enableSoundEffect){
             ClickableViewExtensions.initSoundEffect()
         }

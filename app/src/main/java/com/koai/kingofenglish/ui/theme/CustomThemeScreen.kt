@@ -23,6 +23,7 @@ class CustomThemeScreen :
 
 
     override fun initView(savedInstanceState: Bundle?, binding: ScreenCustomThemeBinding) {
+        binding.img = AppConfig.background
         binding.btnClose.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             router?.onPopScreen()
         }
@@ -31,6 +32,7 @@ class CustomThemeScreen :
             override fun click(position: Int, data: Background, code: Int) {
                 if (code == 1) {
                     router?.setBackground(data.link)
+                    viewModel.saveSetting(data.link)
                     binding.img = data.link
                 } else {
                     Toast.makeText(

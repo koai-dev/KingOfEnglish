@@ -15,4 +15,6 @@ object Constants {
     const val DISABLE_MUSIC = "ENABLE_MUSIC"
     const val DISABLE_SOUND_EFFECT = "ENABLE_SOUND_EFFECT"
     const val DISABLE_VIBRATE = "ENABLE_VIBRATE"
+    const val BACKGROUND_URL = "BACKGROUND_URL"
+
 }
