@@ -36,4 +36,7 @@
     <string name="version_1">version: 1</string>
     <string name="sign_out">Sign out</string>
     <string name="level_1">Level 1</string>
+    <string name="top_2">Top 2</string>
+    <string name="top_1">Top 1</string>
+    <string name="top_3">Top 3</string>
 </resources>

@@ -49,6 +49,7 @@ class MainNavigator :
     }
 
     override fun gotoLeaderBoardScreen() {
+        offNavScreen(R.id.action_global_leaderBoardScreen)
     }
 
     override fun gotoProfile() {
