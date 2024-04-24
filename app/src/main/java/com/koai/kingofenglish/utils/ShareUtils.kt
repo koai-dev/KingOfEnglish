@@ -3,8 +3,10 @@ package com.koai.kingofenglish.utils
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.net.Uri
 import android.view.View
+import android.view.View.MeasureSpec
 import androidx.core.content.FileProvider
 import com.koai.kingofenglish.BuildConfig
 import com.koai.base.utils.ScreenUtils
@@ -14,8 +16,10 @@ import java.io.IOException
 
 
 fun View.toBitmap(): Bitmap {
+    this.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
     val bitmap = Bitmap.createBitmap(ScreenUtils.getScreenWidth(this.context), ScreenUtils.getScreenWidth(this.context)*9/20, Bitmap.Config.ARGB_8888)
-    val canvas = Canvas(bitmap)
+    val canvas = Canvas().apply { setBitmap(bitmap) }
+    this.layout(0,0 , ScreenUtils.getScreenWidth(this.context), ScreenUtils.getScreenWidth(this.context)*9/20)
     this.draw(canvas)
     return bitmap
 }

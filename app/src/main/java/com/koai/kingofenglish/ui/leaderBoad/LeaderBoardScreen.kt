@@ -2,15 +2,20 @@ package com.koai.kingofenglish.ui.leaderBoad
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.drawToBitmap
+import androidx.databinding.DataBindingUtil
 import com.koai.base.main.action.event.ShareFile
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.extension.screenViewModel
 import com.koai.base.main.screens.BaseScreen
 import com.koai.base.network.ResponseStatus
+import com.koai.base.utils.ScreenUtils
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
+import com.koai.kingofenglish.common.ShareView
 import com.koai.kingofenglish.databinding.LayoutShareMySelfBinding
 import com.koai.kingofenglish.databinding.ScreenLeaderBoardBinding
 import com.koai.kingofenglish.domain.account.AccountUtils
@@ -44,10 +49,8 @@ class LeaderBoardScreen :
 
     private fun setAction() {
         binding.layoutLeaderBoardHeader.btnShare.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
-            val shareBinding = LayoutShareMySelfBinding.inflate(layoutInflater)
-            shareBinding.user = AccountUtils.user
             CoroutineScope(Dispatchers.IO).launch {
-                val uri = shareBinding.root.toBitmap().saveBitmapToCache(activity)
+                val uri = binding.shareView.drawToBitmap().saveBitmapToCache(activity)
                 if (uri != null) {
                     router?.onShareFile(
                         bundleOf(
