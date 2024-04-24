@@ -1,5 +1,6 @@
 package com.koai.kingofenglish.ui.leaderBoad
 
+import android.content.Intent
 import android.os.Bundle
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
@@ -29,7 +30,14 @@ class LeaderBoardScreen :
 
     private fun setAction() {
         binding.layoutLeaderBoardHeader.btnShare.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+                type = "text/plain"
+            }
 
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
         }
     }
 
