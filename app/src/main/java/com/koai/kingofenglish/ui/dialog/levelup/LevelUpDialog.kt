@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import com.koai.base.main.action.event.ShareFile
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
@@ -15,8 +16,15 @@ import com.koai.base.main.screens.BaseDialog
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.DialogLevelUpBinding
+import com.koai.kingofenglish.databinding.LayoutShareMySelfBinding
+import com.koai.kingofenglish.domain.account.AccountUtils
 import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
+import com.koai.kingofenglish.utils.saveBitmapToCache
+import com.koai.kingofenglish.utils.toBitmap
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LevelUpDialog :
     BaseDialog<DialogLevelUpBinding, BaseRouter, MainNavigator>(R.layout.dialog_level_up) {
@@ -69,7 +77,19 @@ class LevelUpDialog :
         }
 
         binding.btnShare.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
-//            router?.onShareFile()
+            val shareBinding = LayoutShareMySelfBinding.inflate(layoutInflater)
+            shareBinding.user = AccountUtils.user
+            CoroutineScope(Dispatchers.IO).launch {
+                val uri = shareBinding.root.toBitmap().saveBitmapToCache(activity)
+                if (uri != null) {
+                    router?.onShareFile(
+                        bundleOf(
+                            ShareFile.TITLE to "Share this to Best-friends",
+                            ShareFile.EXTRA to uri.toString()
+                        )
+                    )
+                }
+            }
             dismiss()
             setFragmentResult(Constants.ADDED_POINTS, bundleOf(Constants.ADDED_POINTS to pointAdd))
         }

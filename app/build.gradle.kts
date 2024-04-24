@@ -45,11 +45,12 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
-    implementation("com.koai:base:1.4.5")
+    implementation("com.koai:base:1.4.6")
     testImplementation("org.testng:testng:7.4.0")
 
     implementation("com.google.android.flexbox:flexbox:3.0.0")

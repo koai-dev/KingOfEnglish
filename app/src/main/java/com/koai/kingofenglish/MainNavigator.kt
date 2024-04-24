@@ -7,6 +7,7 @@ import com.koai.base.main.action.navigator.BaseNavigator
 import com.koai.kingofenglish.ui.dialog.profile.ProfileRouter
 import com.koai.kingofenglish.ui.dialog.setting.SettingRouter
 import com.koai.kingofenglish.ui.home.HomeRouter
+import com.koai.kingofenglish.ui.leaderBoad.LeaderBoardRouter
 import com.koai.kingofenglish.ui.login.LoginRouter
 import com.koai.kingofenglish.ui.play.PlayRouter
 import com.koai.kingofenglish.ui.splash.SplashRouter
@@ -23,7 +24,7 @@ class MainNavigator :
     HomeRouter,
     PlayRouter,
     SettingRouter,
-    ProfileRouter, CustomThemeRouter {
+    ProfileRouter, CustomThemeRouter, LeaderBoardRouter {
     override fun gotoLoginScreen() {
         offNavScreen(R.id.action_global_loginScreen)
     }
