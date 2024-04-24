@@ -39,4 +39,12 @@
     <string name="top_2">Top 2</string>
     <string name="top_1">Top 1</string>
     <string name="top_3">Top 3</string>
+    <string name="play_with_me_to_become_the_king_of_english_together">Play with me TO BECOME THE KING OF ENGLISH TOGETHER 😍</string>
+
+    <string name="you_do_great">You’ll do great!</string>
+    <string name="you_were_made_for_this">You were made for this!</string>
+    <string name="you_can_do_better_try_harder">You can do better, try harder</string>
+    <string name="wish_you_lot_of_luck">Wishing you lots of luck!</string>
+    <string name="congratulations_let_s_review_the_results_you_have_achieved">Congratulations %s!\n Let\'s review the results you have achieved 😍😍😍</string>
+    <string name="let_s_play">LET’S PLAY</string>
 </resources>

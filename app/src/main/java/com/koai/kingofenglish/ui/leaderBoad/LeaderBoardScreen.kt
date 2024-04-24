@@ -10,8 +10,10 @@ import com.koai.base.network.ResponseStatus
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenLeaderBoardBinding
+import com.koai.kingofenglish.domain.account.AccountUtils
 import com.koai.kingofenglish.ui.leaderBoad.widget.LeaderBoardAdapter
 import com.koai.kingofenglish.utils.AppConfig
+import com.koai.kingofenglish.utils.convertNumber
 
 class LeaderBoardScreen :
     BaseScreen<ScreenLeaderBoardBinding, LeaderBoardRouter, MainNavigator>(R.layout.screen_leader_board) {
@@ -21,6 +23,10 @@ class LeaderBoardScreen :
 
     override fun initView(savedInstanceState: Bundle?, binding: ScreenLeaderBoardBinding) {
         binding.img = AppConfig.background
+        binding.layoutLeaderBoardFooter.apply {
+            user = AccountUtils.user
+            point = AccountUtils.user?.points.convertNumber()
+        }
         adapter = LeaderBoardAdapter()
         binding.rcv.adapter = adapter
         observer()
