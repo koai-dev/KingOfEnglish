@@ -2,6 +2,9 @@ package com.koai.kingofenglish.ui.home
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.gone
@@ -10,6 +13,7 @@ import com.koai.base.main.screens.BaseScreen
 import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.DashboardEvent
 import com.koai.kingofenglish.MainNavigator
+import com.koai.kingofenglish.NewsEvent
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenHomeBinding
 import com.koai.kingofenglish.domain.account.AccountUtils
@@ -27,6 +31,12 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
         savedInstanceState: Bundle?,
         binding: ScreenHomeBinding,
     ) {
+        if (!AppConfig.showedWelcomeTitle){
+            AppConfig.showedWelcomeTitle = true
+            binding.root.postDelayed({
+                navigator.sendEvent(NewsEvent("Let's try hard now! Good luck 😋 "))
+            }, 3000)
+        }
         Log.d("initView", HomeScreen::class.simpleName.toString())
         setupUI()
         setAction()

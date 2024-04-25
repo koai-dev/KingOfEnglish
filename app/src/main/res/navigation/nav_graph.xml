@@ -137,5 +137,15 @@
     <action
         android:id="@+id/action_global_leaderBoardScreen"
         app:destination="@id/leaderBoardScreen" />
+    <dialog
+        android:id="@+id/newsDialog"
+        tools:layout="@layout/dialog_news"
+        android:name="com.koai.kingofenglish.ui.dialog.news.NewsDialog"
+        android:label="NewsDialog" />
+    <action
+        android:id="@+id/action_global_newsDialog"
+        app:destination="@id/newsDialog"
+        app:enterAnim="@anim/top_sheet_slide_in"
+        app:exitAnim="@anim/top_sheet_slide_out" />
 
 </navigation>

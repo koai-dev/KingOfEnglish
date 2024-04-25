@@ -9,6 +9,7 @@ import com.koai.base.main.extension.screenViewModel
 import com.koai.base.main.screens.BaseScreen
 import com.koai.base.network.ResponseStatus
 import com.koai.kingofenglish.MainNavigator
+import com.koai.kingofenglish.NewsEvent
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.ScreenLoginBinding
 import com.koai.kingofenglish.domain.account.AccountUtils

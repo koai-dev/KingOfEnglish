@@ -58,8 +58,8 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
             }
         }
 
-        setFragmentResultListener(Constants.SHARE){requestKey, bundle ->
-            if (requestKey == Constants.SHARE){
+        setFragmentResultListener(Constants.SHARE) { requestKey, bundle ->
+            if (requestKey == Constants.SHARE) {
                 val pointAdd = bundle.getInt(Constants.ADDED_POINTS)
                 viewModel.calculateCurrentPoint(pointAdd)
                 getData()

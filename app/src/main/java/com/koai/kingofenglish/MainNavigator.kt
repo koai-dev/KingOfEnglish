@@ -1,5 +1,6 @@
 package com.koai.kingofenglish
 
+import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.lifecycle.viewModelScope
 import com.koai.base.main.action.event.NavigationEvent
@@ -14,8 +15,15 @@ import com.koai.kingofenglish.ui.splash.SplashRouter
 import com.koai.kingofenglish.ui.theme.CustomThemeRouter
 import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
+import io.ktor.client.HttpClient
+import io.ktor.client.plugins.websocket.WebSockets
+import io.ktor.client.plugins.websocket.webSocket
+import io.ktor.http.HttpMethod
+import io.ktor.websocket.Frame
+import io.ktor.websocket.readText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MainNavigator :
     BaseNavigator(),
@@ -25,6 +33,35 @@ class MainNavigator :
     PlayRouter,
     SettingRouter,
     ProfileRouter, CustomThemeRouter, LeaderBoardRouter {
+    private var lastShowNews = 0L
+
+    fun registerNews(){
+        viewModelScope.launch(Dispatchers.IO) {
+            val client = HttpClient {
+                install(WebSockets) {
+                    pingInterval = 20_000
+                }
+            }
+            client.webSocket(
+                method = HttpMethod.Get,
+                host = "127.0.0.1",
+                port = 8080,
+                path = "/news"
+            ) {
+                while (true) {
+                    val othersMessage = incoming.receive() as? Frame.Text ?: continue
+                    println(othersMessage.readText())
+                    val myMessage = readlnOrNull()
+                    if (myMessage != null && System.currentTimeMillis() - lastShowNews >= 10000) {
+                        lastShowNews = System.currentTimeMillis()
+                        sendEvent(NewsEvent("$myMessage "))
+                        Log.d("WEB_SOCKET: ", myMessage)
+                    }
+                }
+            }
+        }
+    }
+
     override fun gotoLoginScreen() {
         offNavScreen(R.id.action_global_loginScreen)
     }
@@ -130,3 +167,5 @@ class SoundEffectEvent(val enable: Boolean) : NavigationEvent()
 class VibrateEvent(val enable: Boolean) : NavigationEvent()
 
 class ReportEvent : NavigationEvent()
+
+class NewsEvent(val news: String): NavigationEvent()

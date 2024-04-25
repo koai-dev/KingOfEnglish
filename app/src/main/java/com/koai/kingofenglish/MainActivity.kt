@@ -4,12 +4,13 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
-import androidx.core.text.trimmedLength
 import com.google.android.gms.ads.MobileAds
 import com.koai.base.main.BaseActivity
 import com.koai.base.main.action.event.NavigationEvent
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions
+import com.koai.base.main.extension.invisible
+import com.koai.base.main.extension.visible
 import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.ads.AdsViewModel
 import com.koai.kingofenglish.databinding.ActivityMainBinding
@@ -35,14 +36,15 @@ class MainActivity :
         configAppSetting()
     }
 
-    private fun configAppSetting(){
-        AppConfig.enableSoundEffect = !sharePreference.getBooleanPref(Constants.DISABLE_SOUND_EFFECT)
+    private fun configAppSetting() {
+        AppConfig.enableSoundEffect =
+            !sharePreference.getBooleanPref(Constants.DISABLE_SOUND_EFFECT)
         AppConfig.enableVibrate = !sharePreference.getBooleanPref(Constants.DISABLE_VIBRATE)
         val background = sharePreference.getStringPref(Constants.BACKGROUND_URL)
-        if (!background.isNullOrEmpty()){
+        if (!background.isNullOrEmpty()) {
             AppConfig.background = background
         }
-        if (AppConfig.enableSoundEffect){
+        if (AppConfig.enableSoundEffect) {
             ClickableViewExtensions.initSoundEffect()
         }
     }
@@ -57,6 +59,15 @@ class MainActivity :
                         data = Uri.parse("https://m.me/dtako.dev")
                     },
                 )
+            }
+
+            is NewsEvent -> {
+                binding.news = event.news
+                binding.ctnMotion.visible()
+                binding.ctnMotion.transitionToEnd {
+                    binding.ctnMotion.progress = 0F
+                    binding.ctnMotion.invisible()
+                }
             }
 
             else -> super.onNavigationEvent(event)
