@@ -261,5 +261,13 @@
             app:layout_constraintEnd_toEndOf="@+id/imageView15"
             app:layout_constraintStart_toStartOf="@+id/imageView12" />
 
+        <com.koai.kingofenglish.common.ShareView
+            android:id="@+id/shareView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -8,20 +8,33 @@ import android.net.Uri
 import android.view.View
 import android.view.View.MeasureSpec
 import androidx.core.content.FileProvider
+import androidx.core.os.bundleOf
+import androidx.core.view.drawToBitmap
+import com.koai.base.main.action.event.ShareFile
+import com.koai.base.main.action.router.BaseRouter
 import com.koai.kingofenglish.BuildConfig
 import com.koai.base.utils.ScreenUtils
+import com.koai.kingofenglish.common.ShareView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 
 
-fun View.toBitmap(): Bitmap {
-    this.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
-    val bitmap = Bitmap.createBitmap(ScreenUtils.getScreenWidth(this.context), ScreenUtils.getScreenWidth(this.context)*9/20, Bitmap.Config.ARGB_8888)
-    val canvas = Canvas().apply { setBitmap(bitmap) }
-    this.layout(0,0 , ScreenUtils.getScreenWidth(this.context), ScreenUtils.getScreenWidth(this.context)*9/20)
-    this.draw(canvas)
-    return bitmap
+fun ShareView.share(context: Context, router: BaseRouter?) {
+    CoroutineScope(Dispatchers.IO).launch {
+        val uri = this@share.drawToBitmap().saveBitmapToCache(context)
+        if (uri != null) {
+            router?.onShareFile(
+                bundleOf(
+                    ShareFile.TITLE to "Share this to Best-friends",
+                    ShareFile.EXTRA to uri.toString()
+                )
+            )
+        }
+    }
 }
 
 fun Bitmap.saveBitmapToCache(context: Context): Uri?{

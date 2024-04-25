@@ -4,6 +4,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import androidx.core.text.trimmedLength
 import com.google.android.gms.ads.MobileAds
 import com.koai.base.main.BaseActivity
 import com.koai.base.main.action.event.NavigationEvent

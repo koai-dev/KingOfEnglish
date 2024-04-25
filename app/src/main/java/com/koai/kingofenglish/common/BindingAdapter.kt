@@ -45,10 +45,9 @@ fun setText(
             }
         }
     }
-    if (allowNullTextVisible)
-        {
-            txt.visible()
-        }
+    if (allowNullTextVisible) {
+        txt.visible()
+    }
     if (enable) {
         if (colorEnable != null) {
             txt.setColor(colorEnable)

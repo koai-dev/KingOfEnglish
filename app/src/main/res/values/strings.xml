@@ -43,8 +43,8 @@
 
     <string name="you_do_great">You’ll do great!</string>
     <string name="you_were_made_for_this">You were made for this!</string>
-    <string name="you_can_do_better_try_harder">You can do better, try harder</string>
+    <string name="you_can_do_better_try_harder">You can do better, try hard!</string>
     <string name="wish_you_lot_of_luck">Wishing you lots of luck!</string>
-    <string name="congratulations_let_s_review_the_results_you_have_achieved">Congratulations %s!\n Let\'s review the results you have achieved 😍😍😍</string>
+    <string name="congratulations_let_s_review_the_results_you_have_achieved">Congratulations %s,\n - You are reached %s questions and receiving %s diamonds. \n- Reach the top %s%% best players in King of English😍</string>
     <string name="let_s_play">LET’S PLAY</string>
 </resources>

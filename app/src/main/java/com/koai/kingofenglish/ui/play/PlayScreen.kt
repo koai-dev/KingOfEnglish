@@ -21,6 +21,7 @@ import com.koai.kingofenglish.ui.play.widget.Letter
 import com.koai.kingofenglish.ui.play.widget.WordView
 import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
+import com.koai.kingofenglish.utils.share
 
 class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.layout.screen_play) {
     private val viewModel: PlayViewModel by screenViewModel()
@@ -54,6 +55,15 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
                     viewModel.calculateCurrentPoint(pointAdd)
                     getData()
                 }
+            }
+        }
+
+        setFragmentResultListener(Constants.SHARE){requestKey, bundle ->
+            if (requestKey == Constants.SHARE){
+                val pointAdd = bundle.getInt(Constants.ADDED_POINTS)
+                viewModel.calculateCurrentPoint(pointAdd)
+                getData()
+                binding.shareView.share(activity, router)
             }
         }
         setFragmentResultListener(Constants.REPLAY) { requestKey, _ ->
