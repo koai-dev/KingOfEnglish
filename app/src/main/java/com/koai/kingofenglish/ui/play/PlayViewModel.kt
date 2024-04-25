@@ -13,7 +13,11 @@ import com.koai.kingofenglish.domain.models.Question
 import com.koai.kingofenglish.domain.models.Response
 import com.koai.kingofenglish.domain.usecase.GetQuestionUseCase
 import com.koai.kingofenglish.domain.usecase.UpdateUserUseCase
+import com.koai.kingofenglish.service.Socket
 import com.koai.kingofenglish.utils.Constants
+import io.ktor.client.plugins.websocket.webSocket
+import io.ktor.http.HttpMethod
+import io.ktor.websocket.Frame
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
@@ -61,17 +65,25 @@ class PlayViewModel(
 
     fun updateUserInfo() {
         viewModelScope.launch(Dispatchers.IO) {
-            if (AccountUtils.isLogin())
-                {
-                    AccountUtils.user?.let { user ->
-                        updateUserUseCase.execute(user).collect {
-                            Log.d("UPDATE: ", it.message ?: it.data?.userId ?: "Success")
-                        }
+            if (AccountUtils.isLogin()) {
+                AccountUtils.user?.let { user ->
+                    updateUserUseCase.execute(user).collect {
+                        Log.d("UPDATE: ", it.message ?: it.data?.userId ?: "Success")
+//                        if (it.data?.top != null) {
+                            Socket.client?.webSocket(
+                                method = HttpMethod.Get,
+                                host = Constants.BASE_WEBSOCKET_URL,
+                                port = 80,
+                                path = "/news"
+                            ) {
+                                send(Frame.Text("ABc test"))
+                            }
+//                        }
                     }
-                } else
-                {
-                    updateUserInfoOffline()
                 }
+            } else {
+                updateUserInfoOffline()
+            }
         }
     }
 

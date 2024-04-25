@@ -33,34 +33,6 @@ class MainNavigator :
     PlayRouter,
     SettingRouter,
     ProfileRouter, CustomThemeRouter, LeaderBoardRouter {
-    private var lastShowNews = 0L
-
-    fun registerNews(){
-        viewModelScope.launch(Dispatchers.IO) {
-            val client = HttpClient {
-                install(WebSockets) {
-                    pingInterval = 20_000
-                }
-            }
-            client.webSocket(
-                method = HttpMethod.Get,
-                host = "127.0.0.1",
-                port = 8080,
-                path = "/news"
-            ) {
-                while (true) {
-                    val othersMessage = incoming.receive() as? Frame.Text ?: continue
-                    println(othersMessage.readText())
-                    val myMessage = readlnOrNull()
-                    if (myMessage != null && System.currentTimeMillis() - lastShowNews >= 10000) {
-                        lastShowNews = System.currentTimeMillis()
-                        sendEvent(NewsEvent("$myMessage "))
-                        Log.d("WEB_SOCKET: ", myMessage)
-                    }
-                }
-            }
-        }
-    }
 
     override fun gotoLoginScreen() {
         offNavScreen(R.id.action_global_loginScreen)

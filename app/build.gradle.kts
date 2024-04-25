@@ -50,7 +50,7 @@ android {
 }
 
 dependencies {
-    implementation("com.koai:base:1.4.6")
+    implementation("com.koai:base:1.4.8")
     testImplementation("org.testng:testng:7.4.0")
 
     implementation("com.google.android.flexbox:flexbox:3.0.0")

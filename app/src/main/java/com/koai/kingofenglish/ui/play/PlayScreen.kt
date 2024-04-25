@@ -61,7 +61,9 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
         setFragmentResultListener(Constants.SHARE) { requestKey, bundle ->
             if (requestKey == Constants.SHARE) {
                 val pointAdd = bundle.getInt(Constants.ADDED_POINTS)
-                viewModel.calculateCurrentPoint(pointAdd)
+                AccountUtils.user?.points = pointAdd + (AccountUtils.user?.points ?: 0)
+                binding.user = AccountUtils.user
+                binding.shareView.updateUI()
                 getData()
                 binding.shareView.share(activity, router)
             }

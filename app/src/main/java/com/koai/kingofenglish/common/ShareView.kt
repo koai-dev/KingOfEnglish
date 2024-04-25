@@ -22,6 +22,11 @@ class ShareView @JvmOverloads constructor(
     )
 
     init {
+        updateUI()
+        this.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+    }
+
+    fun updateUI(){
         shareBinding.user = AccountUtils.user
         shareBinding.img = AppConfig.background
         shareBinding.txtTitle.text = if ((AccountUtils.user?.currentLevel ?: 0) <= 1) {
@@ -34,7 +39,6 @@ class ShareView @JvmOverloads constructor(
                 AccountUtils.user?.points ?: 0,
                 AccountUtils.user?.top ?: 10
             )
-        this.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

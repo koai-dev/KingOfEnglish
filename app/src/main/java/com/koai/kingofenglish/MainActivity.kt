@@ -14,6 +14,7 @@ import com.koai.base.main.extension.visible
 import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.ads.AdsViewModel
 import com.koai.kingofenglish.databinding.ActivityMainBinding
+import com.koai.kingofenglish.service.Socket
 import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
 import org.koin.android.ext.android.inject
@@ -47,6 +48,7 @@ class MainActivity :
         if (AppConfig.enableSoundEffect) {
             ClickableViewExtensions.initSoundEffect()
         }
+        Socket.channel = navigator.navigation
     }
 
     override fun onNavigationEvent(event: NavigationEvent) {

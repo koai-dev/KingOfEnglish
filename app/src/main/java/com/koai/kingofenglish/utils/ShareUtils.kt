@@ -30,14 +30,15 @@ fun ShareView.share(context: Context, router: BaseRouter?) {
             router?.onShareFile(
                 bundleOf(
                     ShareFile.TITLE to "Share this to Best-friends",
-                    ShareFile.EXTRA to uri.toString()
+                    ShareFile.EXTRA to uri.toString(),
+                    ShareFile.LINK to "https://play.google.com/store/apps/details?id=com.koai.kingofenglish"
                 )
             )
         }
     }
 }
 
-fun Bitmap.saveBitmapToCache(context: Context): Uri?{
+fun Bitmap.saveBitmapToCache(context: Context): Uri? {
     return try {
         val cacheDir: File = context.cacheDir
         val imageFile = File(cacheDir, "my_image.jpg")
