@@ -14,6 +14,14 @@ android {
     namespace = "com.koai.kingofenglish"
     compileSdk = 34
 
+    signingConfigs {
+        register("release") {
+            storeFile = file("D:\\KingOfEnglish\\app\\key.jks")
+            storePassword = "123456"
+            keyAlias = "key0"
+            keyPassword = "123456"
+        }
+    }
     defaultConfig {
         applicationId = "com.koai.kingofenglish"
         minSdk = 24
@@ -28,6 +36,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             isCrunchPngs = true
@@ -57,7 +66,7 @@ android {
 }
 
 dependencies {
-    implementation("com.koai:base:1.4.8")
+    implementation("com.koai:base:1.4.10")
     testImplementation("org.testng:testng:7.4.0")
 
     implementation("com.google.android.flexbox:flexbox:3.0.0")

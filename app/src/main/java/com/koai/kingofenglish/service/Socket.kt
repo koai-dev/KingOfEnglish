@@ -21,6 +21,7 @@ object Socket {
     var session: DefaultClientWebSocketSession? = null
     var channel: Channel<NavigationEvent>? = null
     private var lastShowNews = 0L
+
     init {
         val client = HttpClient {
             install(WebSockets) {
@@ -40,18 +41,19 @@ object Socket {
                         Log.d("WEB_SOCKET: ", "Connected")
                         while (true) {
                             val othersMessage = incoming.receive() as? Frame.Text ?: continue
-                            Log.d("WEB_SOCKET: ",othersMessage.readText())
                             val myMessage = othersMessage.readText()
-                            if (myMessage.isNotEmpty()&& System.currentTimeMillis() - lastShowNews >= 10000) {
-                                lastShowNews = System.currentTimeMillis()
+                            Log.d("WEB_SOCKET: ", myMessage)
+                            if (myMessage.isNotEmpty() && System.currentTimeMillis() - lastShowNews >= 5000) {
+                                Log.d("WEB_SOCKET: ", "Sent.")
                                 channel?.send(NewsEvent("$myMessage "))
+                                lastShowNews = System.currentTimeMillis()
                             }
                         }
-                    }catch (e: Exception){
+                    } catch (e: Exception) {
                         e.printStackTrace()
                     }
                 }
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }

@@ -68,8 +68,9 @@ class PlayViewModel(
             if (AccountUtils.isLogin()) {
                 AccountUtils.user?.let { user ->
                     updateUserUseCase.execute(user).collect {userUpdated->
-                        if ((userUpdated.data?.top?:0)<(user.top?:0)){
-                            Socket.session?.send(Frame.Text("Congratulations ${userUpdated.data?.name} reached ${userUpdated.data?.currentLevel} questions, received ${userUpdated.data?.points} diamonds and reached the top ${userUpdated.data?.top} best players in King of English\uD83D\uDE0D"))
+                        if ((userUpdated.data?.top?:1000)<(user.top?:1000)){
+                            AccountUtils.user?.top = userUpdated.data?.top
+                            Socket.session?.send(Frame.Text("\uD83D\uDC49 ${userUpdated.data?.name} reached the top ${userUpdated.data?.top} best players \uD83D\uDE0D "))
                         }
                     }
                 }

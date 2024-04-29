@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
+import com.koai.base.main.extension.ClickableViewExtensions.loadImage
 import com.koai.base.utils.ScreenUtils
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.LayoutShareMySelfBinding
@@ -26,9 +27,14 @@ class ShareView @JvmOverloads constructor(
         this.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
     }
 
-    fun updateUI(){
+    fun updateUI() {
         shareBinding.user = AccountUtils.user
-        shareBinding.img = AppConfig.background
+        if (AppConfig.background != null) {
+            AppConfig.background?.let { shareBinding.imageView34.loadImage(AppConfig.background!!) }
+        } else {
+            shareBinding.imageView34.loadImage(R.drawable.bg_congratutation)
+        }
+        AccountUtils.user?.avatar?.let { shareBinding.imageView37.loadImage(it) }
         shareBinding.txtTitle.text = if ((AccountUtils.user?.currentLevel ?: 0) <= 1) {
             resources.getString(R.string.you_can_do_better_try_harder)
         } else

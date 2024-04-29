@@ -2,18 +2,15 @@ package com.koai.kingofenglish.utils
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
 import android.net.Uri
-import android.view.View
-import android.view.View.MeasureSpec
+import android.util.Log
 import androidx.core.content.FileProvider
+import androidx.core.graphics.applyCanvas
 import androidx.core.os.bundleOf
 import androidx.core.view.drawToBitmap
 import com.koai.base.main.action.event.ShareFile
 import com.koai.base.main.action.router.BaseRouter
 import com.koai.kingofenglish.BuildConfig
-import com.koai.base.utils.ScreenUtils
 import com.koai.kingofenglish.common.ShareView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,16 +21,42 @@ import java.io.IOException
 
 
 fun ShareView.share(context: Context, router: BaseRouter?) {
-    CoroutineScope(Dispatchers.IO).launch {
-        val uri = this@share.drawToBitmap().saveBitmapToCache(context)
-        if (uri != null) {
-            router?.onShareFile(
-                bundleOf(
-                    ShareFile.TITLE to "Share this to Best-friends",
-                    ShareFile.EXTRA to uri.toString(),
-                    ShareFile.LINK to "https://play.google.com/store/apps/details?id=com.koai.kingofenglish"
+    CoroutineScope(Dispatchers.Default).launch {
+        try {
+            val uri = this@share.drawToBitmap().saveBitmapToCache(context)
+            if (uri != null) {
+                router?.onShareFile(
+                    bundleOf(
+                        ShareFile.TITLE to "Share this to Best-friends",
+                        ShareFile.EXTRA to uri.toString(),
+                        ShareFile.LINK to "https://play.google.com/store/apps/details?id=com.koai.kingofenglish"
+                    )
                 )
-            )
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            try {
+                val uri = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888).applyCanvas {
+                    translate(-scrollX.toFloat(), -scrollY.toFloat())
+                    draw(this)
+                }.saveBitmapToCache(context)
+                if (uri != null) {
+                    router?.onShareFile(
+                        bundleOf(
+                            ShareFile.TITLE to "Share this to Best-friends",
+                            ShareFile.EXTRA to uri.toString(),
+                            ShareFile.LINK to "https://play.google.com/store/apps/details?id=com.koai.kingofenglish"
+                        )
+                    )
+                }
+            } catch (e: Exception) {
+                router?.onShareFile(
+                    bundleOf(
+                        ShareFile.TITLE to "Share this to Best-friends",
+                        ShareFile.LINK to "https://play.google.com/store/apps/details?id=com.koai.kingofenglish"
+                    )
+                )
+            }
         }
     }
 }
@@ -41,7 +64,8 @@ fun ShareView.share(context: Context, router: BaseRouter?) {
 fun Bitmap.saveBitmapToCache(context: Context): Uri? {
     return try {
         val cacheDir: File = context.cacheDir
-        val imageFile = File(cacheDir, "my_image.jpg")
+        Log.d("Cache Directory", cacheDir.absolutePath)
+        val imageFile = File(cacheDir, "my_koe.png")
         val fos = FileOutputStream(imageFile)
         this.compress(Bitmap.CompressFormat.JPEG, 90, fos)
         fos.flush()

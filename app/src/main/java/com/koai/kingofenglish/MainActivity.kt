@@ -4,6 +4,9 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -86,10 +89,12 @@ class MainActivity :
             }
 
             is NewsEvent -> {
+                Log.d("NewsEvent: ", event.news)
                 binding.news = event.news
                 binding.ctnMotion.visible()
-                binding.ctnMotion.transitionToEnd {
-                    binding.ctnMotion.progress = 0F
+                binding.ctnMotion.progress = 0f
+                binding.ctnMotion.transitionToEnd{
+                    binding.ctnMotion.progress = 0f
                     binding.ctnMotion.invisible()
                 }
             }
