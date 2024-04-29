@@ -18,8 +18,8 @@ android {
         applicationId = "com.koai.kingofenglish"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 20240430
+        versionName = "1.0.0"
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
@@ -28,7 +28,9 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            isCrunchPngs = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
@@ -46,6 +48,11 @@ android {
         viewBinding = true
         dataBinding = true
         buildConfig = true
+    }
+    packaging {
+        dex {
+            useLegacyPackaging = false
+        }
     }
 }
 
@@ -78,4 +85,5 @@ dependencies {
     implementation("io.ktor:ktor-client-core:2.3.10")
     implementation("io.ktor:ktor-client-cio:2.3.10")
     implementation("io.ktor:ktor-client-websockets:2.3.10")
+
 }

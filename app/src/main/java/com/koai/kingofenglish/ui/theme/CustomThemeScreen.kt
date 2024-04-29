@@ -3,6 +3,7 @@ package com.koai.kingofenglish.ui.theme
 import android.os.Bundle
 import android.widget.Toast
 import com.koai.base.main.adapter.BaseListAdapter
+import com.koai.base.main.extension.ClickableViewExtensions.loadImage
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.extension.screenViewModel
@@ -23,7 +24,11 @@ class CustomThemeScreen :
 
 
     override fun initView(savedInstanceState: Bundle?, binding: ScreenCustomThemeBinding) {
-        binding.img = AppConfig.background
+        if (AppConfig.background.isNullOrEmpty()){
+            binding.imgBg.loadImage(R.drawable.bg_home)
+        }else{
+            binding.img = AppConfig.background
+        }
         binding.btnClose.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             router?.onPopScreen()
         }

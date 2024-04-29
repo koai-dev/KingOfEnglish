@@ -3,6 +3,7 @@ package com.koai.kingofenglish.ui.login
 import android.os.Bundle
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.koai.base.main.extension.ClickableViewExtensions.loadImage
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.extension.screenViewModel
@@ -26,7 +27,11 @@ class LoginScreen :
         binding: ScreenLoginBinding,
     ) {
         LoginViewModel.loginCallBack = this
-        binding.ctnLinkAccount.img = AppConfig.background
+        if (AppConfig.background.isNullOrEmpty()){
+            binding.ctnLinkAccount.imgBg.loadImage(R.drawable.bg_home)
+        }else{
+            binding.ctnLinkAccount.img = AppConfig.background
+        }
         checkAuthStatus()
         actionView()
         observer()

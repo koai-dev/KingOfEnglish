@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="img"
             type="String" />
@@ -13,11 +15,11 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/img_bg"
+            loadImage="@{img}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
-            loadImage="@{img}"
-            android:src="@drawable/bg_home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

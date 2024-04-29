@@ -2,15 +2,15 @@
 <defaultsMap xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MissingDefaultResource">
     //test
+    <!--    <entry>-->
+    <!--        <key>reward_ads</key>-->
+    <!--        <value>ca-app-pub-3940256099942544/5224354917</value>-->
+    <!--    </entry>-->
+    //release
     <entry>
         <key>reward_ads</key>
-        <value>ca-app-pub-3940256099942544/5224354917</value>
+        <value>ca-app-pub-6499093922410254/6742118615</value>
     </entry>
-    //release
-<!--    <entry>-->
-<!--        <key>reward_ads</key>-->
-<!--        <value>ca-app-pub-4759010730060875/4598953158</value>-->
-<!--    </entry>-->
     <entry>
         <key>enable_landing</key>
         <value>false</value>

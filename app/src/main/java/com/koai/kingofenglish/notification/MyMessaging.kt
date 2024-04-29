@@ -12,10 +12,13 @@ import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.koai.base.main.action.event.NavigationEvent
 import com.koai.kingofenglish.MainActivity
 import com.koai.kingofenglish.R
+import com.koai.kingofenglish.utils.AppConfig
 
 class MyMessaging : FirebaseMessagingService() {
     companion object {
@@ -41,7 +44,7 @@ class MyMessaging : FirebaseMessagingService() {
 
         val builder =
             NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setSmallIcon(R.drawable.ic_cloud4)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setContentTitle(resources.getString(R.string.app_name))
                 .setContentText(textContent)

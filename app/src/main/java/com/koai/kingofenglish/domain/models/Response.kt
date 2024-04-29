@@ -1,10 +1,11 @@
 package com.koai.kingofenglish.domain.models
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
-
+@Keep
 @Parcelize
 data class Response<T>(
     @field:SerializedName("data")

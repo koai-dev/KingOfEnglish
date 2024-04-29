@@ -4,6 +4,10 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.gms.ads.MobileAds
 import com.koai.base.main.BaseActivity
 import com.koai.base.main.action.event.NavigationEvent
@@ -11,10 +15,12 @@ import com.koai.base.main.action.router.BaseRouter
 import com.koai.base.main.extension.ClickableViewExtensions
 import com.koai.base.main.extension.invisible
 import com.koai.base.main.extension.visible
+import com.koai.base.network.ResponseStatus
 import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.ads.AdsViewModel
 import com.koai.kingofenglish.databinding.ActivityMainBinding
 import com.koai.kingofenglish.service.Socket
+import com.koai.kingofenglish.ui.leaderBoad.LeaderBoardViewModel
 import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
 import org.koin.android.ext.android.inject
@@ -27,14 +33,23 @@ class MainActivity :
     private var isOnDashBoard = false
     private val adsViewModel: AdsViewModel by viewModel()
     private val sharePreference: SharePreference by inject()
-
+    private val leaderBoardViewModel: LeaderBoardViewModel by viewModel()
     override fun initView(
         savedInstanceState: Bundle?,
         binding: ActivityMainBinding,
     ) {
+        val windowInsetsController =
+            WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.systemBarsBehavior =
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { view, windowInsets ->
+            windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
+            ViewCompat.onApplyWindowInsets(view, windowInsets)
+        }
         MobileAds.initialize(this) {}
         adsViewModel.scheduleShowAds(this)
         configAppSetting()
+        leaderBoardViewModel.getTopLeaders()
     }
 
     private fun configAppSetting() {
@@ -49,6 +64,13 @@ class MainActivity :
             ClickableViewExtensions.initSoundEffect()
         }
         Socket.channel = navigator.navigation
+        leaderBoardViewModel.leaders.observe(this) {
+            if (it is ResponseStatus.Success) {
+                if ((it.data.data?.size ?: 0) >= 10) {
+                    AppConfig.showedLeaderBoard = true
+                }
+            }
+        }
     }
 
     override fun onNavigationEvent(event: NavigationEvent) {

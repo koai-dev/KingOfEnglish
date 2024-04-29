@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import com.koai.base.main.extension.ClickableViewExtensions.loadImage
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.gone
 import com.koai.base.main.extension.navigatorViewModel
+import com.koai.base.main.extension.visible
 import com.koai.base.main.screens.BaseScreen
 import com.koai.base.utils.SharePreference
 import com.koai.kingofenglish.DashboardEvent
@@ -31,10 +33,14 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
         savedInstanceState: Bundle?,
         binding: ScreenHomeBinding,
     ) {
-        if (!AppConfig.showedWelcomeTitle){
+        if (!AppConfig.showedWelcomeTitle) {
             AppConfig.showedWelcomeTitle = true
             binding.root.postDelayed({
-                navigator.sendEvent(NewsEvent("Let's try hard now! Good luck 😋 "))
+                if (!AppConfig.showedLeaderBoard && !AccountUtils.isLogin()) {
+                    navigator.sendEvent(NewsEvent("Let's login and compete with players worldwide. 😋 "))
+                } else {
+                    navigator.sendEvent(NewsEvent("Let's try hard now! Good luck 😋 "))
+                }
             }, 3000)
         }
         Log.d("initView", HomeScreen::class.simpleName.toString())
@@ -54,7 +60,16 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
 
     private fun setupUI() {
         binding.layoutItemDashboard.user = AccountUtils.user
-        binding.ctnLinkAccount.img = AppConfig.background
+        if (AppConfig.showedLeaderBoard) {
+            binding.layoutItemDashboard.btnLeaderBoard.visible()
+        } else {
+            binding.layoutItemDashboard.btnLeaderBoard.gone()
+        }
+        if (AppConfig.background.isNullOrEmpty()) {
+            binding.ctnLinkAccount.imgBg.loadImage(R.drawable.bg_home)
+        } else {
+            binding.ctnLinkAccount.img = AppConfig.background
+        }
         binding.ctnLinkAccount.btnNo.gone()
         binding.ctnLinkAccount.btnYes.gone()
         binding.ctnLinkAccount.textView.gone()

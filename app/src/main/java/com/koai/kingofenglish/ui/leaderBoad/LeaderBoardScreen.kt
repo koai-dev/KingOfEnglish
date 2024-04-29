@@ -1,6 +1,7 @@
 package com.koai.kingofenglish.ui.leaderBoad
 
 import android.os.Bundle
+import com.koai.base.main.extension.ClickableViewExtensions.loadImage
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.extension.screenViewModel
@@ -22,7 +23,11 @@ class LeaderBoardScreen :
     private val viewmodel: LeaderBoardViewModel by screenViewModel()
 
     override fun initView(savedInstanceState: Bundle?, binding: ScreenLeaderBoardBinding) {
-        binding.img = AppConfig.background
+        if (AppConfig.background.isNullOrEmpty()) {
+            binding.imgBg.loadImage(R.drawable.bg_home)
+        } else {
+            binding.img = AppConfig.background
+        }
         binding.layoutLeaderBoardFooter.apply {
             user = AccountUtils.user
             point = AccountUtils.user?.points.convertNumber()
@@ -56,10 +61,10 @@ class LeaderBoardScreen :
                     this.name = this.name?.split(" ")?.last()
                     this.avatar = if (this.avatar.isNullOrEmpty()) null else this.avatar
                 }
-//                binding.layoutLeaderBoardHeader.top3 = it.data.data?.get(2)?.apply {
-//                    this.name = this.name?.split(" ")?.last()
-//                    this.avatar = if (this.avatar.isNullOrEmpty()) null else this.avatar
-//                }
+                binding.layoutLeaderBoardHeader.top3 = it.data.data?.get(2)?.apply {
+                    this.name = this.name?.split(" ")?.last()
+                    this.avatar = if (this.avatar.isNullOrEmpty()) null else this.avatar
+                }
             }
         }
     }

@@ -67,18 +67,10 @@ class PlayViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             if (AccountUtils.isLogin()) {
                 AccountUtils.user?.let { user ->
-                    updateUserUseCase.execute(user).collect {
-                        Log.d("UPDATE: ", it.message ?: it.data?.userId ?: "Success")
-//                        if (it.data?.top != null) {
-                            Socket.client?.webSocket(
-                                method = HttpMethod.Get,
-                                host = Constants.BASE_WEBSOCKET_URL,
-                                port = 80,
-                                path = "/news"
-                            ) {
-                                send(Frame.Text("ABc test"))
-                            }
-//                        }
+                    updateUserUseCase.execute(user).collect {userUpdated->
+                        if ((userUpdated.data?.top?:0)<(user.top?:0)){
+                            Socket.session?.send(Frame.Text("Congratulations ${userUpdated.data?.name} reached ${userUpdated.data?.currentLevel} questions, received ${userUpdated.data?.points} diamonds and reached the top ${userUpdated.data?.top} best players in King of English\uD83D\uDE0D"))
+                        }
                     }
                 }
             } else {
