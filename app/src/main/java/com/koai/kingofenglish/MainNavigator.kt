@@ -1,8 +1,6 @@
 package com.koai.kingofenglish
 
-import android.util.Log
 import androidx.core.os.bundleOf
-import androidx.lifecycle.viewModelScope
 import com.koai.base.main.action.event.NavigationEvent
 import com.koai.base.main.action.navigator.BaseNavigator
 import com.koai.kingofenglish.ui.dialog.profile.ProfileRouter
@@ -15,15 +13,6 @@ import com.koai.kingofenglish.ui.splash.SplashRouter
 import com.koai.kingofenglish.ui.theme.CustomThemeRouter
 import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
-import io.ktor.client.HttpClient
-import io.ktor.client.plugins.websocket.WebSockets
-import io.ktor.client.plugins.websocket.webSocket
-import io.ktor.http.HttpMethod
-import io.ktor.websocket.Frame
-import io.ktor.websocket.readText
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class MainNavigator :
     BaseNavigator(),
