@@ -10,6 +10,7 @@ package com.koai.kingofenglish.utils
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+import com.koai.kingofenglish.BuildConfig
 import com.koai.kingofenglish.R
 
 object AppConfig {
@@ -25,10 +26,10 @@ object AppConfig {
 
     val rewardAds: String
         get() = FirebaseRemoteConfig.getInstance().getString(REWARD_ADS)
+            .ifEmpty { BuildConfig.REWARD_ADS }
 
     var enableSoundEffect = true
     var enableVibrate = true
     var background: String? = null
     var showedWelcomeTitle = false
-    var showedLeaderBoard = false
 }

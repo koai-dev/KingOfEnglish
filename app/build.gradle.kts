@@ -26,8 +26,8 @@ android {
         applicationId = "com.koai.kingofenglish"
         minSdk = 24
         targetSdk = 34
-        versionCode = 20240430
-        versionName = "1.0.0"
+        versionCode = 20240502
+        versionName = "1.0.1"
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
@@ -44,6 +44,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            resValue("string", "app_ads", "\"ca-app-pub-6499093922410254~8950098102\"")
+            buildConfigField("String", "REWARD_ADS", "\"ca-app-pub-6499093922410254/6742118615\"")
+        }
+        debug {
+            resValue("string", "app_ads", "\"ca-app-pub-3940256099942544~3347511713\"")
+            buildConfigField("String", "REWARD_ADS", "\"ca-app-pub-3940256099942544/5224354917\"")
         }
     }
     compileOptions {

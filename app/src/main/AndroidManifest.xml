@@ -47,14 +47,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--         test -->
-        <!--        <meta-data-->
-        <!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-        <!--            android:value="ca-app-pub-3940256099942544~3347511713" />-->
-        <!-- release -->
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-6499093922410254~8950098102" />
+            android:value="@string/app_ads" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_launcher_foreground" />

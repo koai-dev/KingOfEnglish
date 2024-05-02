@@ -36,7 +36,7 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
         if (!AppConfig.showedWelcomeTitle) {
             AppConfig.showedWelcomeTitle = true
             binding.root.postDelayed({
-                if (!AppConfig.showedLeaderBoard && !AccountUtils.isLogin()) {
+                if (!AccountUtils.isLogin()) {
                     navigator.sendEvent(NewsEvent("Let's login and compete with players worldwide. 😋 "))
                 } else {
                     navigator.sendEvent(NewsEvent("Let's try hard now! Good luck 😋 "))
@@ -60,11 +60,11 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
 
     private fun setupUI() {
         binding.layoutItemDashboard.user = AccountUtils.user
-        if (AppConfig.showedLeaderBoard) {
-            binding.layoutItemDashboard.btnLeaderBoard.visible()
-        } else {
-            binding.layoutItemDashboard.btnLeaderBoard.gone()
-        }
+//        if (AppConfig.showedLeaderBoard) {
+        binding.layoutItemDashboard.btnLeaderBoard.visible()
+//        } else {
+//            binding.layoutItemDashboard.btnLeaderBoard.gone()
+//        }
         if (AppConfig.background.isNullOrEmpty()) {
             binding.ctnLinkAccount.imgBg.loadImage(R.drawable.bg_home)
         } else {
@@ -72,7 +72,7 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
         }
         binding.ctnLinkAccount.btnNo.gone()
         binding.ctnLinkAccount.btnYes.gone()
-        binding.ctnLinkAccount.textView.gone()
+        binding.ctnLinkAccount.txtPrivacy.gone()
         binding.ctnLinkAccount.textView2.gone()
     }
 

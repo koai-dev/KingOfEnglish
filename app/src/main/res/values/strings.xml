@@ -4,7 +4,7 @@
     <string name="hi_let_s_get_started">Hi , LET’S GET STARTED :)</string>
     <string name="link_your_account">Link your account with Facebook for a better experience. Do you want to link?</string>
     <string name="yes">YES</string>
-    <string name="by_continue_you_agree_to_our_terms_privacy_policy"><![CDATA[by continue you agree to our\nTerms & Privacy POLICY]]></string>
+    <string name="by_continue_you_agree_to_our_terms_privacy_policy">by continue you agree to our\n<u><font fgcolor="#42C0FB">Terms</font></u> &amp; <u><font fgcolor="#42C0FB">Privacy POLICY</font></u></string>
     <string name="no">No</string>
     <string name="play_now">PLAY NOW</string>
     <string name="leader_board">LEADER BOARD</string>

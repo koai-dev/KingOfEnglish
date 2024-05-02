@@ -27,9 +27,9 @@ class LoginScreen :
         binding: ScreenLoginBinding,
     ) {
         LoginViewModel.loginCallBack = this
-        if (AppConfig.background.isNullOrEmpty()){
+        if (AppConfig.background.isNullOrEmpty()) {
             binding.ctnLinkAccount.imgBg.loadImage(R.drawable.bg_home)
-        }else{
+        } else {
             binding.ctnLinkAccount.img = AppConfig.background
         }
         checkAuthStatus()
@@ -73,6 +73,10 @@ class LoginScreen :
 
         binding.ctnLinkAccount.btnYes.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             viewModel.login(this)
+        }
+
+        binding.ctnLinkAccount.txtPrivacy.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
+            router?.gotoTerm()
         }
     }
 

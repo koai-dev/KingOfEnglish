@@ -111,7 +111,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/btn_yes" />
 
                 <TextView
-                    android:id="@+id/text_view"
+                    android:id="@+id/txt_privacy"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"

@@ -36,7 +36,6 @@ class MainActivity :
     private var isOnDashBoard = false
     private val adsViewModel: AdsViewModel by viewModel()
     private val sharePreference: SharePreference by inject()
-    private val leaderBoardViewModel: LeaderBoardViewModel by viewModel()
     override fun initView(
         savedInstanceState: Bundle?,
         binding: ActivityMainBinding,
@@ -52,7 +51,6 @@ class MainActivity :
         MobileAds.initialize(this) {}
         adsViewModel.scheduleShowAds(this)
         configAppSetting()
-        leaderBoardViewModel.getTopLeaders()
     }
 
     private fun configAppSetting() {
@@ -67,13 +65,6 @@ class MainActivity :
             ClickableViewExtensions.initSoundEffect()
         }
         Socket.channel = navigator.navigation
-        leaderBoardViewModel.leaders.observe(this) {
-            if (it is ResponseStatus.Success) {
-                if ((it.data.data?.size ?: 0) >= 10) {
-                    AppConfig.showedLeaderBoard = true
-                }
-            }
-        }
     }
 
     override fun onNavigationEvent(event: NavigationEvent) {
