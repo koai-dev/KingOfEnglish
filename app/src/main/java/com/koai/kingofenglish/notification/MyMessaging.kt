@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import androidx.core.app.ActivityCompat
@@ -53,7 +54,7 @@ class MyMessaging : FirebaseMessagingService() {
 
         val builder =
             NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_noti_default)
+                .setSmallIcon(R.drawable.ic_stat_name)
                 .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setContentTitle(data.data[TITLE] ?: resources.getString(R.string.app_name))
@@ -65,7 +66,7 @@ class MyMessaging : FirebaseMessagingService() {
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
                 .setColorized(true)
-                .setColor(Color.parseColor("#FCCCBE"))
+                .setColor(Color.parseColor("#3D90FA"))
 
         createNotificationChannel()
         with(NotificationManagerCompat.from(this)) {
