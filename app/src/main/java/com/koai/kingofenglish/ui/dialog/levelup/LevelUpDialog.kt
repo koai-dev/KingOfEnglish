@@ -15,13 +15,8 @@ import com.koai.base.main.screens.BaseDialog
 import com.koai.kingofenglish.MainNavigator
 import com.koai.kingofenglish.R
 import com.koai.kingofenglish.databinding.DialogLevelUpBinding
-import com.koai.kingofenglish.service.Socket
 import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
-import io.ktor.websocket.Frame
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class LevelUpDialog :
     BaseDialog<DialogLevelUpBinding, BaseRouter, MainNavigator>(R.layout.dialog_level_up) {
@@ -48,9 +43,11 @@ class LevelUpDialog :
         binding: DialogLevelUpBinding,
     ) {
         var pointAdd = arguments?.getInt(Constants.ADDED_POINTS) ?: 0
+        val img = arguments?.getString(Constants.IMG)
         if (pointAdd == 0) {
             pointAdd = -600
         }
+        binding.img  = img
         binding.pointAdded = pointAdd
         binding.btnHome.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             dismiss()

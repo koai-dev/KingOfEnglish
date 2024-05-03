@@ -155,7 +155,7 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
                                     if (checkValidAnswer(currentList.toMutableList())) {
                                         AccountUtils.user?.currentLevel =
                                             AccountUtils.user?.currentLevel?.plus(1)
-                                        router?.nextLevel(viewModel.getCurrentPointAdd())
+                                        router?.nextLevel(viewModel.getCurrentPointAdd(), viewModel.question?.thumb)
                                         viewModel.pause()
                                     } else {
                                         viewModel.pointAdd

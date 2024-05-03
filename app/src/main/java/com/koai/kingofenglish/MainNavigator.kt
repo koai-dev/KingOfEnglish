@@ -1,8 +1,10 @@
 package com.koai.kingofenglish
 
+import android.app.Activity
 import androidx.core.os.bundleOf
 import com.koai.base.main.action.event.NavigationEvent
 import com.koai.base.main.action.navigator.BaseNavigator
+import com.koai.kingofenglish.ui.dialog.notification.NotificationSettingRouter
 import com.koai.kingofenglish.ui.dialog.profile.ProfileRouter
 import com.koai.kingofenglish.ui.dialog.setting.SettingRouter
 import com.koai.kingofenglish.ui.home.HomeRouter
@@ -13,6 +15,7 @@ import com.koai.kingofenglish.ui.splash.SplashRouter
 import com.koai.kingofenglish.ui.theme.CustomThemeRouter
 import com.koai.kingofenglish.utils.AppConfig
 import com.koai.kingofenglish.utils.Constants
+import com.koai.kingofenglish.utils.NotificationHelper
 
 class MainNavigator :
     BaseNavigator(),
@@ -21,7 +24,7 @@ class MainNavigator :
     HomeRouter,
     PlayRouter,
     SettingRouter,
-    ProfileRouter, CustomThemeRouter, LeaderBoardRouter {
+    ProfileRouter, CustomThemeRouter, LeaderBoardRouter, NotificationSettingRouter {
 
     override fun gotoLoginScreen() {
         offNavScreen(R.id.action_global_loginScreen)
@@ -55,6 +58,10 @@ class MainNavigator :
         offNavScreen(R.id.action_global_profileDialog)
     }
 
+    override fun gotoNotificationSetting() {
+        offNavScreen(R.id.action_global_notificationSettingDialog)
+    }
+
     override fun onPause() {
         offNavScreen(R.id.action_global_pauseDialog)
     }
@@ -63,10 +70,10 @@ class MainNavigator :
         offNavScreen(R.id.action_global_tipDialog, bundleOf(Constants.BASE_URL to img))
     }
 
-    override fun nextLevel(currentPoint: Int) {
+    override fun nextLevel(currentPoint: Int, img: String?) {
         offNavScreen(
             R.id.action_global_levelUpDialog,
-            bundleOf(Constants.ADDED_POINTS to currentPoint),
+            bundleOf(Constants.ADDED_POINTS to currentPoint, Constants.IMG to img),
         )
     }
 
@@ -117,6 +124,10 @@ class MainNavigator :
     override fun setBackground(url: String) {
         AppConfig.background = url
     }
+
+    override fun gotoNotificationSetting(activity: Activity) {
+        NotificationHelper.requestAllowNotifyFromSetting(activity)
+    }
 }
 
 class DashboardEvent : NavigationEvent()
@@ -129,4 +140,4 @@ class VibrateEvent(val enable: Boolean) : NavigationEvent()
 
 class ReportEvent : NavigationEvent()
 
-class NewsEvent(val news: String): NavigationEvent()
+class NewsEvent(val news: String) : NavigationEvent()

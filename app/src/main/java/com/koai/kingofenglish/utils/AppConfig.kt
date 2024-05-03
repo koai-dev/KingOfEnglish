@@ -32,4 +32,6 @@ object AppConfig {
     var enableVibrate = true
     var background: String? = null
     var showedWelcomeTitle = false
+    var isForeground = false
+    var showPopupNotificationSetting = false
 }

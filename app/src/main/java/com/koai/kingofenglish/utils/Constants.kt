@@ -13,6 +13,7 @@ object Constants {
     const val REPLAY = "REPLAY"
     const val RESUME = "RESUME"
     const val SHOW_TIP = "SHOW_TIP"
+    const val IMG = "IMG"
 
     const val DISABLE_MUSIC = "ENABLE_MUSIC"
     const val DISABLE_SOUND_EFFECT = "ENABLE_SOUND_EFFECT"

@@ -147,5 +147,14 @@
         app:destination="@id/newsDialog"
         app:enterAnim="@anim/top_sheet_slide_in"
         app:exitAnim="@anim/top_sheet_slide_out" />
+    <dialog
+        android:id="@+id/notificationSettingDialog"
+        tools:layout="@layout/dialog_notification_setting"
+        android:name="com.koai.kingofenglish.ui.dialog.notification.NotificationSettingDialog"
+        android:label="NotificationSettingDialog" />
+    <action
+        android:id="@+id/action_global_notificationSettingDialog"
+        app:destination="@id/notificationSettingDialog" />
+
 
 </navigation>

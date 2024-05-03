@@ -16,7 +16,7 @@ android {
 
     signingConfigs {
         register("release") {
-            storeFile = file("D:\\KingOfEnglish\\app\\key.jks")
+            storeFile = file("key.jks")
             storePassword = "123456"
             keyAlias = "key0"
             keyPassword = "123456"
@@ -52,6 +52,18 @@ android {
             buildConfigField("String", "REWARD_ADS", "\"ca-app-pub-3940256099942544/5224354917\"")
         }
     }
+
+    setFlavorDimensions(arrayListOf("default"))
+
+    productFlavors{
+        create("dev"){
+            dimension = "default"
+            applicationIdSuffix = ".dev"
+        }
+        create("prod"){
+            dimension = "default"
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -81,11 +93,11 @@ dependencies {
 
     // firebase
     implementation("com.facebook.android:facebook-android-sdk:16.2.0")
-    implementation("com.google.firebase:firebase-perf-ktx:20.5.2")
-    implementation("com.google.firebase:firebase-messaging-ktx:23.4.1")
-    implementation("com.google.firebase:firebase-inappmessaging-display-ktx:20.4.2")
-    implementation("com.google.firebase:firebase-config-ktx:21.6.3")
-    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
+    implementation("com.google.firebase:firebase-perf-ktx:21.0.0")
+    implementation("com.google.firebase:firebase-messaging-ktx:24.0.0")
+    implementation("com.google.firebase:firebase-inappmessaging-display-ktx:21.0.0")
+    implementation("com.google.firebase:firebase-config-ktx:22.0.0")
+    implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
 
     // worker
     implementation("androidx.work:work-runtime-ktx:2.9.0")
@@ -100,5 +112,7 @@ dependencies {
     implementation("io.ktor:ktor-client-core:2.3.10")
     implementation("io.ktor:ktor-client-cio:2.3.10")
     implementation("io.ktor:ktor-client-websockets:2.3.10")
+
+    implementation("com.airbnb.android:lottie:6.4.0")
 
 }

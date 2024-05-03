@@ -47,4 +47,6 @@
     <string name="wish_you_lot_of_luck">Wishing you lots of luck!</string>
     <string name="congratulations_let_s_review_the_results_you_have_achieved">Congratulations %s,\n - You are reached %s questions and receiving %s diamonds. \n- Reach the top %s%% best players in King of English😍</string>
     <string name="let_s_play">LET’S PLAY</string>
+    <string name="agree">Agree</string>
+    <string name="allow_king_of_english_send_information_to_you">Allow King of English send notifications to you</string>
 </resources>

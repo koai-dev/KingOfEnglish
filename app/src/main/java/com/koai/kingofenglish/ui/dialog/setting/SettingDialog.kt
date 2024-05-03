@@ -50,7 +50,7 @@ class SettingDialog :
         setAction()
     }
 
-    private fun setAction(){
+    private fun setAction() {
         binding.btnMusic.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
             binding.enableMusic = binding.enableMusic != true
             if (binding.enableMusic == true) {
