@@ -17,6 +17,16 @@ interface ApiService : BaseApiService {
         @Query("level") level: Int,
     ): Response<Question>
 
+    @POST("question/getRandom")
+    suspend fun getQuestion(
+        @Body levels: List<Int>
+    ): Response<Question>
+
+    @POST("question/getHistory")
+    suspend fun getHistory(
+        @Body levels: List<Int>
+    ): Response<Question>
+
     @GET("user")
     suspend fun getUser(
         @Query("userId") userId: String,
