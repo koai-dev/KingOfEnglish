@@ -206,6 +206,7 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
             question?.let {
                 if (it is ResponseStatus.Success) {
                     viewModel.resume()
+                    it.data.data?.answers?.shuffle()
                     viewModel.question = it.data.data
                     binding.question = it.data.data
                     binding.answer = null

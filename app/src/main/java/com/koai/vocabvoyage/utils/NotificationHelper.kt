@@ -17,26 +17,44 @@ object NotificationHelper {
             .canUseFullScreenIntent()
 
     fun requestAllowNotifyFromSetting(activity: Activity) {
-        val intent = Intent()
-        if (!NotificationManagerCompat.from(activity)
-                .areNotificationsEnabled()
-        ) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                intent.action = Settings.ACTION_APP_NOTIFICATION_SETTINGS
-                intent.putExtra(Settings.EXTRA_APP_PACKAGE, activity.packageName)
-            } else {
-                intent.action = "android.settings.APP_NOTIFICATION_SETTINGS"
-            }
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        try {
+            val intent = Intent()
             if (!NotificationManagerCompat.from(activity)
-                    .canUseFullScreenIntent()
+                    .areNotificationsEnabled()
             ) {
-                intent.action = Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    intent.action = Settings.ACTION_APP_NOTIFICATION_SETTINGS
+                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, activity.packageName)
+                } else {
+                    intent.action = "android.settings.APP_NOTIFICATION_SETTINGS"
+                }
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                if (!NotificationManagerCompat.from(activity)
+                        .canUseFullScreenIntent()
+                ) {
+                    intent.action = Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT
+                }
+            }
+            intent.putExtra(KEY_APP_PACKAGE_NAME, activity.packageName)
+            intent.putExtra(KEY_APP_UID, activity.applicationInfo.uid)
+            activity.startActivity(intent)
+        } catch (e: Exception) {
+            val intent = Intent()
+            if (!NotificationManagerCompat.from(activity)
+                    .areNotificationsEnabled()
+            ) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    intent.action = Settings.ACTION_APP_NOTIFICATION_SETTINGS
+                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, activity.packageName)
+                } else {
+                    intent.action = "android.settings.APP_NOTIFICATION_SETTINGS"
+                }
+                intent.putExtra(KEY_APP_PACKAGE_NAME, activity.packageName)
+                intent.putExtra(KEY_APP_UID, activity.applicationInfo.uid)
+                activity.startActivity(intent)
             }
         }
-        intent.putExtra(KEY_APP_PACKAGE_NAME, activity.packageName)
-        intent.putExtra(KEY_APP_UID, activity.applicationInfo.uid)
-        activity.startActivity(intent)
+
     }
 }
