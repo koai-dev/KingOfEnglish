@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:animateLayoutChanges="false">
 
     <data>
-
         <variable
             name="news"
             type="String" />
+        <import type="com.koai.vocabvoyage.BuildConfig"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,8 +32,8 @@
         <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/ctn_motion"
             android:layout_width="0dp"
-            android:visibility="invisible"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             app:layoutDescription="@xml/activity_main_xml_constraintlayout3_scene"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,15 +55,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:fontFamily="@font/super_corn"
                 android:maxLength="1000"
                 android:singleLine="true"
-                android:fontFamily="@font/super_corn"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.motion.widget.MotionLayout>
+
+        <FrameLayout
+            android:id="@+id/banner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

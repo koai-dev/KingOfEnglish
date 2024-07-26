@@ -14,7 +14,9 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import com.google.firebase.messaging.RemoteMessage
 import com.koai.base.main.BaseActivity
 import com.koai.base.main.action.event.NavigationEvent
@@ -29,6 +31,9 @@ import com.koai.vocabvoyage.notification.MyMessaging
 import com.koai.vocabvoyage.service.Socket
 import com.koai.vocabvoyage.utils.AppConfig
 import com.koai.vocabvoyage.utils.Constants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -53,13 +58,13 @@ class MainActivity :
             windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
             ViewCompat.onApplyWindowInsets(view, windowInsets)
         }
-        MobileAds.initialize(this) {}
         adsViewModel.scheduleShowAds(this)
         configAppSetting()
         LocalBroadcastManager.getInstance(this).registerReceiver(
             notificationReceiver,
             notificationIntentFilter
         )
+        setUpAdmobBanner()
     }
 
     private fun configAppSetting() {
@@ -164,7 +169,7 @@ class MainActivity :
         if (isOnDashBoard) {
             playSound()
         }
-        if (AppConfig.showPopupNotificationSetting){
+        if (AppConfig.showPopupNotificationSetting) {
             val isFirstLaunch = !sharePreference.getBooleanPref(Constants.IS_FIRST_LAUNCH)
             if (isFirstLaunch) {
                 navigator.gotoTutorial()
@@ -182,6 +187,21 @@ class MainActivity :
             }
             data?.data?.get(MyMessaging.BODY)?.let { news ->
                 navigator.sendEvent(NewsEvent("$news "))
+            }
+        }
+    }
+
+    private fun setUpAdmobBanner() {
+        var adRequest: AdRequest? = null
+        val adView = AdView(this)
+        adView.adUnitId = BuildConfig.BANNER_ADS
+        adView.setAdSize(AdSize.FULL_BANNER)
+        binding.banner.addView(adView)
+        CoroutineScope(Dispatchers.IO).launch {
+            adRequest = AdRequest.Builder().build()
+        }.invokeOnCompletion {
+            runOnUiThread {
+                adRequest?.let { it1 -> adView.loadAd(it1) }
             }
         }
     }

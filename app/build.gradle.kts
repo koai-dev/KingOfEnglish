@@ -44,10 +44,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            buildConfigField("String", "BANNER_ADS", "\"ca-app-pub-4786522373342788/5059647458\"")
             resValue("string", "app_ads", "\"ca-app-pub-4786522373342788~2041354068\"")
             buildConfigField("String", "REWARD_ADS", "\"ca-app-pub-4786522373342788/6515167146\"")
         }
         debug {
+            buildConfigField("String", "BANNER_ADS", "\"ca-app-pub-3940256099942544/9214589741\"")
             resValue("string", "app_ads", "\"ca-app-pub-3940256099942544~3347511713\"")
             buildConfigField("String", "REWARD_ADS", "\"ca-app-pub-3940256099942544/5224354917\"")
         }
