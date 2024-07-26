@@ -58,7 +58,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <com.koai.kingofenglish.common.ShareView
+        <com.koai.vocabvoyage.common.ShareView
             android:id="@+id/shareView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/splashScreen"
-        android:name="com.koai.kingofenglish.ui.splash.SplashScreen"
+        android:name="com.koai.vocabvoyage.ui.splash.SplashScreen"
         android:label="SplashScreen"
         tools:layout="@layout/screen_splash" />
     <fragment
         android:id="@+id/loginScreen"
-        android:name="com.koai.kingofenglish.ui.login.LoginScreen"
+        android:name="com.koai.vocabvoyage.ui.login.LoginScreen"
         android:label="LoginScreen"
         tools:layout="@layout/screen_login" />
     <action
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/homeScreen"
-        android:name="com.koai.kingofenglish.ui.home.HomeScreen"
+        android:name="com.koai.vocabvoyage.ui.home.HomeScreen"
         android:label="HomeScreen"
         tools:layout="@layout/screen_home" />
     <action
@@ -35,7 +35,7 @@
         app:popUpToInclusive="true" />
     <dialog
         android:id="@+id/tutorialJourney"
-        android:name="com.koai.kingofenglish.ui.tutorial.TutorialJourney"
+        android:name="com.koai.vocabvoyage.ui.tutorial.TutorialJourney"
         android:label="TutorialJourney"
         tools:layout="@layout/journey_tutorial" />
     <action
@@ -43,7 +43,7 @@
         app:destination="@id/tutorialJourney" />
     <fragment
         android:id="@+id/playScreen"
-        android:name="com.koai.kingofenglish.ui.play.PlayScreen"
+        android:name="com.koai.vocabvoyage.ui.play.PlayScreen"
         android:label="PlayScreen"
         tools:layout="@layout/screen_play" />
     <action
@@ -51,7 +51,7 @@
         app:destination="@id/playScreen" />
     <dialog
         android:id="@+id/incorrectDialog"
-        android:name="com.koai.kingofenglish.ui.dialog.incorrect.IncorrectDialog"
+        android:name="com.koai.vocabvoyage.ui.dialog.incorrect.IncorrectDialog"
         android:label="IncorrectDialog"
         tools:layout="@layout/dialog_incorrect" />
     <action
@@ -59,7 +59,7 @@
         app:destination="@id/incorrectDialog" />
     <dialog
         android:id="@+id/levelUpDialog"
-        android:name="com.koai.kingofenglish.ui.dialog.levelup.LevelUpDialog"
+        android:name="com.koai.vocabvoyage.ui.dialog.levelup.LevelUpDialog"
         android:label="LevelUpDialog"
         tools:layout="@layout/dialog_level_up" />
     <action
@@ -67,17 +67,17 @@
         app:destination="@id/levelUpDialog" />
     <dialog
         android:id="@+id/loseDialog"
-        android:name="com.koai.kingofenglish.ui.dialog.lose.LoseDialog"
+        android:name="com.koai.vocabvoyage.ui.dialog.lose.LoseDialog"
         android:label="LoseDialog"
         tools:layout="@layout/dialog_lose" />
     <dialog
         android:id="@+id/pauseDialog"
-        android:name="com.koai.kingofenglish.ui.dialog.pause.PauseDialog"
+        android:name="com.koai.vocabvoyage.ui.dialog.pause.PauseDialog"
         android:label="PauseDialog"
         tools:layout="@layout/dialog_pause" />
     <dialog
         android:id="@+id/watchAdsDialog"
-        android:name="com.koai.kingofenglish.ui.dialog.watch_ads.WatchAdsDialog"
+        android:name="com.koai.vocabvoyage.ui.dialog.watch_ads.WatchAdsDialog"
         android:label="TipDialog"
         tools:layout="@layout/dialog_watch_ads" />
     <action
@@ -91,7 +91,7 @@
         app:destination="@id/watchAdsDialog" />
     <dialog
         android:id="@+id/tipDialog"
-        android:name="com.koai.kingofenglish.ui.dialog.tip.TipDialog"
+        android:name="com.koai.vocabvoyage.ui.dialog.tip.TipDialog"
         android:label="TipDialog"
         tools:layout="@layout/dialog_tip" />
     <action
@@ -99,12 +99,12 @@
         app:destination="@id/tipDialog" />
     <dialog
         android:id="@+id/profileDialog"
-        android:name="com.koai.kingofenglish.ui.dialog.profile.ProfileDialog"
+        android:name="com.koai.vocabvoyage.ui.dialog.profile.ProfileDialog"
         android:label="ProfileDialog"
         tools:layout="@layout/dialog_profile" />
     <dialog
         android:id="@+id/settingDialog"
-        android:name="com.koai.kingofenglish.ui.dialog.setting.SettingDialog"
+        android:name="com.koai.vocabvoyage.ui.dialog.setting.SettingDialog"
         android:label="SettingDialog"
         tools:layout="@layout/dialog_setting" />
     <action
@@ -115,7 +115,7 @@
         app:destination="@id/settingDialog" />
     <fragment
         android:id="@+id/termScreen"
-        android:name="com.koai.kingofenglish.ui.term.TermScreen"
+        android:name="com.koai.vocabvoyage.ui.term.TermScreen"
         android:label="TermScreen"
         tools:layout="@layout/screen_term" />
     <action
@@ -123,7 +123,7 @@
         app:destination="@id/termScreen" />
     <fragment
         android:id="@+id/customThemeScreen"
-        android:name="com.koai.kingofenglish.ui.theme.CustomThemeScreen"
+        android:name="com.koai.vocabvoyage.ui.theme.CustomThemeScreen"
         android:label="CustomThemeScreen"
         tools:layout="@layout/screen_custom_theme" />
     <action
@@ -131,7 +131,7 @@
         app:destination="@id/customThemeScreen" />
     <fragment
         android:id="@+id/leaderBoardScreen"
-        android:name="com.koai.kingofenglish.ui.leaderBoad.LeaderBoardScreen"
+        android:name="com.koai.vocabvoyage.ui.leaderBoad.LeaderBoardScreen"
         android:label="LeaderBoardScreen"
         tools:layout="@layout/screen_leader_board" />
     <action
@@ -140,7 +140,7 @@
     <dialog
         android:id="@+id/newsDialog"
         tools:layout="@layout/dialog_news"
-        android:name="com.koai.kingofenglish.ui.dialog.news.NewsDialog"
+        android:name="com.koai.vocabvoyage.ui.dialog.news.NewsDialog"
         android:label="NewsDialog" />
     <action
         android:id="@+id/action_global_newsDialog"
@@ -150,7 +150,7 @@
     <dialog
         android:id="@+id/notificationSettingDialog"
         tools:layout="@layout/dialog_notification_setting"
-        android:name="com.koai.kingofenglish.ui.dialog.notification.NotificationSettingDialog"
+        android:name="com.koai.vocabvoyage.ui.dialog.notification.NotificationSettingDialog"
         android:label="NotificationSettingDialog" />
     <action
         android:id="@+id/action_global_notificationSettingDialog"

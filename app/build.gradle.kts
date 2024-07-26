@@ -11,7 +11,7 @@ plugins {
 }
 
 android {
-    namespace = "com.koai.kingofenglish"
+    namespace = "com.koai.vocabvoyage"
     compileSdk = 34
 
     signingConfigs {
@@ -23,11 +23,11 @@ android {
         }
     }
     defaultConfig {
-        applicationId = "com.koai.kingofenglish"
+        applicationId = "com.koai.vocabvoyage"
         minSdk = 24
         targetSdk = 34
-        versionCode = 20240607
-        versionName = "1.0.4"
+        versionCode = 20240726
+        versionName = "1.0.0"
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
@@ -85,19 +85,21 @@ android {
 
 dependencies {
     implementation("com.koai:base:1.4.10")
-    testImplementation("org.testng:testng:7.4.0")
+    testImplementation("org.testng:testng:7.10.2")
 
     implementation("com.google.android.flexbox:flexbox:3.0.0")
     // admob
-    implementation("com.google.android.gms:play-services-ads:23.0.0")
+    implementation("com.google.android.gms:play-services-ads:23.2.0")
 
     // firebase
-    implementation("com.facebook.android:facebook-android-sdk:16.2.0")
-    implementation("com.google.firebase:firebase-perf-ktx:21.0.0")
+    implementation("com.facebook.android:facebook-android-sdk:17.0.0")
+    implementation("com.google.firebase:firebase-perf-ktx:21.0.1")
     implementation("com.google.firebase:firebase-messaging-ktx:24.0.0")
     implementation("com.google.firebase:firebase-inappmessaging-display-ktx:21.0.0")
     implementation("com.google.firebase:firebase-config-ktx:22.0.0")
     implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
+
+    implementation(project(":analytic"))
 
     // worker
     implementation("androidx.work:work-runtime-ktx:2.9.0")
@@ -109,10 +111,10 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
     testImplementation("androidx.room:room-testing:2.6.1")
 
-    implementation("io.ktor:ktor-client-core:2.3.10")
-    implementation("io.ktor:ktor-client-cio:2.3.10")
-    implementation("io.ktor:ktor-client-websockets:2.3.10")
+    implementation("io.ktor:ktor-client-core:2.3.12")
+    implementation("io.ktor:ktor-client-cio:2.3.12")
+    implementation("io.ktor:ktor-client-websockets:2.3.12")
 
-    implementation("com.airbnb.android:lottie:6.4.0")
+    implementation("com.airbnb.android:lottie:6.4.1")
 
 }

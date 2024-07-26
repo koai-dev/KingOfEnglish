@@ -4,8 +4,8 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
         maven(url = "https://jitpack.io")
-        maven(url = "${extra["mavenRepo"]}"){
-            credentials{
+        maven(url = "${extra["mavenRepo"]}") {
+            credentials {
                 username = extra["username"].toString()
                 password = extra["token"].toString()
             }
@@ -18,8 +18,8 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven(url = "https://jitpack.io")
-        maven(url = "${extra["mavenRepo"]}"){
-            credentials{
+        maven(url = "${extra["mavenRepo"]}") {
+            credentials {
                 username = extra["username"].toString()
                 password = extra["token"].toString()
             }
@@ -29,4 +29,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "KingOfEnglish"
 include(":app")
+include(":analytic")
  

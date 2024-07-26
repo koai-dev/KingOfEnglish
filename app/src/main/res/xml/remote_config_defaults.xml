@@ -5,7 +5,15 @@
         <key>reward_ads</key>
     </entry>
     <entry>
-        <key>enable_landing</key>
-        <value>false</value>
+        <key>min_version_code</key>
+        <value>20240729</value>
+    </entry>
+    <entry>
+        <key>min_version_name</key>
+        <value>1.0.1</value>
+    </entry>
+    <entry>
+        <key>default_updated_msg</key>
+        <value>- Fix bug and optimize</value>
     </entry>
 </defaultsMap>

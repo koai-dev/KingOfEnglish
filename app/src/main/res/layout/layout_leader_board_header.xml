@@ -6,15 +6,15 @@
 
         <variable
             name="top1"
-            type="com.koai.kingofenglish.domain.models.User" />
+            type="com.koai.vocabvoyage.domain.models.User" />
 
         <variable
             name="top2"
-            type="com.koai.kingofenglish.domain.models.User" />
+            type="com.koai.vocabvoyage.domain.models.User" />
 
         <variable
             name="top3"
-            type="com.koai.kingofenglish.domain.models.User" />
+            type="com.koai.vocabvoyage.domain.models.User" />
 
     </data>
 

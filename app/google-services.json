@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:191802769483:android:22a386025c8e5229da4dce",
+        "mobilesdk_app_id": "1:191802769483:android:71d3cbc308ee2a52da4dce",
         "android_client_info": {
-          "package_name": "com.koai.kingofenglish"
+          "package_name": "com.koai.vocabvoyage"
         }
       },
       "oauth_client": [],
@@ -26,9 +26,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:191802769483:android:64205e6d5fc54bbcda4dce",
+        "mobilesdk_app_id": "1:191802769483:android:c6abcf68351949e9da4dce",
         "android_client_info": {
-          "package_name": "com.koai.kingofenglish.dev"
+          "package_name": "com.koai.vocabvoyage.dev"
         }
       },
       "oauth_client": [],

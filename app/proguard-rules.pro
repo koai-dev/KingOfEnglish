@@ -20,7 +20,7 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class com.koai.kingofenglish.domain.models.** {*;}
--keep class com.koai.kingofenglish.domain.models.* {*;}
+-keep class com.koai.vocabvoyage.domain.models.** {*;}
+-keep class com.koai.vocabvoyage.domain.models.* {*;}
 
 -dontwarn org.slf4j.impl.StaticLoggerBinder
