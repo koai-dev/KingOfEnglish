@@ -26,8 +26,8 @@ android {
         applicationId = "com.koai.kingofenglish"
         minSdk = 24
         targetSdk = 34
-        versionCode = 20240607
-        versionName = "1.0.4"
+        versionCode = 20240608
+        versionName = "1.0.5"
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
