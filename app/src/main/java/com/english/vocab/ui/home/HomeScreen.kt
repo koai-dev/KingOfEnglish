@@ -3,6 +3,7 @@ package com.english.vocab.ui.home
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
+import com.english.vocab.BuildConfig
 import com.english.vocab.R
 import com.english.vocab.databinding.ScreenHomeBinding
 import com.english.vocab.domain.account.AccountUtils
@@ -17,6 +18,7 @@ import com.english.vocab.MainNavigator
 import com.english.vocab.NewsEvent
 import com.english.vocab.utils.AppConfig
 import com.english.vocab.utils.NotificationHelper
+import com.koai.base.main.action.event.NextScreen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -41,6 +43,10 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
         setupUI()
         setAction()
         setFirstLaunch()
+
+        if (AppConfig.versionCodeUpdate > BuildConfig.VERSION_CODE){
+            router?.gotoUpdate()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

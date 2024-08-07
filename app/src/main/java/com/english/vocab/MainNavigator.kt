@@ -62,6 +62,10 @@ class MainNavigator :
         offNavScreen(R.id.action_global_notificationSettingDialog)
     }
 
+    override fun gotoUpdate() {
+        offNavScreen(R.id.action_global_updateDialog)
+    }
+
     override fun onPause() {
         offNavScreen(R.id.action_global_pauseDialog)
     }

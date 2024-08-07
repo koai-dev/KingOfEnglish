@@ -12,7 +12,7 @@ plugins {
 
 android {
     namespace = "com.english.vocab"
-    compileSdk = 34
+    compileSdk = 35
 
     signingConfigs {
         register("release") {
@@ -25,7 +25,7 @@ android {
     defaultConfig {
         applicationId = "com.english.vocab"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 20240726
         versionName = "1.0.0"
         ksp {

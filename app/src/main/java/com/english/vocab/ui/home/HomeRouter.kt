@@ -16,4 +16,6 @@ interface HomeRouter : BaseRouter {
     fun gotoProfile()
 
     fun gotoNotificationSetting()
+
+    fun gotoUpdate()
 }
