@@ -11,7 +11,7 @@
 
         <variable
             name="user"
-            type="com.koai.vocabvoyage.domain.models.User" />
+            type="com.english.vocab.domain.models.User" />
 
         <variable
             name="point"

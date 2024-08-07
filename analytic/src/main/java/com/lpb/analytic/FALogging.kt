@@ -3,34 +3,52 @@ package com.lpb.analytic
 import android.os.Bundle
 import android.util.Log
 import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.ktx.Firebase
 import com.lpb.analytic.event.Constants
 import com.lpb.analytic.event.cleanValue
+import com.lpb.analytic.event.convertToDateTime
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import com.lpb.analytic.BuildConfig
 
 object FALogging {
     private var userName: String? = null
-    fun setCurrentUser(userName: String?) {
-        this.userName = userName
-        Firebase.analytics.setUserId(FALogging.userName)
+    private var locale: String? = null
+    fun setUserName(username: String) {
+        this.userName = username
     }
 
-    private fun log(screenName: String, actionName: String? = null, bundle: Bundle? = Bundle()) {
+    fun setLocaleTracking(locale: String) {
+        this.locale = locale
+    }
+
+    private fun log(eventName: String, screenName: String? = null, bundle: Bundle = Bundle()) {
         runBlocking(Dispatchers.IO) {
             if (BuildConfig.DEBUG) {
                 Log.d(
                     "FA Logging: ",
-                    "$userName - ${screenName.cleanValue()} - ${actionName.cleanValue()}"
+                    "${eventName.cleanValue()} - ${screenName.cleanValue()}"
                 )
             }
-            Firebase.analytics.logEvent(Constants.SCREEN_NAME, bundle?.apply {
+            bundle.apply {
                 putString(Constants.ACTION_VIEW, screenName.cleanValue())
-                actionName?.let { putString(Constants.ACTION_NAME, actionName.cleanValue()) }
+                screenName?.let { putString(Constants.SCREEN_NAME, screenName.cleanValue()) }
+                putString(Constants.TIME_STAMP, System.currentTimeMillis().convertToDateTime())
                 userName?.let { putString(Constants.USER_NAME, userName) }
-            })
+                locale?.let { putString(Constants.LOCALE, locale) }
+            }
+            Firebase.analytics.logEvent(eventName, bundle)
+            logCrashlytics(eventName, bundle)
         }
+    }
+
+    private fun logCrashlytics(key: String, bundle: Bundle?) {
+        bundle?.let { messages ->
+            messages.keySet().forEach { key ->
+                Firebase.crashlytics.log(key + " : " + bundle.getString(key))
+            }
+        }
+        Firebase.crashlytics.recordException(Throwable(message = key))
     }
 
     fun logScreen(screenName: String) {
@@ -38,6 +56,6 @@ object FALogging {
     }
 
     fun logAction(screenName: String, actionName: String) {
-        log(screenName, actionName)
+        log(actionName, screenName)
     }
 }

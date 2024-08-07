@@ -6,7 +6,7 @@
             type="Integer" />
         <variable
             name="question"
-            type="com.koai.vocabvoyage.domain.models.Question" />
+            type="com.english.vocab.domain.models.Question" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:animateLayoutChanges="false">
 
     <data>
+
         <variable
             name="news"
             type="String" />
-        <import type="com.koai.vocabvoyage.BuildConfig"/>
+
+        <import type="com.english.vocab.BuildConfig" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

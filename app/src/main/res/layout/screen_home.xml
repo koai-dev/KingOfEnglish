@@ -4,7 +4,7 @@
 
     <data>
 
-        <import type="com.koai.vocabvoyage.R" />
+        <import type="com.english.vocab.R" />
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout

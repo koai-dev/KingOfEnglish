@@ -91,7 +91,7 @@
         </activity>
 
         <service
-            android:name=".notification.MyMessaging"
+            android:name="com.english.vocab.notification.MyMessaging"
             android:directBootAware="true"
             android:exported="true">
             <intent-filter>

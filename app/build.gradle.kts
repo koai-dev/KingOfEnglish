@@ -11,7 +11,7 @@ plugins {
 }
 
 android {
-    namespace = "com.koai.vocabvoyage"
+    namespace = "com.english.vocab"
     compileSdk = 34
 
     signingConfigs {
@@ -23,7 +23,7 @@ android {
         }
     }
     defaultConfig {
-        applicationId = "com.koai.vocabvoyage"
+        applicationId = "com.english.vocab"
         minSdk = 24
         targetSdk = 34
         versionCode = 20240726

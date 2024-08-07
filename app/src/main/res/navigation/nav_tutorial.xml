@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/tutorial1Screen"
-        android:name="com.koai.vocabvoyage.ui.tutorial.tutorial_1.Tutorial1Screen"
+        android:name="com.english.vocab.ui.tutorial.tutorial_1.Tutorial1Screen"
         android:label="Tutorial1Screen"
         tools:layout="@layout/screen_tutorial_1" />
 
     <fragment
         android:id="@+id/tutorial2Screen"
-        android:name="com.koai.vocabvoyage.ui.tutorial.tutorial_2.Tutorial2Screen"
+        android:name="com.english.vocab.ui.tutorial.tutorial_2.Tutorial2Screen"
         android:label="Tutorial2Screen"
         tools:layout="@layout/screen_tutorial_2" />
     <action
@@ -23,23 +23,23 @@
         app:popUpToInclusive="true" />
     <fragment
         android:id="@+id/tutorial3Screen"
-        android:name="com.koai.vocabvoyage.ui.tutorial.tutorial_3.Tutorial3Screen"
+        android:name="com.english.vocab.ui.tutorial.tutorial_3.Tutorial3Screen"
         android:label="Tutorial3Screen" />
     <fragment
         android:id="@+id/tutorial4Screen"
-        android:name="com.koai.vocabvoyage.ui.tutorial.tutorial_4.Tutorial4Screen"
+        android:name="com.english.vocab.ui.tutorial.tutorial_4.Tutorial4Screen"
         android:label="Tutorial4Screen" />
     <fragment
         android:id="@+id/tutorial5Screen"
-        android:name="com.koai.vocabvoyage.ui.tutorial.tutorial_5.Tutorial5Screen"
+        android:name="com.english.vocab.ui.tutorial.tutorial_5.Tutorial5Screen"
         android:label="Tutorial5Screen" />
     <fragment
         android:id="@+id/tutorial6Screen"
-        android:name="com.koai.vocabvoyage.ui.tutorial.tutorial_6.Tutorial6Screen"
+        android:name="com.english.vocab.ui.tutorial.tutorial_6.Tutorial6Screen"
         android:label="Tutorial6Screen" />
     <fragment
         android:id="@+id/tutorial7Screen"
-        android:name="com.koai.vocabvoyage.ui.tutorial.tutorial_7.Tutorial7Screen"
+        android:name="com.english.vocab.ui.tutorial.tutorial_7.Tutorial7Screen"
         android:label="Tutorial7Screen" />
     <action
         android:id="@+id/action_global_tutorial3Screen"

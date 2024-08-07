@@ -10,7 +10,7 @@
 
         <variable
             name="user"
-            type="com.koai.vocabvoyage.domain.models.User" />
+            type="com.english.vocab.domain.models.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

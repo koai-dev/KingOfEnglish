@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VocabVoyage</string>
+    <string name="app_name">English Vocab</string>
     <string name="_01">01</string>
     <string name="hi_let_s_get_started">Hi , LET’S GET STARTED :)</string>
     <string name="link_your_account">Link your account with Facebook for a better experience. Do you want to link?</string>
@@ -16,7 +16,7 @@
     <string name="click_to_see_ranking_position">CLICK TO SEE RANKING POSITION</string>
     <string name="custom_theme_according_to_your_personality">Custom theme according to your personality</string>
     <string name="click_here_to_set_the_mode">Click here to set the mode</string>
-    <string name="a_b_c">K/I/N/G/O/F/E/N/G/L/I/S/H</string>
+    <string name="a_b_c">E/N/G/L/I/S/H/V/O/C/A/B</string>
     <string name="_60">60</string>
     <string name="k">K</string>
     <string name="space">_</string>
@@ -49,4 +49,9 @@
     <string name="let_s_play">LET’S PLAY</string>
     <string name="agree">Agree</string>
     <string name="allow_king_of_english_send_information_to_you">Allow King of English send notifications to you</string>
+    <string name="update_now">Update Now</string>
+    <string name="there_is_a_new_version_please_update_to_continue_using_the_app">There is a new version, please update to continue using the app</string>
+    <string name="update_details">Update details:</string>
+    <string name="fix_bug_and_optimize_app">-Fix bug and optimize app</string>
+    <string name="_1_0_0">1.0.0</string>
 </resources>

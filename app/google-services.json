@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "191802769483",
-    "project_id": "kingofenglish-4ae13",
-    "storage_bucket": "kingofenglish-4ae13.appspot.com"
+    "project_number": "541954765111",
+    "project_id": "kingofenglishrebuild",
+    "storage_bucket": "kingofenglishrebuild.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:191802769483:android:71d3cbc308ee2a52da4dce",
+        "mobilesdk_app_id": "1:541954765111:android:9537ab166670a701d52ab2",
         "android_client_info": {
-          "package_name": "com.koai.vocabvoyage"
+          "package_name": "com.english.vocab"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDizw5n1RpjIv9eL--G7TxiTfSfFp15gnA"
+          "current_key": "AIzaSyBmOhLJmnvVrrKKOnFWDhPDSO9-ATLro_k"
         }
       ],
       "services": {
@@ -26,15 +26,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:191802769483:android:c6abcf68351949e9da4dce",
+        "mobilesdk_app_id": "1:541954765111:android:d3d737b54feaa11ad52ab2",
         "android_client_info": {
-          "package_name": "com.koai.vocabvoyage.dev"
+          "package_name": "com.english.vocab.dev"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDizw5n1RpjIv9eL--G7TxiTfSfFp15gnA"
+          "current_key": "AIzaSyBmOhLJmnvVrrKKOnFWDhPDSO9-ATLro_k"
         }
       ],
       "services": {
