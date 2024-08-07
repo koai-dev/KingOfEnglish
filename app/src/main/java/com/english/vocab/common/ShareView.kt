@@ -1,5 +1,6 @@
 package com.english.vocab.common
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -7,8 +8,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import com.koai.base.main.extension.ClickableViewExtensions.loadImage
 import com.koai.base.utils.ScreenUtils
-import com.koai.vocabvoyage.R
-import com.koai.vocabvoyage.databinding.LayoutShareMySelfBinding
+import com.english.vocab.R
+import com.english.vocab.databinding.LayoutShareMySelfBinding
 import com.english.vocab.domain.account.AccountUtils
 import com.english.vocab.utils.AppConfig
 
@@ -27,6 +28,7 @@ class ShareView @JvmOverloads constructor(
         this.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
     }
 
+    @SuppressLint("StringFormatMatches")
     fun updateUI() {
         shareBinding.user = AccountUtils.user
         if (AppConfig.background != null) {

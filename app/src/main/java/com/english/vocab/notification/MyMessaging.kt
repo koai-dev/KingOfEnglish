@@ -16,7 +16,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.english.vocab.MainActivity
-import com.koai.vocabvoyage.R
+import com.english.vocab.R
 import com.english.vocab.utils.AppConfig
 
 class MyMessaging : FirebaseMessagingService() {
