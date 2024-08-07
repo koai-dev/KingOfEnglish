@@ -26,6 +26,14 @@
         <entry key="Firebase Crashlytics">
           <value>
             <InsightsFilterSettings>
+              <option name="connection">
+                <ConnectionSetting>
+                  <option name="appId" value="com.english.vocab.dev" />
+                  <option name="mobileSdkAppId" value="1:541954765111:android:d3d737b54feaa11ad52ab2" />
+                  <option name="projectId" value="kingofenglishrebuild" />
+                  <option name="projectNumber" value="541954765111" />
+                </ConnectionSetting>
+              </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
               <option name="timeIntervalDays" value="THIRTY_DAYS" />
               <option name="visibilityType" value="ALL" />

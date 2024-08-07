@@ -5,6 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.english.vocab.domain.account.AccountUtils
+import com.english.vocab.domain.models.User
+import com.english.vocab.domain.usecase.AddUserUseCase
+import com.english.vocab.domain.usecase.GetUserUseCase
+import com.english.vocab.utils.AppConfig
+import com.english.vocab.utils.Constants
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -16,11 +22,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.koai.base.network.ResponseStatus
 import com.koai.base.utils.SharePreference
-import com.english.vocab.domain.account.AccountUtils
-import com.english.vocab.domain.models.User
-import com.english.vocab.domain.usecase.AddUserUseCase
-import com.english.vocab.domain.usecase.GetUserUseCase
-import com.english.vocab.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
@@ -70,7 +71,8 @@ class LoginViewModel(
                                                 avatar = Firebase.auth.currentUser?.photoUrl?.toString(),
                                                 accessToken = accessToken.token,
                                                 fcmToken = accessToken.token,
-                                                name = Firebase.auth.currentUser?.displayName ?: "KOE",
+                                                name = Firebase.auth.currentUser?.displayName
+                                                    ?: "KOE",
                                                 points = 0,
                                                 userId = Firebase.auth.currentUser?.uid,
                                             ),
@@ -95,6 +97,30 @@ class LoginViewModel(
                 callbackManager,
                 listOf("public_profile", "email"),
             )
+        }
+    }
+
+    fun loginAnonymous() {
+        viewModelScope.launch(Dispatchers.IO) {
+            Firebase.auth.signInAnonymously().addOnCompleteListener {
+                if (it.isSuccessful) {
+                    loginCallBack.onLoginSuccess(
+                        User(
+                            currentLevel = 1,
+                            timeActive = System.currentTimeMillis(),
+                            avatar = Firebase.auth.currentUser?.photoUrl?.toString()
+                                ?: AppConfig.locale,
+                            name = Firebase.auth.currentUser?.displayName ?: "No Name",
+                            points = 0,
+                            userId = Firebase.auth.currentUser?.uid,
+                        ),
+                    )
+                } else {
+                    loginCallBack.onLoginFail(
+                        it.exception?.message ?: "Unknown Error!",
+                    )
+                }
+            }
         }
     }
 

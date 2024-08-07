@@ -36,13 +36,6 @@ class LeaderBoardScreen :
         binding.rcv.adapter = adapter
         observer()
         getData()
-        setAction()
-    }
-
-    private fun setAction() {
-        binding.layoutLeaderBoardHeader.btnShare.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
-            binding.shareView.share(activity, router)
-        }
     }
 
     private fun getData() {
@@ -53,18 +46,6 @@ class LeaderBoardScreen :
         viewmodel.leaders.observe(this) {
             if (it is ResponseStatus.Success) {
                 adapter.submitList(it.data.data)
-                binding.layoutLeaderBoardHeader.top1 = it.data.data?.get(0).apply {
-                    this?.name = this?.name?.split(" ")?.last()
-                    this?.avatar = if (this?.avatar.isNullOrEmpty()) null else this?.avatar
-                }
-                binding.layoutLeaderBoardHeader.top2 = it.data.data?.get(1)?.apply {
-                    this.name = this.name?.split(" ")?.last()
-                    this.avatar = if (this.avatar.isNullOrEmpty()) null else this.avatar
-                }
-                binding.layoutLeaderBoardHeader.top3 = it.data.data?.get(2)?.apply {
-                    this.name = this.name?.split(" ")?.last()
-                    this.avatar = if (this.avatar.isNullOrEmpty()) null else this.avatar
-                }
             }
         }
     }
