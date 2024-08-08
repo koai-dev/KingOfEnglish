@@ -28,8 +28,8 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.english.vocab.dev" />
-                  <option name="mobileSdkAppId" value="1:541954765111:android:d3d737b54feaa11ad52ab2" />
+                  <option name="appId" value="com.english.vocab.game" />
+                  <option name="mobileSdkAppId" value="1:541954765111:android:8b06b4f88e0cf476d52ab2" />
                   <option name="projectId" value="kingofenglishrebuild" />
                   <option name="projectNumber" value="541954765111" />
                 </ConnectionSetting>

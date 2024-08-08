@@ -26,7 +26,7 @@ android {
         applicationId = "com.english.vocab"
         minSdk = 24
         targetSdk = 35
-        versionCode = 20240809
+        versionCode = 20240810
         versionName = "1.0.0"
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")

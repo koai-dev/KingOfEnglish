@@ -24,3 +24,13 @@
 -keep class com.koai.vocabvoyage.domain.models.* {*;}
 
 -dontwarn org.slf4j.impl.StaticLoggerBinder
+
+-keep class com.blongho.** { *;}
+-keep interface com.blongho.**
+#If you keep the line number information , uncomment this to
+# hide the original source file name.
+# -renamesourcefileattribute SourceFile
+-keeppackagenames com.blongho.country_data
+-keepclassmembers class com.blongho.country_data.* { public *;}
+-keep class com.blongho.country_data.R$* {   *;}
+-dontwarn org.slf4j.impl.StaticLoggerBinder
