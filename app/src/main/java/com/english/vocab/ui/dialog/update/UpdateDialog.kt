@@ -6,9 +6,16 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.Toast
+import android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT
+import android.window.OnBackInvokedDispatcher.PRIORITY_OVERLAY
+import androidx.activity.OnBackPressedDispatcher
+import androidx.activity.addCallback
 import com.english.vocab.BuildConfig
 import com.english.vocab.MainNavigator
 import com.english.vocab.R
@@ -23,11 +30,23 @@ class UpdateDialog :
     BaseDialog<DialogNeedUpdateBinding, BaseRouter, MainNavigator>(R.layout.dialog_need_update) {
     override val navigator: MainNavigator by navigatorViewModel()
 
+    @SuppressLint("GestureBackNavigation")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return super.onCreateDialog(savedInstanceState).apply {
             this.requestWindowFeature(Window.FEATURE_NO_TITLE)
             this.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             this.setCanceledOnTouchOutside(false)
+            this.setCancelable(false)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                onBackInvokedDispatcher.registerOnBackInvokedCallback(PRIORITY_OVERLAY){
+                }
+            }else{
+                setOnKeyListener { dialog, keyCode, event ->
+                    // Do nothing or handle the back button press
+                    keyCode == KeyEvent.KEYCODE_BACK
+                }
+            }
         }
     }
 
@@ -56,6 +75,5 @@ class UpdateDialog :
                 )
             }
         }
-
     }
 }
