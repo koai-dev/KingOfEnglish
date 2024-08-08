@@ -1,4 +1,4 @@
-package com.koai.vocabvoyage
+package com.english.vocab
 
 import org.junit.Assert.*
 import org.junit.Test
