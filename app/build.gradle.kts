@@ -26,7 +26,7 @@ android {
         applicationId = "com.english.vocab"
         minSdk = 24
         targetSdk = 35
-        versionCode = 20240808
+        versionCode = 20240809
         versionName = "1.0.0"
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
@@ -44,7 +44,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            buildConfigField("String", "BANNER_ADS", "\"ca-app-pub-4786522373342788/5059647458\"")
+            buildConfigField("String", "BANNER_ADS", "\"ca-app-pub-4786522373342788/7798113552\"")
             resValue("string", "app_ads", "\"ca-app-pub-4786522373342788~2041354068\"")
             buildConfigField("String", "REWARD_ADS", "\"ca-app-pub-4786522373342788/6515167146\"")
         }
@@ -64,6 +64,7 @@ android {
         }
         create("prod") {
             dimension = "default"
+            applicationIdSuffix = ".game"
         }
     }
     compileOptions {
