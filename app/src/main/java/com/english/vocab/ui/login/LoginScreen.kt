@@ -67,7 +67,8 @@ class LoginScreen :
 
     private fun actionView() {
         binding.ctnLinkAccount.btnNo.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
-            viewModel.getUserInfoOffline()
+//            viewModel.getUserInfoOffline()
+            viewModel.loginAnonymous()
         }
 
         binding.ctnLinkAccount.btnYes.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
