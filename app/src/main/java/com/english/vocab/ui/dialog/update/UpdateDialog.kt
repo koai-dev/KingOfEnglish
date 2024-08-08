@@ -11,11 +11,7 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Toast
-import android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT
 import android.window.OnBackInvokedDispatcher.PRIORITY_OVERLAY
-import androidx.activity.OnBackPressedDispatcher
-import androidx.activity.addCallback
 import com.english.vocab.BuildConfig
 import com.english.vocab.MainNavigator
 import com.english.vocab.R
@@ -39,14 +35,15 @@ class UpdateDialog :
             this.setCancelable(false)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                onBackInvokedDispatcher.registerOnBackInvokedCallback(PRIORITY_OVERLAY){
+                onBackInvokedDispatcher.registerOnBackInvokedCallback(PRIORITY_OVERLAY) {
                 }
-            }else{
-                setOnKeyListener { dialog, keyCode, event ->
-                    // Do nothing or handle the back button press
-                    keyCode == KeyEvent.KEYCODE_BACK
+            } else
+                {
+                    setOnKeyListener { dialog, keyCode, event ->
+                        // Do nothing or handle the back button press
+                        keyCode == KeyEvent.KEYCODE_BACK
+                    }
                 }
-            }
         }
     }
 
@@ -70,7 +67,7 @@ class UpdateDialog :
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}")
+                        Uri.parse("https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}"),
                     ),
                 )
             }

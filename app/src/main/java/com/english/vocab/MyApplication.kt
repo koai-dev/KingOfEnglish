@@ -13,14 +13,15 @@ import kotlinx.coroutines.launch
 import org.koin.dsl.module
 
 class MyApplication : BaseApplication() {
-    override fun appModule() = module {
-        includes(
-            super.appModule(),
-            ServiceModule.init(),
-            NavigatorModule.init(),
-            ViewModelModule.init(),
-        )
-    }
+    override fun appModule() =
+        module {
+            includes(
+                super.appModule(),
+                ServiceModule.init(),
+                NavigatorModule.init(),
+                ViewModelModule.init(),
+            )
+        }
 
     override fun onCreate() {
         super.onCreate()

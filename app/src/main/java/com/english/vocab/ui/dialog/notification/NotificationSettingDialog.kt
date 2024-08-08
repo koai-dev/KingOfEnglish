@@ -19,11 +19,12 @@ import org.koin.android.ext.android.inject
 
 class NotificationSettingDialog :
     BaseDialog<DialogNotificationSettingBinding, NotificationSettingRouter, MainNavigator>(
-        R.layout.dialog_notification_setting
+        R.layout.dialog_notification_setting,
     ) {
     private val sharePreference by inject<SharePreference>()
 
     override val navigator: MainNavigator by navigatorViewModel()
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return super.onCreateDialog(savedInstanceState).apply {
             this.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -40,7 +41,10 @@ class NotificationSettingDialog :
         )
     }
 
-    override fun initView(savedInstanceState: Bundle?, binding: DialogNotificationSettingBinding) {
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: DialogNotificationSettingBinding,
+    ) {
         binding.btnClose.setClickableWithScale(AppConfig.enableSoundEffect) {
             dismiss()
             AppConfig.showPopupNotificationSetting = true

@@ -71,8 +71,9 @@ class LoginViewModel(
                                                 avatar = Firebase.auth.currentUser?.photoUrl?.toString(),
                                                 accessToken = accessToken.token,
                                                 fcmToken = accessToken.token,
-                                                name = Firebase.auth.currentUser?.displayName
-                                                    ?: "KOE",
+                                                name =
+                                                    Firebase.auth.currentUser?.displayName
+                                                        ?: "KOE",
                                                 points = 0,
                                                 userId = Firebase.auth.currentUser?.uid,
                                             ),
@@ -108,8 +109,9 @@ class LoginViewModel(
                         User(
                             currentLevel = 1,
                             timeActive = System.currentTimeMillis(),
-                            avatar = Firebase.auth.currentUser?.photoUrl?.toString()
-                                ?: AppConfig.locale,
+                            avatar =
+                                Firebase.auth.currentUser?.photoUrl?.toString()
+                                    ?: AppConfig.locale,
                             name = Firebase.auth.currentUser?.displayName ?: "No Name",
                             points = 0,
                             userId = Firebase.auth.currentUser?.uid,

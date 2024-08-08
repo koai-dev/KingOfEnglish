@@ -13,11 +13,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.google.firebase.messaging.FirebaseMessagingService
-import com.google.firebase.messaging.RemoteMessage
 import com.english.vocab.MainActivity
 import com.english.vocab.R
 import com.english.vocab.utils.AppConfig
+import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.RemoteMessage
 
 class MyMessaging : FirebaseMessagingService() {
     companion object {
@@ -101,5 +101,4 @@ class MyMessaging : FirebaseMessagingService() {
         }
         LocalBroadcastManager.getInstance(this).sendBroadcast(activityIntent)
     }
-
 }

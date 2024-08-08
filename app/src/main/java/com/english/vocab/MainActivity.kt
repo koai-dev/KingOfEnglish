@@ -13,7 +13,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.size
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.english.vocab.ads.AdsViewModel
 import com.english.vocab.databinding.ActivityMainBinding
@@ -47,6 +46,7 @@ class MainActivity :
     private val adsViewModel: AdsViewModel by viewModel()
     private val sharePreference: SharePreference by inject()
     private val notificationIntentFilter = IntentFilter(MyMessaging.KOE_NOTIFICATION)
+
     override fun initView(
         savedInstanceState: Bundle?,
         binding: ActivityMainBinding,
@@ -64,7 +64,7 @@ class MainActivity :
         configAppSetting()
         LocalBroadcastManager.getInstance(this).registerReceiver(
             notificationReceiver,
-            notificationIntentFilter
+            notificationIntentFilter,
         )
         setUpAdmobBanner()
     }
@@ -180,18 +180,23 @@ class MainActivity :
         }
     }
 
-    private val notificationReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent) {
-            val data = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                intent.getParcelableExtra(MyMessaging.KEY_NOTIFICATION, RemoteMessage::class.java)
-            } else {
-                intent.getParcelableExtra(MyMessaging.KEY_NOTIFICATION)
-            }
-            data?.data?.get(MyMessaging.BODY)?.let { news ->
-                navigator.sendEvent(NewsEvent("$news "))
+    private val notificationReceiver: BroadcastReceiver =
+        object : BroadcastReceiver() {
+            override fun onReceive(
+                context: Context?,
+                intent: Intent,
+            ) {
+                val data =
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        intent.getParcelableExtra(MyMessaging.KEY_NOTIFICATION, RemoteMessage::class.java)
+                    } else {
+                        intent.getParcelableExtra(MyMessaging.KEY_NOTIFICATION)
+                    }
+                data?.data?.get(MyMessaging.BODY)?.let { news ->
+                    navigator.sendEvent(NewsEvent("$news "))
+                }
             }
         }
-    }
 
     private fun setUpAdmobBanner() {
         var adRequest: AdRequest? = null

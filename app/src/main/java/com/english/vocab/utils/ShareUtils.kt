@@ -19,8 +19,10 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 
-
-fun ShareView.share(context: Context, router: BaseRouter?) {
+fun ShareView.share(
+    context: Context,
+    router: BaseRouter?,
+) {
     CoroutineScope(Dispatchers.Default).launch {
         try {
             val uri = this@share.drawToBitmap().saveBitmapToCache(context)
@@ -29,32 +31,33 @@ fun ShareView.share(context: Context, router: BaseRouter?) {
                     bundleOf(
                         ShareFile.TITLE to "Share this to Best-friends",
                         ShareFile.EXTRA to uri.toString(),
-                        ShareFile.LINK to "https://play.google.com/store/apps/details?id=com.koai.kingofenglish"
-                    )
+                        ShareFile.LINK to "https://play.google.com/store/apps/details?id=com.koai.kingofenglish",
+                    ),
                 )
             }
         } catch (e: Exception) {
             e.printStackTrace()
             try {
-                val uri = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888).applyCanvas {
-                    translate(-scrollX.toFloat(), -scrollY.toFloat())
-                    draw(this)
-                }.saveBitmapToCache(context)
+                val uri =
+                    Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888).applyCanvas {
+                        translate(-scrollX.toFloat(), -scrollY.toFloat())
+                        draw(this)
+                    }.saveBitmapToCache(context)
                 if (uri != null) {
                     router?.onShareFile(
                         bundleOf(
                             ShareFile.TITLE to "Share this to Best-friends",
                             ShareFile.EXTRA to uri.toString(),
-                            ShareFile.LINK to "https://play.google.com/store/apps/details?id=com.koai.kingofenglish"
-                        )
+                            ShareFile.LINK to "https://play.google.com/store/apps/details?id=com.koai.kingofenglish",
+                        ),
                     )
                 }
             } catch (e: Exception) {
                 router?.onShareFile(
                     bundleOf(
                         ShareFile.TITLE to "Share this to Best-friends",
-                        ShareFile.LINK to "https://play.google.com/store/apps/details?id=com.koai.kingofenglish"
-                    )
+                        ShareFile.LINK to "https://play.google.com/store/apps/details?id=com.koai.kingofenglish",
+                    ),
                 )
             }
         }

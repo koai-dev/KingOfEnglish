@@ -7,7 +7,10 @@ interface PlayRouter : BaseRouter {
 
     fun gotoTip(img: String)
 
-    fun nextLevel(currentPoint: Int, img: String?)
+    fun nextLevel(
+        currentPoint: Int,
+        img: String?,
+    )
 
     fun showWrongToast()
 

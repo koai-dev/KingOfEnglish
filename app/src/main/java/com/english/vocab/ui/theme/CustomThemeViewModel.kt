@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.koai.base.network.ResponseStatus
-import com.koai.base.utils.SharePreference
 import com.english.vocab.domain.models.Background
 import com.english.vocab.domain.models.Response
 import com.english.vocab.domain.usecase.BackgroundUseCase
 import com.english.vocab.utils.Constants
+import com.koai.base.network.ResponseStatus
+import com.koai.base.utils.SharePreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -28,7 +28,7 @@ class CustomThemeViewModel(private val backgroundUseCase: BackgroundUseCase, pri
         }
     }
 
-    fun saveSetting(url: String){
+    fun saveSetting(url: String)  {
         viewModelScope.launch(Dispatchers.IO) {
             sharePreference.setStringPref(Constants.BACKGROUND_URL, url)
         }

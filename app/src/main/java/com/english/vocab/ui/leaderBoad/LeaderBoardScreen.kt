@@ -1,7 +1,6 @@
 package com.english.vocab.ui.leaderBoad
 
 import android.os.Bundle
-import com.english.vocab.MainActivity
 import com.english.vocab.MainNavigator
 import com.english.vocab.R
 import com.english.vocab.databinding.ScreenLeaderBoardBinding
@@ -21,7 +20,10 @@ class LeaderBoardScreen :
     private lateinit var adapter: LeaderBoardAdapter
     private val viewmodel: LeaderBoardViewModel by screenViewModel()
 
-    override fun initView(savedInstanceState: Bundle?, binding: ScreenLeaderBoardBinding) {
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: ScreenLeaderBoardBinding,
+    ) {
         if (AppConfig.background.isNullOrEmpty()) {
             binding.imgBg.loadImage(R.drawable.bg_home)
         } else {
@@ -48,5 +50,4 @@ class LeaderBoardScreen :
             }
         }
     }
-
 }

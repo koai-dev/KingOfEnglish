@@ -1,9 +1,9 @@
 package com.english.vocab.service
 
 import android.util.Log
-import com.koai.base.main.action.event.NavigationEvent
 import com.english.vocab.NewsEvent
 import com.english.vocab.utils.Constants
+import com.koai.base.main.action.event.NavigationEvent
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.websocket.DefaultClientWebSocketSession
 import io.ktor.client.plugins.websocket.WebSockets
@@ -22,18 +22,19 @@ object Socket {
     private var lastShowNews = 0L
 
     init {
-        val client = HttpClient {
-            install(WebSockets) {
-                pingInterval = 20_000
+        val client =
+            HttpClient {
+                install(WebSockets) {
+                    pingInterval = 20_000
+                }
             }
-        }
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 client.webSocket(
                     method = HttpMethod.Get,
                     host = Constants.BASE_WEBSOCKET_URL,
                     port = 80,
-                    path = "/news"
+                    path = "/news",
                 ) {
                     session = this
                     try {

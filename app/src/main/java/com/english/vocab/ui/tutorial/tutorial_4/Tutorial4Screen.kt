@@ -3,9 +3,9 @@ package com.english.vocab.ui.tutorial.tutorial_4
 import android.os.Bundle
 import com.english.vocab.R
 import com.english.vocab.databinding.ScreenTutorial4Binding
+import com.english.vocab.ui.tutorial.TutorialNavigator
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.screens.BaseScreen
-import com.english.vocab.ui.tutorial.TutorialNavigator
 
 class Tutorial4Screen :
     BaseScreen<ScreenTutorial4Binding, Tutorial4Router, TutorialNavigator>(R.layout.screen_tutorial_4) {

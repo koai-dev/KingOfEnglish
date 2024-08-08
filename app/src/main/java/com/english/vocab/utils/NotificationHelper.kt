@@ -7,10 +7,10 @@ import android.os.Build
 import android.provider.Settings
 import androidx.core.app.NotificationManagerCompat
 
-
 object NotificationHelper {
     private const val KEY_APP_PACKAGE_NAME = "app_package"
     private const val KEY_APP_UID = "app_uid"
+
     fun areNotificationsEnabled(context: Context): Boolean =
         NotificationManagerCompat.from(context)
             .areNotificationsEnabled()
@@ -34,6 +34,5 @@ object NotificationHelper {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 }

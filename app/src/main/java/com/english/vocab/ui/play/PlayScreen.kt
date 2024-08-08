@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.setFragmentResultListener
+import com.english.vocab.MainNavigator
 import com.english.vocab.R
 import com.english.vocab.ads.AdmobUtils
 import com.english.vocab.ads.AdsViewModel
@@ -11,6 +12,9 @@ import com.english.vocab.databinding.ScreenPlayBinding
 import com.english.vocab.domain.account.AccountUtils
 import com.english.vocab.ui.play.widget.Letter
 import com.english.vocab.ui.play.widget.WordView
+import com.english.vocab.utils.AppConfig
+import com.english.vocab.utils.Constants
+import com.english.vocab.utils.share
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.gone
 import com.koai.base.main.extension.journeyViewModel
@@ -18,10 +22,6 @@ import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.extension.screenViewModel
 import com.koai.base.main.screens.BaseScreen
 import com.koai.base.network.ResponseStatus
-import com.english.vocab.MainNavigator
-import com.english.vocab.utils.AppConfig
-import com.english.vocab.utils.Constants
-import com.english.vocab.utils.share
 
 class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.layout.screen_play) {
     private val viewModel: PlayViewModel by screenViewModel()
@@ -157,7 +157,7 @@ class PlayScreen : BaseScreen<ScreenPlayBinding, PlayRouter, MainNavigator>(R.la
                                             AccountUtils.user?.currentLevel?.plus(1)
                                         router?.nextLevel(
                                             viewModel.getCurrentPointAdd(),
-                                            viewModel.question?.thumb
+                                            viewModel.question?.thumb,
                                         )
                                         viewModel.pause()
                                     } else {

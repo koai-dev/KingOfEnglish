@@ -2,13 +2,13 @@ package com.english.vocab.ads
 
 import android.app.Activity
 import android.content.Context
+import com.english.vocab.utils.AppConfig
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
-import com.english.vocab.utils.AppConfig
 
 object AdmobUtils {
     private var mRewardedAd: RewardedAd? = null

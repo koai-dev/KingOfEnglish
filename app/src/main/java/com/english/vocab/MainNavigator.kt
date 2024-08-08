@@ -2,6 +2,9 @@ package com.english.vocab
 
 import android.app.Activity
 import androidx.core.os.bundleOf
+import com.english.vocab.ui.dialog.notification.NotificationSettingRouter
+import com.english.vocab.ui.dialog.profile.ProfileRouter
+import com.english.vocab.ui.dialog.setting.SettingRouter
 import com.english.vocab.ui.home.HomeRouter
 import com.english.vocab.ui.leaderBoad.LeaderBoardRouter
 import com.english.vocab.ui.login.LoginRouter
@@ -13,9 +16,6 @@ import com.english.vocab.utils.Constants
 import com.english.vocab.utils.NotificationHelper
 import com.koai.base.main.action.event.NavigationEvent
 import com.koai.base.main.action.navigator.BaseNavigator
-import com.english.vocab.ui.dialog.notification.NotificationSettingRouter
-import com.english.vocab.ui.dialog.profile.ProfileRouter
-import com.english.vocab.ui.dialog.setting.SettingRouter
 
 class MainNavigator :
     BaseNavigator(),
@@ -24,8 +24,10 @@ class MainNavigator :
     HomeRouter,
     PlayRouter,
     SettingRouter,
-    ProfileRouter, CustomThemeRouter, LeaderBoardRouter, NotificationSettingRouter {
-
+    ProfileRouter,
+    CustomThemeRouter,
+    LeaderBoardRouter,
+    NotificationSettingRouter {
     override fun gotoLoginScreen() {
         offNavScreen(R.id.action_global_loginScreen)
     }
@@ -74,7 +76,10 @@ class MainNavigator :
         offNavScreen(R.id.action_global_tipDialog, bundleOf(Constants.BASE_URL to img))
     }
 
-    override fun nextLevel(currentPoint: Int, img: String?) {
+    override fun nextLevel(
+        currentPoint: Int,
+        img: String?,
+    ) {
         offNavScreen(
             R.id.action_global_levelUpDialog,
             bundleOf(Constants.ADDED_POINTS to currentPoint, Constants.IMG to img),

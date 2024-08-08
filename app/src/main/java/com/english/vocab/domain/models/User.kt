@@ -24,6 +24,6 @@ data class User(
     var fcmToken: String? = null,
     @field:SerializedName("points")
     var points: Int? = null,
-    @field: SerializedName("top")
-    var top: Int? = null
+    @field:SerializedName("top")
+    var top: Int? = null,
 ) : Parcelable

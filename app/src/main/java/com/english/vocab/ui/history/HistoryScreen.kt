@@ -11,7 +11,9 @@ import com.koai.base.main.screens.BaseScreen
 class HistoryScreen : BaseScreen<ScreenHistoryBinding, BaseRouter, BaseNavigator>(R.layout.screen_history) {
     override val navigator: BaseNavigator by navigatorViewModel()
 
-    override fun initView(savedInstanceState: Bundle?, binding: ScreenHistoryBinding) {
-
+    override fun initView(
+        savedInstanceState: Bundle?,
+        binding: ScreenHistoryBinding,
+    ) {
     }
 }

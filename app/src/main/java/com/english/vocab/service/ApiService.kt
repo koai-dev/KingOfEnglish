@@ -1,10 +1,10 @@
 package com.english.vocab.service
 
-import com.koai.base.network.BaseApiService
 import com.english.vocab.domain.models.Background
 import com.english.vocab.domain.models.Question
 import com.english.vocab.domain.models.Response
 import com.english.vocab.domain.models.User
+import com.koai.base.network.BaseApiService
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -19,12 +19,12 @@ interface ApiService : BaseApiService {
 
     @POST("question/getRandom")
     suspend fun getQuestion(
-        @Body levels: List<Int>
+        @Body levels: List<Int>,
     ): Response<Question>
 
     @POST("question/getHistory")
     suspend fun getHistory(
-        @Body levels: List<Int>
+        @Body levels: List<Int>,
     ): Response<Question>
 
     @GET("user")
@@ -51,5 +51,7 @@ interface ApiService : BaseApiService {
     suspend fun getAllBackground(): Response<List<Background>>
 
     @GET("background")
-    suspend fun getBackgroundById(@Query("id") id: Int): Response<Background>
+    suspend fun getBackgroundById(
+        @Query("id") id: Int,
+    ): Response<Background>
 }

@@ -5,8 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.koai.base.network.ResponseStatus
-import com.koai.base.utils.SharePreference
 import com.english.vocab.domain.account.AccountUtils
 import com.english.vocab.domain.models.Question
 import com.english.vocab.domain.models.Response
@@ -14,6 +12,8 @@ import com.english.vocab.domain.usecase.GetQuestionUseCase
 import com.english.vocab.domain.usecase.UpdateUserUseCase
 import com.english.vocab.service.Socket
 import com.english.vocab.utils.Constants
+import com.koai.base.network.ResponseStatus
+import com.koai.base.utils.SharePreference
 import io.ktor.websocket.Frame
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -64,11 +64,16 @@ class PlayViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             if (AccountUtils.isLogin()) {
                 AccountUtils.user?.let { user ->
-                    updateUserUseCase.execute(user).collect {userUpdated->
-                        if ((userUpdated.data?.top?:1000)<(user.top?:1000)){
-                            AccountUtils.user?.top = userUpdated.data?.top
-                            Socket.session?.send(Frame.Text("\uD83D\uDC49 ${userUpdated.data?.name} reached the top ${userUpdated.data?.top} best players \uD83D\uDE0D "))
-                        }
+                    updateUserUseCase.execute(user).collect { userUpdated ->
+                        if ((userUpdated.data?.top ?: 1000) < (user.top ?: 1000))
+                            {
+                                AccountUtils.user?.top = userUpdated.data?.top
+                                Socket.session?.send(
+                                    Frame.Text(
+                                        "\uD83D\uDC49 ${userUpdated.data?.name} reached the top ${userUpdated.data?.top} best players \uD83D\uDE0D ",
+                                    ),
+                                )
+                            }
                     }
                 }
             } else {

@@ -57,12 +57,12 @@ android {
 
     setFlavorDimensions(arrayListOf("default"))
 
-    productFlavors{
-        create("dev"){
+    productFlavors {
+        create("dev") {
             dimension = "default"
             applicationIdSuffix = ".dev"
         }
-        create("prod"){
+        create("prod") {
             dimension = "default"
         }
     }
@@ -120,5 +120,4 @@ dependencies {
     implementation("com.airbnb.android:lottie:6.4.1")
 
     implementation("com.github.blongho:worldCountryData:1.5.3")
-
 }

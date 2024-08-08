@@ -28,16 +28,19 @@ object AppConfig {
     }
 
     val rewardAds: String
-        get() = FirebaseRemoteConfig.getInstance().getString(REWARD_ADS)
-            .ifEmpty { BuildConfig.REWARD_ADS }
+        get() =
+            FirebaseRemoteConfig.getInstance().getString(REWARD_ADS)
+                .ifEmpty { BuildConfig.REWARD_ADS }
 
     val messageUpdate: String
-        get() = FirebaseRemoteConfig.getInstance().getString(DEFAULT_UPDATED_MSG)
-            .ifEmpty { "- Fix bug and optimize app" }
+        get() =
+            FirebaseRemoteConfig.getInstance().getString(DEFAULT_UPDATED_MSG)
+                .ifEmpty { "- Fix bug and optimize app" }
 
     val versionNameUpdate: String
-        get() = FirebaseRemoteConfig.getInstance().getString(MIN_VERSION_NAME)
-            .ifEmpty { BuildConfig.VERSION_NAME }
+        get() =
+            FirebaseRemoteConfig.getInstance().getString(MIN_VERSION_NAME)
+                .ifEmpty { BuildConfig.VERSION_NAME }
 
     val versionCodeUpdate: Int
         get() = FirebaseRemoteConfig.getInstance().getLong(MIN_VERSION_CODE).toInt()
@@ -50,5 +53,4 @@ object AppConfig {
     var showPopupNotificationSetting = false
 
     var locale: String? = null
-
 }

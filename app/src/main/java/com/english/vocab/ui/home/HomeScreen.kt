@@ -4,27 +4,25 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.english.vocab.BuildConfig
+import com.english.vocab.DashboardEvent
+import com.english.vocab.MainNavigator
+import com.english.vocab.NewsEvent
 import com.english.vocab.R
 import com.english.vocab.databinding.ScreenHomeBinding
 import com.english.vocab.domain.account.AccountUtils
+import com.english.vocab.utils.AppConfig
+import com.english.vocab.utils.NotificationHelper
 import com.koai.base.main.extension.ClickableViewExtensions.loadImage
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
 import com.koai.base.main.extension.gone
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.extension.visible
 import com.koai.base.main.screens.BaseScreen
-import com.english.vocab.DashboardEvent
-import com.english.vocab.MainNavigator
-import com.english.vocab.NewsEvent
-import com.english.vocab.utils.AppConfig
-import com.english.vocab.utils.NotificationHelper
-import com.koai.base.main.action.event.NextScreen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.layout.screen_home) {
-
     override fun initView(
         savedInstanceState: Bundle?,
         binding: ScreenHomeBinding,
@@ -44,9 +42,10 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
         setAction()
         setFirstLaunch()
 
-        if (AppConfig.versionCodeUpdate > BuildConfig.VERSION_CODE){
-            router?.gotoUpdate()
-        }
+        if (AppConfig.versionCodeUpdate > BuildConfig.VERSION_CODE)
+            {
+                router?.gotoUpdate()
+            }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
