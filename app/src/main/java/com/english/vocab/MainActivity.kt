@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.size
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.english.vocab.ads.AdsViewModel
 import com.english.vocab.databinding.ActivityMainBinding
@@ -40,12 +41,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity :
     BaseActivity<ActivityMainBinding, BaseRouter, MainNavigator>(R.layout.activity_main) {
     override val navigator: MainNavigator by viewModel()
+    private val mainViewModel: MainViewModel by viewModel()
     private var mediaPlayer: MediaPlayer? = null
     private var isOnDashBoard = false
     private val adsViewModel: AdsViewModel by viewModel()
     private val sharePreference: SharePreference by inject()
     private val notificationIntentFilter = IntentFilter(MyMessaging.KOE_NOTIFICATION)
-
     override fun initView(
         savedInstanceState: Bundle?,
         binding: ActivityMainBinding,
@@ -59,6 +60,7 @@ class MainActivity :
             ViewCompat.onApplyWindowInsets(view, windowInsets)
         }
         adsViewModel.scheduleShowAds(this)
+        mainViewModel.checkLocale()
         configAppSetting()
         LocalBroadcastManager.getInstance(this).registerReceiver(
             notificationReceiver,

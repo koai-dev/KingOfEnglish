@@ -158,5 +158,4 @@
         android:id="@+id/action_global_updateDialog"
         app:destination="@id/updateDialog" />
 
-
 </navigation>

@@ -1,11 +1,12 @@
 package com.english.vocab
 
-import com.google.android.gms.ads.MobileAds
-import com.koai.base.BaseApplication
+import com.blongho.country_data.World
 import com.english.vocab.di.NavigatorModule
 import com.english.vocab.di.ServiceModule
 import com.english.vocab.di.ViewModelModule
 import com.english.vocab.utils.AppConfig
+import com.google.android.gms.ads.MobileAds
+import com.koai.base.BaseApplication
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,6 +29,7 @@ class MyApplication : BaseApplication() {
             // Initialize the Google Mobile Ads SDK on a background thread.
             MobileAds.initialize(this@MyApplication) {}
             AppConfig.initRemote()
+            World.init(this@MyApplication)
         }
     }
 }

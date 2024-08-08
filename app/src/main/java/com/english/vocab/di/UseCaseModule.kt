@@ -4,6 +4,8 @@ import com.english.vocab.domain.usecase.AddUserUseCase
 import com.english.vocab.domain.usecase.AddUserUseCaseImpl
 import com.english.vocab.domain.usecase.BackgroundUseCase
 import com.english.vocab.domain.usecase.BackgroundUseCaseImpl
+import com.english.vocab.domain.usecase.GetCountryCodeUseCase
+import com.english.vocab.domain.usecase.GetCountryCodeUseCaseImpl
 import com.english.vocab.domain.usecase.GetQuestionUseCase
 import com.english.vocab.domain.usecase.GetQuestionUseCaseImpl
 import com.english.vocab.domain.usecase.GetTopRankUseCase
@@ -23,5 +25,6 @@ object UseCaseModule {
             factory<UpdateUserUseCase> { UpdateUserUseCaseImpl(get()) }
             factory<AddUserUseCase> { AddUserUseCaseImpl(get()) }
             factory<BackgroundUseCase> { BackgroundUseCaseImpl(get()) }
+            factory<GetCountryCodeUseCase> { GetCountryCodeUseCaseImpl(get()) }
         }
 }

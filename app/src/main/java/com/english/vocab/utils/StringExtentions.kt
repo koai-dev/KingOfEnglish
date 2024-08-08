@@ -1,6 +1,8 @@
 package com.english.vocab.utils
 
-fun String?.stringToArray(): ArrayList<String>  {
+import com.blongho.country_data.World
+
+fun String?.stringToArray(): ArrayList<String> {
     val list = arrayListOf<String>()
     val strings = this?.split(",")
     strings?.forEach {
@@ -9,7 +11,7 @@ fun String?.stringToArray(): ArrayList<String>  {
     return list
 }
 
-fun ArrayList<String?>?.arrayToString(): String  {
+fun ArrayList<String?>?.arrayToString(): String {
     var string = ""
     this?.forEach {
         it?.let {
@@ -19,3 +21,5 @@ fun ArrayList<String?>?.arrayToString(): String  {
     string = string.trim().substring(0, string.length - 1)
     return string
 }
+
+fun String.countryCodeToImageResource() = World.getFlagOf(this)

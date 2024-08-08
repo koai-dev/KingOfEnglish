@@ -104,7 +104,7 @@ dependencies {
     implementation(project(":analytic"))
 
     // worker
-    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
 
     // room
     implementation("androidx.room:room-runtime:2.6.1")
@@ -118,5 +118,7 @@ dependencies {
     implementation("io.ktor:ktor-client-websockets:2.3.12")
 
     implementation("com.airbnb.android:lottie:6.4.1")
+
+    implementation("com.github.blongho:worldCountryData:1.5.3")
 
 }

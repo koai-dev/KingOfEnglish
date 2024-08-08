@@ -1,6 +1,7 @@
 package com.english.vocab.ui.login
 
 import android.os.Bundle
+import android.widget.Toast
 import com.english.vocab.R
 import com.english.vocab.databinding.ScreenLoginBinding
 import com.english.vocab.domain.account.AccountUtils
@@ -67,11 +68,12 @@ class LoginScreen :
 
     private fun actionView() {
         binding.ctnLinkAccount.btnNo.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
-//            viewModel.getUserInfoOffline()
+            Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show()
             viewModel.loginAnonymous()
         }
 
         binding.ctnLinkAccount.btnYes.setClickableWithScale(enableSoundEffect = AppConfig.enableSoundEffect) {
+            Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show()
             viewModel.login(this)
         }
 

@@ -12,8 +12,8 @@ class LeaderBoardAdapter : BaseListAdapter<User>() {
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         (holder.binding as ItemLeaderBoardBinding).apply {
-            point = getItem(holder.bindingAdapterPosition).points.convertNumber()
-            user = getItem(holder.bindingAdapterPosition).apply {
+            point = getItem(holder.absoluteAdapterPosition).points.convertNumber()
+            user = getItem(holder.absoluteAdapterPosition).apply {
                 this.name = this.name?.split(" ")?.last()
                 this.avatar = if (this.avatar.isNullOrEmpty()) null else this.avatar
             }
