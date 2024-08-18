@@ -11,6 +11,7 @@ import com.english.vocab.ui.login.LoginRouter
 import com.english.vocab.ui.play.PlayRouter
 import com.english.vocab.ui.splash.SplashRouter
 import com.english.vocab.ui.theme.CustomThemeRouter
+import com.english.vocab.ui.tutorial.TutorialRouter
 import com.english.vocab.utils.AppConfig
 import com.english.vocab.utils.Constants
 import com.english.vocab.utils.NotificationHelper
@@ -27,7 +28,8 @@ class MainNavigator :
     ProfileRouter,
     CustomThemeRouter,
     LeaderBoardRouter,
-    NotificationSettingRouter {
+    NotificationSettingRouter,
+    TutorialRouter {
     override fun gotoLoginScreen() {
         offNavScreen(R.id.action_global_loginScreen)
     }
@@ -137,6 +139,10 @@ class MainNavigator :
     override fun gotoNotificationSetting(activity: Activity) {
         NotificationHelper.requestAllowNotifyFromSetting(activity)
     }
+
+    override fun finishTutorial() {
+        sendEvent(TutorialEvent())
+    }
 }
 
 class DashboardEvent : NavigationEvent()
@@ -150,3 +156,5 @@ class VibrateEvent(val enable: Boolean) : NavigationEvent()
 class ReportEvent : NavigationEvent()
 
 class NewsEvent(val news: String) : NavigationEvent()
+
+class TutorialEvent : NavigationEvent()

@@ -14,4 +14,8 @@ class MainViewModel(private val getCountryCodeUseCase: GetCountryCodeUseCase) : 
             AppConfig.locale = country.countryCode ?: "vn"
         }
     }
+
+    fun onFinishTutorial() {
+
+    }
 }

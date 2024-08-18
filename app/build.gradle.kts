@@ -26,8 +26,8 @@ android {
         applicationId = "com.english.vocab"
         minSdk = 24
         targetSdk = 35
-        versionCode = 20240810
-        versionName = "1.0.0"
+        versionCode = 20240818
+        versionName = "1.0.1"
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
@@ -92,7 +92,7 @@ dependencies {
 
     implementation("com.google.android.flexbox:flexbox:3.0.0")
     // admob
-    implementation("com.google.android.gms:play-services-ads:23.2.0")
+    implementation("com.google.android.gms:play-services-ads:23.3.0")
 
     // firebase
     implementation("com.facebook.android:facebook-android-sdk:17.0.0")

@@ -66,7 +66,10 @@ class MainActivity :
             notificationReceiver,
             notificationIntentFilter,
         )
-        setUpAdmobBanner()
+        val isFirstLaunch = !sharePreference.getBooleanPref(Constants.IS_FIRST_LAUNCH)
+        if (!isFirstLaunch) {
+            setUpAdmobBanner()
+        }
     }
 
     private fun configAppSetting() {
@@ -104,6 +107,10 @@ class MainActivity :
                     binding.ctnMotion.progress = 0f
                     binding.ctnMotion.invisible()
                 }
+            }
+
+            is TutorialEvent -> {
+                setUpAdmobBanner()
             }
 
             else -> super.onNavigationEvent(event)
@@ -188,7 +195,10 @@ class MainActivity :
             ) {
                 val data =
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        intent.getParcelableExtra(MyMessaging.KEY_NOTIFICATION, RemoteMessage::class.java)
+                        intent.getParcelableExtra(
+                            MyMessaging.KEY_NOTIFICATION,
+                            RemoteMessage::class.java
+                        )
                     } else {
                         intent.getParcelableExtra(MyMessaging.KEY_NOTIFICATION)
                     }

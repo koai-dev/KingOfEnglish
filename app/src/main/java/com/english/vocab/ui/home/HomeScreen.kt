@@ -11,6 +11,7 @@ import com.english.vocab.R
 import com.english.vocab.databinding.ScreenHomeBinding
 import com.english.vocab.domain.account.AccountUtils
 import com.english.vocab.utils.AppConfig
+import com.english.vocab.utils.Constants
 import com.english.vocab.utils.NotificationHelper
 import com.koai.base.main.extension.ClickableViewExtensions.loadImage
 import com.koai.base.main.extension.ClickableViewExtensions.setClickableWithScale
@@ -18,11 +19,15 @@ import com.koai.base.main.extension.gone
 import com.koai.base.main.extension.navigatorViewModel
 import com.koai.base.main.extension.visible
 import com.koai.base.main.screens.BaseScreen
+import com.koai.base.utils.SharePreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.layout.screen_home) {
+    private val sharePreference: SharePreference by inject()
+
     override fun initView(
         savedInstanceState: Bundle?,
         binding: ScreenHomeBinding,
@@ -42,10 +47,9 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
         setAction()
         setFirstLaunch()
 
-        if (AppConfig.versionCodeUpdate > BuildConfig.VERSION_CODE)
-            {
-                router?.gotoUpdate()
-            }
+        if (AppConfig.versionCodeUpdate > BuildConfig.VERSION_CODE) {
+            router?.gotoUpdate()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,6 +80,12 @@ class HomeScreen : BaseScreen<ScreenHomeBinding, HomeRouter, MainNavigator>(R.la
         if (!NotificationHelper.areNotificationsEnabled(activity)) {
             if (!AppConfig.showPopupNotificationSetting) {
                 router?.gotoNotificationSetting()
+            }
+        }else {
+            val isFirstLaunch = !sharePreference.getBooleanPref(Constants.IS_FIRST_LAUNCH)
+            if (isFirstLaunch) {
+                router?.gotoTutorial()
+                sharePreference.setBooleanPref(Constants.IS_FIRST_LAUNCH, true)
             }
         }
     }
